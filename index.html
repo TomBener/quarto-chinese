@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.13">
+<meta name="generator" content="quarto-1.8.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -87,14 +87,14 @@ div.csl-indent {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-a126389619fad6dbfb296a5315d49fef.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-7a350d08fecf1a9c41ceb75f728b6e9e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-a126389619fad6dbfb296a5315d49fef.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-46eeb4c476de49ef7df495821a6125d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-2e0ab3ffcb189ca14a0af92b40aeab37.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-46eeb4c476de49ef7df495821a6125d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-288dabb55971a55e91820547b6961879.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="index_files/libs/bootstrap/bootstrap-dark-27b5db258e84d048e0787d4cd1e04187.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="index_files/libs/bootstrap/bootstrap-288dabb55971a55e91820547b6961879.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-2d328f546475e8a22c48309ec01b7cc1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-dark-de1d5d2ead3aa39f62f9bfadbeb87077.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="index_files/libs/bootstrap/bootstrap-2d328f546475e8a22c48309ec01b7cc1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="index_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="index_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="index_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -303,7 +303,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">更新于</div>
             <div class="quarto-title-meta-contents">
-              <p class="date-modified">2025 年 6 月 10 日</p>
+              <p class="date-modified">2025 年 8 月 12 日</p>
             </div>
           </div>
                 
@@ -378,7 +378,7 @@ div.csl-indent {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ggplot2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>mtcars2 <span class="ot">&lt;-</span> mtcars</span>
 <span id="cb1-3"><a href="#cb1-3"></a>mtcars2<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
 <span id="cb1-4"><a href="#cb1-4"></a>    mtcars<span class="sc">$</span>am,</span>
@@ -387,7 +387,7 @@ div.csl-indent {
 <span id="cb1-7"><a href="#cb1-7"></a><span class="fu">ggplot</span>(mtcars2, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
 <span id="cb1-8"><a href="#cb1-8"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb1-9"><a href="#cb1-9"></a>    <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-mtcars" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -437,7 +437,7 @@ div.csl-indent {
 <h2 data-number="3" class="anchored" data-anchor-id="中文参考文献按照拼音排序"><span class="header-section-number">3</span> 中文参考文献按照拼音排序</h2>
 <p>在著者年份制的参考文献表中，中文参考文献一般需要按照拼音排序。基于 GB/T 7714-2015 的 BibLaTeX 样式包 <a href="https://github.com/hushidong/biblatex-gb7714-2015">biblatex-gb7714-2015</a> 支持使用 <code>biber</code> 对中文文献按照排序，但对于 Pandoc 使用的 Citeproc 来说，并不支持这个功能。因此，中文参考文献的排序问题一直是一个头疼的问题。</p>
 <p>本项目使用 Python filter <code>sort-cnbib.py</code> 来解决这个问题，借助 Python 的 <code>pypinyin</code> 库获取中文文献的著者拼音，然后通过 Panflute <span id="cite_15"><span class="citation" data-cites="correia2024">(<a href="#ref-correia2024" role="doc-biblioref">Correia, 2024</a>)</span></span> 修改 Pandoc AST，根据拼音对中文文献进行排序，并且对姓氏读音的多音字进行了特殊处理：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> special_pinyin(text):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> special_pinyin(text):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 多音字的姓氏拼音</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    surname_map <span class="op">=</span> {</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'葛'</span>: <span class="st">'ge3'</span>,</span>
@@ -457,12 +457,12 @@ div.csl-indent {
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        surname <span class="op">=</span> name[<span class="dv">0</span>]</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> surname_map.get(surname, <span class="st">""</span>.join([i[<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> pinyin(name, style<span class="op">=</span>Style.TONE3)]))</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>对于参考文献中中文和英文文献哪个在前的问题，各个学校和期刊的要求不一样，有的要求中文在前，有的要求非中文（英文）在前。<code>sort-cnbib.py</code> 默认是英文在前，如果你需要在中文在前，可以将对应代码修改为：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> elem <span class="kw">in</span> doc.content:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> elem <span class="kw">in</span> doc.content:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(elem, pf.Div) <span class="kw">and</span> <span class="st">"references"</span> <span class="kw">in</span> elem.classes:</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            elem.content <span class="op">=</span> doc.chinese_entries <span class="op">+</span> doc.non_chinese_entries</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>需要注意的是，<code>sort-cnbib.py</code> 只需用于 author-date 引用格式，numeric 引用格式不需要排序，因为数字本身就是有序的。</p>
 </section>
 <section id="中文引号的处理" class="level2" data-number="4">
@@ -491,7 +491,7 @@ div.csl-indent {
 <section id="段落右对齐" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="段落右对齐"><span class="header-section-number">6</span> 段落右对齐</h2>
 <p>一般而言，段落是左对齐的，但有时我们希望某些段落右对齐。本项目提供了一个 Lua filter <code>right-align.lua</code>，可以实现段落右对齐，例如：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>::: {.right}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>::: {.right}</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>这段文字会右对齐</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>支持 DOCX、PDF、HTML 和 EPUB 格式。</span>
@@ -503,21 +503,21 @@ div.csl-indent {
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>::: {.content-visible unless-format="html"}</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>{{&lt; meta date &gt;}}</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>生成的效果如下：</p>
 <div style="text-align: right;">
 <p>这段文字会右对齐</p>
 <p>支持 DOCX、PDF、HTML 和 EPUB 格式。</p>
-<p>2025 年 6 月 10 日</p>
+<p>2025 年 8 月 12 日</p>
 </div>
 </section>
 <section id="使用自定义字体" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="使用自定义字体"><span class="header-section-number">7</span> 使用自定义字体</h2>
 <p>在文章的某些段落，或者出于排版需要，或者出于学校要求，我们可能需要使用自定义字体。本项目提供了一个 Lua filter <code>custom-fonts.lua</code>，可以实现在 DOCX、PDF、HTML 和 EPUB 输出中使用自定义字体。</p>
 <p>在 Markdown 中，我们可以使用 <code>{.fangsong}</code> 和 <code>{.kaiti}</code> 类来指定使用自定义字体。例如：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">这是一段使用仿宋字体的文本</span><span class="co">]</span>{.fangsong}，之后还是使用默认字体。</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">这是一段使用仿宋字体的文本</span><span class="co">]</span>{.fangsong}，之后还是使用默认字体。</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">这是一段使用楷体的文本，</span><span class="co">]</span>{.kaiti}之后还是使用默认字体。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">这是一段使用楷体的文本，</span><span class="co">]</span>{.kaiti}之后还是使用默认字体。</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>生成的效果如下：</p>
 <p><span class="fangsong" style="font-family: FZFangSong-Z02, FangSong, STFangsong, 仿宋, serif;">这是一段使用仿宋字体的文本</span>，之后还是使用默认字体。</p>
 <p><span class="kaiti" style="font-family: FZKai-Z03, KaiTi, STKaiti, 楷体, serif;">这是一段使用楷体的文本</span>，之后还是使用默认字体。</p>
