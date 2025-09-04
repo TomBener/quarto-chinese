@@ -47,6 +47,7 @@ format:
     filters:
       - remove-spaces
       - docx-quotes
+      - no-first-paragraph
 
   html:
     template: _styles/html5.html
