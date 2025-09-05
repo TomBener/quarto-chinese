@@ -65,8 +65,8 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - [auto-correct](_extensions/auto-correct.py): Improve copywriting, correct spaces, words, and punctuations between CJK and English with AutoCorrect.
 - [citation-backlinks](_extensions/citation-backlinks.lua): Generate backlinks for bibliography entries to the corresponding citations.
 - [citation-tools](_extensions/citation-tools.py): Extract citation keys from Markdown files, and copy cited reference files to a specified directory.
-- [confetti](_extensions/confetti/): Send some 🎊 in Reveal.js slides.
 - [cnbib-quotes](_extensions/cnbib-quotes.lua): Process quotes for Chinese bibliographies in HTML and EPUB outputs.
+- [confetti](_extensions/confetti/): Send some 🎊 in Reveal.js slides.
 - [custom-fonts](_extensions/custom-fonts/): Use custom fonts in DOCX, PDF, HTML and EPUB.
 - [docx-quotes](_extensions/docx-quotes/): Convert straight angle quotation marks to curly quotation marks in DOCX.
 - [format-md](_extensions/format-md.py): Preprocess Markdown files for conversion with Quarto.
@@ -75,6 +75,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - [latex-quotes](_extensions/latex-quotes/): Replaces straight quotes with German quotes for intermediate in LaTeX output, and specific processing for headers to avoid issues in PDF bookmarks.
 - [links-to-citations](_extensions/links-to-citations/): Remove local links but keep the link text as normal citations.
 - [localize-cnbib](_extensions/localize-cnbib.lua): Localize Chinese bibliographies, change `et al.` to `等` and other English localization strings to Chinese.
+- [no-first-paragraph](_extensions/no-first-paragraph/): Remove the `First Paragraph` style by applying `Body Text` to all paragraphs in DOCX.
 - [remove-doi-hyperlinks](_extensions/remove-doi-hyperlinks.lua): Remove [DOI hyperlinks](https://github.com/jgm/pandoc/issues/10393) formatted by `citeproc` in the bibliography.[^doi]
 - [remove-spaces](_extensions/remove-spaces/): Remove spaces before or after Chinese characters in DOCX.
 - [right-align](_extensions/right-align/): Right align certain text in DOCX, PDF, HTML and EPUB.
