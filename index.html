@@ -345,6 +345,7 @@ div.csl-indent {
   <li><a href="#html-和-epub-格式" id="toc-html-和-epub-格式" class="nav-link" data-scroll-target="#html-和-epub-格式"><span class="header-section-number">7.1.3</span> HTML 和 EPUB 格式</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#移除首段样式" id="toc-移除首段样式" class="nav-link" data-scroll-target="#移除首段样式"><span class="header-section-number">8</span> 移除首段样式</a></li>
   <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">参考文献</a></li>
   </ul>
 </nav>
@@ -555,6 +556,11 @@ div.csl-indent {
 </ul>
 </section>
 </section>
+</section>
+<section id="移除首段样式" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="移除首段样式"><span class="header-section-number">8</span> 移除首段样式</h2>
+<p>在 Pandoc 生成的 Word 文档中，章节的第一段样式为 <code>First Paragraph</code>，这在英文写作中是需要的，因为英文文章的首段样式和其他段落样式不同，比如首段不缩进，而其他段落则缩进。但是在中文写作中，首段样式和其他段落样式是相同的，因此需要移除首段样式。</p>
+<p>本项目提供了一个 Lua filter <code>no-first-paragraph.lua</code> 来实现这个需求，直接在 <code>_quarto.yml</code> 中添加这个 filter 即可。</p>
 </section>
 <section id="bibliography" class="level2 unnumbered">
 
