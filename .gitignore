@@ -28,3 +28,5 @@ Backup of *.doc*
 
 # symbolic link of Obsidian configuration
 .obsidian
+
+**/*.quarto_ipynb
