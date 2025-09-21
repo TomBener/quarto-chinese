@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.23">
+<meta name="generator" content="quarto-1.9.0">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -87,9 +87,9 @@ div.csl-indent {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-0ed29b1f0e6f007c337b74d6a5232f88.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-f90cbdadd06a7ce36d2760346202a0fd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-0ed29b1f0e6f007c337b74d6a5232f88.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap-581839479427eef156aad8a889ae1370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -303,7 +303,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">更新于</div>
             <div class="quarto-title-meta-contents">
-              <p class="date-modified">2025 年 9 月 5 日</p>
+              <p class="date-modified">2025 年 9 月 21 日</p>
             </div>
           </div>
                 
@@ -458,7 +458,7 @@ div.csl-indent {
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> surname_map.get(surname, <span class="st">""</span>.join([i[<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> pinyin(name, style<span class="op">=</span>Style.TONE3)]))</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>对于参考文献中中文和英文文献哪个在前的问题，各个学校和期刊的要求不一样，有的要求中文在前，有的要求非中文（英文）在前。<code>sort-cnbib.py</code> 默认是英文在前，如果你需要在中文在前，可以将对应代码修改为：</p>
+<p>对于参考文献中中文和英文文献哪个在前的问题，各个学校和期刊的要求不一样，有的要求中文在前，有的要求非中文（英文）在前。<code>sort-cnbib.py</code> 默认是英文在前，如果你需要中文在前，可以将对应代码修改为：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> elem <span class="kw">in</span> doc.content:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(elem, pf.Div) <span class="kw">and</span> <span class="st">"references"</span> <span class="kw">in</span> elem.classes:</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            elem.content <span class="op">=</span> doc.chinese_entries <span class="op">+</span> doc.non_chinese_entries</span>
@@ -508,7 +508,7 @@ div.csl-indent {
 <div style="text-align: right;">
 <p>这段文字会右对齐</p>
 <p>支持 DOCX、PDF、HTML 和 EPUB 格式。</p>
-<p>2025 年 9 月 5 日</p>
+<p>2025 年 9 月 21 日</p>
 </div>
 </section>
 <section id="使用自定义字体" class="level2" data-number="7">
