@@ -71,12 +71,24 @@ def action(elem, doc):
 def finalize(doc):
     doc.chinese_entries.sort(key=lambda x: special_pinyin(pf.stringify(x)))
 
+    # 合并所有条目并添加编号
+    all_entries = doc.non_chinese_entries + doc.chinese_entries
+    numbered_entries = []
+
+    for i, entry in enumerate(all_entries, 1):
+        # 直接修改原有条目，保持所有属性和 ID
+        # 在第一个段落开头插入编号
+        if entry.content and isinstance(entry.content[0], pf.Para):
+            first_para = entry.content[0]
+            # 在段落开头插入编号
+            first_para.content.insert(0, pf.Str(f"[{i}] "))
+
+        numbered_entries.append(entry)
+
     # 用排序后的条目替换 Div 中的内容
     for elem in doc.content:
         if isinstance(elem, pf.Div) and "references" in elem.classes:
-            # 按拼音排序中文参考文献条目，并将其附加到非中文条目的末尾
-            # 交换加号前后的顺序可以改变中文和非中文参考文献条目的顺序
-            elem.content = doc.non_chinese_entries + doc.chinese_entries
+            elem.content = numbered_entries
             break
 
 
