@@ -13,6 +13,20 @@ function extract_digits(text)
     return text:match("%d+")
 end
 
+-- Function to check if Emph contains "et al." or "et al.,"
+function is_et_al_emph(emph)
+    if emph.t ~= "Emph" or #emph.content < 3 then
+        return false
+    end
+
+    local has_et = emph.content[1].t == "Str" and emph.content[1].text == "et"
+    local has_space = emph.content[2].t == "Space"
+    local has_al = emph.content[3].t == "Str" and
+        (emph.content[3].text == "al." or emph.content[3].text == "al.,")
+
+    return has_et and has_space and has_al
+end
+
 -- Function to process `et al.` in citations for author-date style
 function process_citation(el)
     local new_inlines = {}
@@ -20,7 +34,24 @@ function process_citation(el)
 
     while i <= #el.content do
         local current = el.content[i]
-        if current.t == "Str" and contains_chinese(current.text) and current.text:sub(-2) == "et" and
+
+        -- Handle italic et al. (wrapped in Emph)
+        if current.t == "Emph" and is_et_al_emph(current) and i > 1 then
+            local prev = el.content[i - 1]
+            if prev.t == "Str" and contains_chinese(prev.text) then
+                -- Replace the Emph element with plain "等" or "等,"
+                if current.content[3].text == "al.," then
+                    table.insert(new_inlines, pandoc.Str("等,"))
+                else
+                    table.insert(new_inlines, pandoc.Str("等"))
+                end
+                i = i + 1
+            else
+                table.insert(new_inlines, current)
+                i = i + 1
+            end
+            -- Handle non-italic et al.
+        elseif current.t == "Str" and contains_chinese(current.text) and current.text:sub(-2) == "et" and
             i + 2 <= #el.content and el.content[i + 1].t == "Space" and el.content[i + 2].t == "Str" then
             local modified_text
             if el.content[i + 2].text == "al." then
@@ -50,22 +81,46 @@ function process_bibliography(elem)
     local new_inlines = {}
     local i = 1
 
-    -- Process `et al.`
+    -- Process both italic and non-italic `et al.`
     while i <= #elem.content do
-        if i <= #elem.content - 2 and elem.content[i].t == "Str" and elem.content[i].text == "et" and
-            elem.content[i + 1].t == "Space" and contains_chinese(elem.content[i - 2].text) then
-            if elem.content[i + 2].t == "Str" and elem.content[i + 2].text == "al.," then
-                table.insert(new_inlines, pandoc.Str("等,")) -- author-date style
-                i = i + 3
-            elseif elem.content[i + 2].t == "Str" and elem.content[i + 2].text == "al." then
-                table.insert(new_inlines, pandoc.Str("等.")) -- numeric style
-                i = i + 3
+        local current = elem.content[i]
+
+        -- Handle italic et al. (wrapped in Emph)
+        if current.t == "Emph" and is_et_al_emph(current) and i > 2 then
+            local prev = elem.content[i - 2]
+            if prev and prev.t == "Str" and contains_chinese(prev.text) then
+                -- Replace with plain "等." or "等,"
+                if current.content[3].text == "al.," then
+                    table.insert(new_inlines, pandoc.Str("等,"))
+                else
+                    table.insert(new_inlines, pandoc.Str("等."))
+                end
+                i = i + 1
             else
-                table.insert(new_inlines, elem.content[i])
+                table.insert(new_inlines, current)
+                i = i + 1
+            end
+            -- Handle non-italic et al.
+        elseif i <= #elem.content - 2 and current.t == "Str" and current.text == "et" and
+            elem.content[i + 1].t == "Space" and i > 2 then
+            local prev = elem.content[i - 2]
+            if prev and prev.t == "Str" and contains_chinese(prev.text) then
+                if elem.content[i + 2].t == "Str" and elem.content[i + 2].text == "al.," then
+                    table.insert(new_inlines, pandoc.Str("等,"))
+                    i = i + 3
+                elseif elem.content[i + 2].t == "Str" and elem.content[i + 2].text == "al." then
+                    table.insert(new_inlines, pandoc.Str("等."))
+                    i = i + 3
+                else
+                    table.insert(new_inlines, current)
+                    i = i + 1
+                end
+            else
+                table.insert(new_inlines, current)
                 i = i + 1
             end
         else
-            table.insert(new_inlines, elem.content[i])
+            table.insert(new_inlines, current)
             i = i + 1
         end
     end
@@ -98,7 +153,6 @@ function process_bibliography(elem)
                 end
             elseif (text == "ed." or text == "eds.") and i > 2 and prev_str and prev_str.t == "Str" then
                 if contains_chinese(prev_str.text) and prev_str.text:match(",$") then
-                    -- prev_str.text = prev_str.text:gsub(",$", "") -- Remove the last comma
                     elem.content[i] = pandoc.Str("编.")
                 else
                     local ed_text = elem.content[i - 2] and elem.content[i - 2].text
