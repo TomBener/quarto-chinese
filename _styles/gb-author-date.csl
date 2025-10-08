@@ -2,10 +2,10 @@
 <!-- Remove `default-locale="zh-CN"` !!-->
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" names-delimiter=". " name-as-sort-order="all" sort-separator=" " demote-non-dropping-particle="never" initialize-with=" " initialize-with-hyphen="false" page-range-format="expanded">
   <info>
-    <title>China National Standard GB/T 7714-2015 (author-date)</title>
-    <id>https://www.zotero.org/styles/china-national-standard-gb-t-7714-2015-author-date</id>
-    <link href="https://www.zotero.org/styles/china-national-standard-gb-t-7714-2015-author-date" rel="self"/>
-    <link href="https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D8055ED3A7E05397BE0A0AB82A" rel="documentation"/>
+    <title>浙江大学（社会科学类）</title>
+    <id>https://www.zotero-chinese.com/styles/浙江大学（社会科学类）</id>
+    <link href="https://www.zotero-chinese.com/styles/浙江大学（社会科学类）" rel="self"/>
+    <link href="http://www.grs.zju.edu.cn/2008/0825/c62927a2741378/page.htm" rel="documentation"/>
     <author>
       <name>牛耕田</name>
       <email>buffalo_d@163.com</email>
@@ -20,8 +20,8 @@
     </contributor>
     <category citation-format="author-date"/>
     <category field="generic-base"/>
-    <summary>The Chinese GB/T 7714-2015 author-date style</summary>
-    <updated>2024-12-03T15:25:29+00:00</updated>
+    <summary>浙江大学社会科学类研究生学术规范</summary>
+    <updated>2025-10-08T15:18:11+00:00</updated>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -52,6 +52,7 @@
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
+      <et-al font-style="italic"/>
       <substitute>
         <names variable="composer"/>
         <names variable="illustrator"/>
@@ -65,13 +66,6 @@
       </substitute>
     </names>
   </macro>
-  <!-- 参考文献表的著者姓名与出版年 -->
-  <macro name="author-date">
-    <group delimiter=", ">
-      <text macro="author"/>
-      <text macro="issued-year"/>
-    </group>
-  </macro>
   <!-- 正文引用的著者姓名 -->
   <macro name="author-intext">
     <names variable="author">
@@ -79,6 +73,7 @@
       <name form="short" delimiter="&#160;" delimiter-precedes-et-al="always">
         <name-part name="family"/>
       </name>
+      <et-al font-style="italic"/>
       <substitute>
         <names variable="composer"/>
         <names variable="illustrator"/>
@@ -119,6 +114,7 @@
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
+      <et-al font-style="italic"/>
       <substitute>
         <names variable="editorial-director"/>
         <names variable="collection-editor"/>
@@ -187,17 +183,37 @@
     <group delimiter=": ">
       <group delimiter=", ">
         <group delimiter=": ">
-          <text variable="publisher-place"/>
+          <choose>
+            <if type="thesis">
+              <!-- Omit publisher-place for thesis -->
+            </if>
+            <else>
+              <text variable="publisher-place"/>
+            </else>
+          </choose>
           <!-- Add `suffix=". "` for website title !!-->
           <choose>
             <if type="webpage">
               <text variable="publisher" suffix=". "/>
             </if>
+            <!-- Add `prefix=", "` for thesis !!-->
+            <else-if type="thesis">
+              <text variable="publisher" prefix=", "/>
+            </else-if>
             <else>
               <text variable="publisher"/>
             </else>
           </choose>
         </group>
+        <!-- 非电子资源显示“出版年” -->
+        <choose>
+          <if variable="publisher page" type="book chapter paper-conference thesis" match="any">
+            <text macro="issued-year"/>
+          </if>
+          <else-if variable="URL DOI" match="none">
+            <text macro="issued-year"/>
+          </else-if>
+        </choose>
       </group>
       <text variable="page"/>
     </group>
@@ -206,7 +222,7 @@
       <!-- Remove `publisher` as the `organization` field in biblatex's `online` entry equals to `publisher` !!-->
       <if variable="page" type="book chapter paper-conference thesis" match="none">
         <choose>
-          <if variable="URL DOI" match="any">
+          <if variable="URL" match="any">
             <text macro="issued-date" prefix="(" suffix=")"/>
           </if>
         </choose>
@@ -221,6 +237,7 @@
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
+      <et-al font-style="italic"/>
       <label form="short" prefix=", "/>
     </names>
     <!-- Separate `translator` and `editor` !!-->
@@ -236,6 +253,7 @@
             <name-part name="family"/>
             <name-part name="given"/>
           </name>
+          <et-al font-style="italic"/>
           <label form="short" prefix=", "/>
         </names>
       </else>
@@ -252,6 +270,12 @@
               <if type="article-newspaper">
                 <text macro="issued-date"/>
               </if>
+              <else-if type="article-magazine">
+                <!-- Do nothing for article-magazine !!-->
+              </else-if>
+              <else>
+                <text macro="issued-year"/>
+              </else>
             </choose>
             <text variable="volume"/>
           </group>
@@ -371,7 +395,7 @@
         </else>
       </choose>
       <choose>
-        <if variable="URL DOI" match="any">
+        <if variable="URL" match="any">
           <text value="OL"/>
         </if>
       </choose>
@@ -397,7 +421,7 @@
   <!-- 专著 -->
   <macro name="monograph-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author-date"/>
+      <text macro="author"/>
       <text macro="title"/>
       <text macro="secondary-contributor"/>
       <text macro="edition"/>
@@ -408,7 +432,7 @@
   <!-- 专著中的析出文献 -->
   <macro name="chapter-in-book-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author-date"/>
+      <text macro="author"/>
       <group delimiter="//">
         <group delimiter=". ">
           <text macro="title"/>
@@ -427,7 +451,7 @@
   <!-- 连续出版物 -->
   <macro name="serial-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author-date"/>
+      <text macro="author"/>
       <text macro="title"/>
       <text macro="year-volume-issue"/>
       <text macro="publishing"/>
@@ -437,7 +461,7 @@
   <!-- 连续出版物中的析出文献 -->
   <macro name="article-in-periodical-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author-date"/>
+      <text macro="author"/>
       <text macro="title"/>
       <text macro="periodical-publishing"/>
       <text macro="access"/>
@@ -446,7 +470,7 @@
   <!-- 专利文献 -->
   <macro name="patent-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author-date"/>
+      <text macro="author"/>
       <text macro="title"/>
       <group>
         <text macro="issued-date"/>
@@ -459,7 +483,7 @@
   <!-- Add `web-layout` !!-->
   <macro name="web-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author-date"/>
+      <text macro="author"/>
       <text macro="title"/>
       <!-- Add version number for software !!-->
       <text variable="version"/>
@@ -514,11 +538,6 @@
     </layout>
   </citation>
   <bibliography entry-spacing="0" et-al-min="4" et-al-use-first="3" hanging-indent="true">
-    <sort>
-      <key macro="author"/>
-      <key macro="issued-year"/>
-      <key variable="title"/>
-    </sort>
     <layout>
       <text macro="entry-layout"/>
     </layout>
