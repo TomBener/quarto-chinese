@@ -50,11 +50,12 @@ FILTERS := -L _extensions/localize-cnbib.lua \
 
 # Render DOCX
 docx: dependencies
-	$(QUARTO) $@ $(FILTERS)
+	$(QUARTO) $@ $(FILTERS) -L _extensions/remove-doi-hyperlinks.lua
 
 # Render HTML
 html: dependencies
-	$(QUARTO) $@ $(FILTERS) --filter _extensions/auto-correct.py
+	$(QUARTO) $@ $(FILTERS) --filter _extensions/auto-correct.py \
+	-L _extensions/remove-doi-hyperlinks.lua
 
 # Render PDF
 pdf: dependencies
@@ -79,7 +80,8 @@ watermark: pdf
 # Render EPUB
 epub: dependencies
 	$(QUARTO) $@ -L _extensions/localize-cnbib.lua -L _extensions/cnbib-quotes.lua \
-	--filter _extensions/sort-cnbib.py --filter _extensions/auto-correct.py
+	--filter _extensions/sort-cnbib.py --filter _extensions/auto-correct.py \
+	-L _extensions/remove-doi-hyperlinks.lua
 
 # Render Reveal.js slides
 slides: dependencies
