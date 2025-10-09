@@ -2,9 +2,9 @@
 <!-- Remove `default-locale="zh-CN"` !!-->
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" names-delimiter=". " name-as-sort-order="all" sort-separator=" " demote-non-dropping-particle="never" initialize-with=" " initialize-with-hyphen="false" page-range-format="expanded">
   <info>
-    <title>浙江大学（社会科学类）</title>
-    <id>https://www.zotero-chinese.com/styles/浙江大学（社会科学类）</id>
-    <link href="https://www.zotero-chinese.com/styles/浙江大学（社会科学类）" rel="self"/>
+    <title>浙江大学社会科学类研究生参考文献规范</title>
+    <id>https://www.zotero.org/styles/zju-social-science</id>
+    <link href="https://www.zotero.org/styles/zju-social-science" rel="self"/>
     <link href="http://www.grs.zju.edu.cn/2008/0825/c62927a2741378/page.htm" rel="documentation"/>
     <author>
       <name>牛耕田</name>
@@ -21,7 +21,7 @@
     <category citation-format="author-date"/>
     <category field="generic-base"/>
     <summary>浙江大学社会科学类研究生学术规范</summary>
-    <updated>2025-10-08T15:18:11+00:00</updated>
+    <updated>2025-10-08T20:49:27+00:00</updated>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -47,8 +47,6 @@
     <names variable="author">
       <!-- Separate multiple authors with the comma !!-->
       <name delimiter=", ">
-        <!-- Remove `text-case="uppercase"` in `<name-part name="family" text-case="uppercase"/>` !!-->
-        <!-- `text-case="capitalize-first"` can be used, but not set for preserving particle names like `van`, `von` !!-->
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
@@ -128,8 +126,7 @@
       <group delimiter=": ">
         <choose>
           <if variable="container-title">
-            <!-- Use title case for `container-title` !!-->
-            <text variable="container-title" text-case="title"/>
+            <text variable="container-title"/>
           </if>
           <else>
             <text variable="event"/>
@@ -265,7 +262,7 @@
       <group delimiter=": ">
         <group>
           <group delimiter=", ">
-            <text macro="container-title" text-case="title"/>
+            <text macro="container-title"/>
             <choose>
               <if type="article-newspaper">
                 <text macro="issued-date"/>
@@ -296,8 +293,7 @@
   <macro name="title">
     <group delimiter=", ">
       <group delimiter=": ">
-        <!-- Use title case for `title` !!-->
-        <text variable="title" text-case="title"/>
+        <text variable="title"/>
         <group delimiter="&#8195;">
           <choose>
             <if variable="container-title" type="paper-conference" match="none">
@@ -403,10 +399,7 @@
   </macro>
   <!-- 获取和访问路径、数字对象唯一标识符 -->
   <macro name="access">
-    <group delimiter=". ">
-      <text variable="URL"/>
-      <text variable="DOI" prefix="DOI: "/>
-    </group>
+    <text variable="URL"/>
   </macro>
   <!-- 连续出版物的年卷期 -->
   <macro name="year-volume-issue">
@@ -425,6 +418,15 @@
       <text macro="title"/>
       <text macro="secondary-contributor"/>
       <text macro="edition"/>
+      <text macro="publishing"/>
+      <text macro="access"/>
+    </group>
+  </macro>
+  <!-- 学位论文布局 !!-->
+  <macro name="thesis-layout">
+    <group delimiter=". " suffix=".">
+      <text macro="author"/>
+      <text macro="title"/>
       <text macro="publishing"/>
       <text macro="access"/>
     </group>
