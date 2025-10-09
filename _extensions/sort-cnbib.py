@@ -69,6 +69,10 @@ def action(elem, doc):
 
 
 def finalize(doc):
+    # Sort English entries alphabetically
+    doc.non_chinese_entries.sort(key=lambda x: pf.stringify(x).lower())
+
+    # Sort Chinese entries by pinyin
     doc.chinese_entries.sort(key=lambda x: special_pinyin(pf.stringify(x)))
 
     # 合并所有条目并添加编号
