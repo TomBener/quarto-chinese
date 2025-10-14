@@ -1,0 +1,2165 @@
+[
+  {
+    "DOI": "10.12987/9780300128789",
+    "author": [
+      {
+        "family": "Scott",
+        "given": "James C."
+      }
+    ],
+    "id": "scott1998",
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "publisher": "Yale University Press",
+    "publisher-place": "New Haven",
+    "title": "Seeing like a state: How certain schemes to improve the human condition have failed",
+    "title-short": "Seeing like a state",
+    "type": "book"
+  },
+  {
+    "editor": [
+      {
+        "family": "费孝通"
+      }
+    ],
+    "id": "feixiaotong1989",
+    "issued": {
+      "date-parts": [
+        [
+          1989,
+          7
+        ]
+      ]
+    },
+    "publisher": "中央民族学院出版社",
+    "publisher-place": "北京",
+    "title": "中华民族多元一体格局",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "费孝通"
+      }
+    ],
+    "edition": "修订本",
+    "editor": [
+      {
+        "family": "刘豪兴"
+      }
+    ],
+    "id": "feixiaotong2013",
+    "issued": {
+      "date-parts": [
+        [
+          2013,
+          10
+        ]
+      ]
+    },
+    "publisher": "上海人民出版社",
+    "publisher-place": "上海",
+    "title": "乡土中国",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "陶希圣"
+      }
+    ],
+    "edition": "2",
+    "id": "taoxisheng2016",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          1
+        ]
+      ]
+    },
+    "publisher": "中国大百科全书出版社",
+    "publisher-place": "北京",
+    "title": "潮流与点滴：陶希圣回忆录",
+    "title-short": "潮流与点滴",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "葛兆光"
+      }
+    ],
+    "id": "gezhaoguang2000a",
+    "issued": {
+      "date-parts": [
+        [
+          2000,
+          12
+        ]
+      ]
+    },
+    "number-of-volumes": "3",
+    "publisher": "复旦大学出版社",
+    "publisher-place": "上海",
+    "title": "中国思想史——导论：思想史的写法",
+    "type": "book",
+    "volume": "1"
+  },
+  {
+    "author": [
+      {
+        "family": "左宗棠"
+      }
+    ],
+    "editor": [
+      {
+        "family": "邓云生"
+      }
+    ],
+    "id": "zuozongtang1986",
+    "issued": {
+      "date-parts": [
+        [
+          1986,
+          2
+        ]
+      ]
+    },
+    "publisher": "岳麓书社",
+    "publisher-place": "长沙",
+    "title": "左宗棠全集（札件）",
+    "type": "book"
+  },
+  {
+    "DOI": "10.2307/4127885",
+    "author": [
+      {
+        "family": "Pang",
+        "given": "Lihua"
+      },
+      {
+        "dropping-particle": "de",
+        "family": "Brauw",
+        "given": "Alan"
+      },
+      {
+        "family": "Rozelle",
+        "given": "Scott"
+      }
+    ],
+    "container-title": "The China Journal",
+    "id": "pang2004",
+    "issued": {
+      "date-parts": [
+        [
+          2004,
+          7
+        ]
+      ]
+    },
+    "page": "73-94",
+    "title": "Working until you drop: The elderly of rural China",
+    "title-short": "Working until you drop",
+    "type": "article-journal",
+    "volume": "52"
+  },
+  {
+    "DOI": "10.1086/700936",
+    "author": [
+      {
+        "family": "Acemoglu",
+        "given": "Daron"
+      },
+      {
+        "family": "Naidu",
+        "given": "Suresh"
+      },
+      {
+        "family": "Restrepo",
+        "given": "Pascual"
+      },
+      {
+        "family": "Robinson",
+        "given": "James A."
+      }
+    ],
+    "container-title": "Journal of Political Economy",
+    "id": "acemoglu2019",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          2
+        ]
+      ]
+    },
+    "page": "47-100",
+    "title": "Democracy does cause growth",
+    "type": "article-journal",
+    "volume": "127"
+  },
+  {
+    "DOI": "10.1080/13504851.2021.1965528",
+    "author": [
+      {
+        "family": "Amarante",
+        "given": "Verónica"
+      },
+      {
+        "family": "Burger",
+        "given": "Ronelle"
+      },
+      {
+        "family": "Chelwa",
+        "given": "Grieve"
+      },
+      {
+        "family": "Cockburn",
+        "given": "John"
+      },
+      {
+        "family": "Kassouf",
+        "given": "Ana"
+      },
+      {
+        "family": "McKay",
+        "given": "Andrew"
+      },
+      {
+        "family": "Zurbrigg",
+        "given": "Julieta"
+      }
+    ],
+    "container-title": "Applied Economics Letters",
+    "id": "amarante2022",
+    "issue": "17",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          10,
+          7
+        ]
+      ]
+    },
+    "page": "1659-1664",
+    "title": "Underrepresentation of developing country researchers in development research",
+    "type": "article-journal",
+    "volume": "29"
+  },
+  {
+    "DOI": "10.1038/s41467-022-28735-5",
+    "author": [
+      {
+        "family": "Daviet",
+        "given": "Remi"
+      },
+      {
+        "family": "Aydogan",
+        "given": "Gökhan"
+      },
+      {
+        "family": "Jagannathan",
+        "given": "Kanchana"
+      },
+      {
+        "family": "Spilka",
+        "given": "Nathaniel"
+      },
+      {
+        "family": "Koellinger",
+        "given": "Philipp D."
+      },
+      {
+        "family": "Kranzler",
+        "given": "Henry R."
+      },
+      {
+        "family": "Nave",
+        "given": "Gideon"
+      },
+      {
+        "family": "Wetherill",
+        "given": "Reagan R."
+      }
+    ],
+    "container-title": "Nature Communications",
+    "id": "daviet2022",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          12
+        ]
+      ]
+    },
+    "page": "1175",
+    "title": "Associations between alcohol consumption and gray and white matter volumes in the UK Biobank",
+    "type": "article-journal",
+    "volume": "13"
+  },
+  {
+    "DOI": "10.19744/j.cnki.11-1235/f.2020.0055",
+    "author": [
+      {
+        "family": "葛延风"
+      },
+      {
+        "family": "王列军"
+      },
+      {
+        "family": "冯文猛"
+      },
+      {
+        "family": "张冰子"
+      },
+      {
+        "family": "刘胜兰"
+      },
+      {
+        "family": "柯洋华"
+      }
+    ],
+    "container-title": "管理世界",
+    "id": "geyanfeng2020",
+    "issue": "4",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "page": "86-96",
+    "title": "我国健康老龄化的挑战与策略选择",
+    "type": "article-journal",
+    "volume": "36"
+  },
+  {
+    "author": [
+      {
+        "family": "Mullaney",
+        "given": "Thomas S."
+      }
+    ],
+    "id": "mullaney2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          8,
+          8
+        ]
+      ]
+    },
+    "publisher": "The MIT Press",
+    "publisher-place": "Cambridge, MA",
+    "title": "The Chinese typewriter: A history",
+    "title-short": "The Chinese typewriter",
+    "type": "book"
+  },
+  {
+    "DOI": "10.48550/arXiv.2312.10997",
+    "author": [
+      {
+        "family": "Gao",
+        "given": "Yunfan"
+      },
+      {
+        "family": "Xiong",
+        "given": "Yun"
+      },
+      {
+        "family": "Gao",
+        "given": "Xinyu"
+      },
+      {
+        "family": "Jia",
+        "given": "Kangxiang"
+      },
+      {
+        "family": "Pan",
+        "given": "Jinliu"
+      },
+      {
+        "family": "Bi",
+        "given": "Yuxi"
+      },
+      {
+        "family": "Dai",
+        "given": "Yi"
+      },
+      {
+        "family": "Sun",
+        "given": "Jiawei"
+      },
+      {
+        "family": "Wang",
+        "given": "Haofen"
+      }
+    ],
+    "id": "gao2023a",
+    "issued": {
+      "date-parts": [
+        [
+          2023,
+          12,
+          18
+        ]
+      ]
+    },
+    "title": "Retrieval-augmented generation for large language models: A survey",
+    "title-short": "Retrieval-augmented generation for large language models",
+    "type": "webpage"
+  },
+  {
+    "author": [
+      {
+        "family": "秦晖"
+      },
+      {
+        "family": "金雁"
+      }
+    ],
+    "edition": "3",
+    "id": "qinhui2019",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          1
+        ]
+      ]
+    },
+    "publisher": "江苏凤凰文艺出版社",
+    "publisher-place": "南京",
+    "title": "田园诗与狂想曲：关中模式与前近代社会的再认识",
+    "title-short": "田园诗与狂想曲",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "Spence",
+        "given": "Jonathan D."
+      }
+    ],
+    "edition": "3",
+    "id": "spence2013",
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "publisher": "W. W. Norton & Company",
+    "publisher-place": "New York",
+    "title": "The search for modern China",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "Hsü",
+        "given": "Immanuel C. Y."
+      }
+    ],
+    "edition": "6",
+    "id": "hsu2000",
+    "issued": {
+      "date-parts": [
+        [
+          2000
+        ]
+      ]
+    },
+    "publisher": "Oxford University Press",
+    "publisher-place": "New York",
+    "title": "The rise of Modern China",
+    "type": "book"
+  },
+  {
+    "DOI": "10.4324/9781315164380",
+    "author": [
+      {
+        "family": "Flint",
+        "given": "Colin"
+      },
+      {
+        "family": "Taylor",
+        "given": "Peter J."
+      }
+    ],
+    "edition": "7",
+    "id": "flint2018",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          5,
+          11
+        ]
+      ]
+    },
+    "publisher": "Routledge",
+    "publisher-place": "London",
+    "title": "Political geography: World-economy, nation-state and locality",
+    "title-short": "Political geography",
+    "type": "book"
+  },
+  {
+    "editor": [
+      {
+        "family": "賈禎"
+      },
+      {
+        "family": "寶鋆"
+      },
+      {
+        "family": "文祥"
+      },
+      {
+        "family": "董恂"
+      },
+      {
+        "family": "單懋謙"
+      }
+    ],
+    "id": "jiazhen1979",
+    "issued": {
+      "date-parts": [
+        [
+          1979
+        ]
+      ]
+    },
+    "publisher": "中華書局",
+    "publisher-place": "北京",
+    "title": "籌辦夷務始末（咸豐朝）",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "梁启超"
+      }
+    ],
+    "editor": [
+      {
+        "family": "汤志钧"
+      },
+      {
+        "family": "汤仁泽"
+      }
+    ],
+    "id": "liangqichao2018",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          3,
+          15
+        ]
+      ]
+    },
+    "publisher": "中国人民大学出版社",
+    "publisher-place": "北京",
+    "title": "梁启超全集（第二集，论著二）",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "李鸿章"
+      }
+    ],
+    "editor": [
+      {
+        "family": "顾廷龙"
+      },
+      {
+        "family": "戴逸"
+      }
+    ],
+    "id": "lihongzhang2007",
+    "issued": {
+      "date-parts": [
+        [
+          2007,
+          6
+        ]
+      ]
+    },
+    "publisher": "安徽教育出版社",
+    "publisher-place": "合肥",
+    "title": "李鸿章全集（奏议六）",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "劉翠溶"
+      }
+    ],
+    "container-title": "經濟成長、所得分配與制度演化",
+    "editor": [
+      {
+        "family": "曹添旺"
+      },
+      {
+        "family": "賴景昌"
+      },
+      {
+        "family": "楊建成"
+      }
+    ],
+    "id": "liucuirong1999",
+    "issued": {
+      "date-parts": [
+        [
+          1999,
+          8
+        ]
+      ]
+    },
+    "page": "1-42",
+    "publisher": "中央研究院中山人文社會科學研究所",
+    "publisher-place": "臺北",
+    "title": "中國歷史上關於山林川澤的觀念和制度",
+    "type": "chapter"
+  },
+  {
+    "editor": [
+      {
+        "family": "陆德芙"
+      },
+      {
+        "family": "宋怡明"
+      }
+    ],
+    "id": "ludefu2019",
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "publisher": "香港城市大学出版社",
+    "publisher-place": "香港",
+    "title": "中国36问：对一个崛起大国的洞察",
+    "title-short": "中国36问",
+    "translator": [
+      {
+        "family": "余江"
+      },
+      {
+        "family": "郑言"
+      }
+    ],
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "韩起澜"
+      }
+    ],
+    "id": "hanqilan2004",
+    "issued": {
+      "date-parts": [
+        [
+          2004,
+          8
+        ]
+      ]
+    },
+    "publisher": "上海古籍出版社",
+    "publisher-place": "上海",
+    "title": "苏北人在上海（1850–1980）",
+    "title-short": "苏北人在上海",
+    "translator": [
+      {
+        "family": "卢明华"
+      }
+    ],
+    "type": "book"
+  },
+  {
+    "DOI": "10.1515/9780691213873-013",
+    "author": [
+      {
+        "family": "Ho",
+        "given": "Samuel Pao-San"
+      }
+    ],
+    "container-title": "The Japanese Colonial Empire, 1895–1945",
+    "editor": [
+      {
+        "family": "Myers",
+        "given": "Ramon H."
+      },
+      {
+        "family": "Peattie",
+        "given": "Mark R."
+      }
+    ],
+    "id": "ho1984",
+    "issued": {
+      "date-parts": [
+        [
+          1984
+        ]
+      ]
+    },
+    "page": "347-398",
+    "publisher": "Princeton University Press",
+    "publisher-place": "Princeton",
+    "title": "Colonialism and development: Korea, Taiwan, and Kwantung",
+    "title-short": "Colonialism and development",
+    "type": "chapter"
+  },
+  {
+    "DOI": "10.1086/605966",
+    "author": [
+      {
+        "family": "Harrison",
+        "given": "Carol E."
+      },
+      {
+        "family": "Johnson",
+        "given": "Ann"
+      }
+    ],
+    "container-title": "Osiris",
+    "id": "harrison2009",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "page": "1-14",
+    "title": "Introduction: Science and national identity",
+    "title-short": "Science and national identity",
+    "type": "article-journal",
+    "volume": "24"
+  },
+  {
+    "DOI": "10.1371/journal.pone.0201347",
+    "author": [
+      {
+        "family": "Kim",
+        "given": "Sunwoo"
+      },
+      {
+        "family": "Lee",
+        "given": "Yuri"
+      }
+    ],
+    "container-title": "PLOS ONE",
+    "editor": [
+      {
+        "family": "Manalo",
+        "given": "Emmanuel"
+      }
+    ],
+    "id": "kim2018",
+    "issue": "8",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          8,
+          3
+        ]
+      ]
+    },
+    "page": "e0201347",
+    "title": "Why do women want to be beautiful? A qualitative study proposing a new “human beauty values” concept",
+    "title-short": "Why do women want to be beautiful?",
+    "type": "article-journal",
+    "volume": "13"
+  },
+  {
+    "DOI": "10.21313/hawaii/9780824836085.001.0001",
+    "author": [
+      {
+        "family": "Li",
+        "given": "Huaiyin"
+      }
+    ],
+    "id": "li2013a",
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "publisher": "University of Hawai‘i Press",
+    "publisher-place": "Honolulu",
+    "title": "Reinventing modern China: Imagination and authenticity in Chinese historical writing",
+    "title-short": "Reinventing modern China",
+    "type": "book"
+  },
+  {
+    "DOI": "10.1080/14650040412331307882",
+    "author": [
+      {
+        "family": "Peters",
+        "given": "Susanne"
+      }
+    ],
+    "container-title": "Geopolitics",
+    "id": "peters2004",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2004,
+          3,
+          1
+        ]
+      ]
+    },
+    "page": "187-212",
+    "title": "Coercive western energy security strategies: “Resource wars” as a new threat to global security",
+    "title-short": "Coercive western energy security strategies",
+    "type": "article-journal",
+    "volume": "9"
+  },
+  {
+    "author": [
+      {
+        "family": "伊莎白"
+      },
+      {
+        "family": "柯临清"
+      }
+    ],
+    "editor": [
+      {
+        "family": "贺萧"
+      },
+      {
+        "family": "韩起澜"
+      }
+    ],
+    "id": "yishabai2018",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          11
+        ]
+      ]
+    },
+    "publisher": "外语教学与研究出版社",
+    "publisher-place": "北京",
+    "title": "战时中国农村的风习、改造与抵拒：兴隆场 (1940–1941)",
+    "title-short": "战时中国农村的风习、改造与抵拒",
+    "translator": [
+      {
+        "family": "邵达"
+      }
+    ],
+    "type": "book"
+  },
+  {
+    "editor": [
+      {
+        "family": "中国人民大学清史研究所"
+      },
+      {
+        "family": "中国人民大学档案系中国政治制度史教研室"
+      }
+    ],
+    "id": "zgrmdxqsyjs1983",
+    "issued": {
+      "date-parts": [
+        [
+          1983
+        ]
+      ]
+    },
+    "number-of-volumes": "2",
+    "publisher": "中华书局",
+    "publisher-place": "北京",
+    "title": "清代的矿业",
+    "type": "book",
+    "volume": "1"
+  },
+  {
+    "author": [
+      {
+        "family": "张启雄"
+      }
+    ],
+    "container-title": "东亚的价值",
+    "editor": [
+      {
+        "family": "吴志攀"
+      },
+      {
+        "family": "李玉"
+      }
+    ],
+    "id": "zhangqixiong2010",
+    "issued": {
+      "date-parts": [
+        [
+          2010
+        ]
+      ]
+    },
+    "page": "105-146",
+    "publisher": "北京大学出版社",
+    "publisher-place": "北京",
+    "title": "中华世界秩序原理的源起：近代中国外交纷争中的古典文化价值",
+    "type": "chapter"
+  },
+  {
+    "editor": [
+      {
+        "family": "蔡定剑"
+      },
+      {
+        "family": "王占阳"
+      }
+    ],
+    "id": "caidingjian2011",
+    "issued": {
+      "date-parts": [
+        [
+          2011,
+          1
+        ]
+      ]
+    },
+    "publisher": "法律出版社",
+    "publisher-place": "北京",
+    "title": "走向宪政",
+    "type": "book"
+  },
+  {
+    "URL": "https://www.newyorker.com/magazine/2022/01/03/chinas-reform-generation-adapts-to-life-in-the-middle-class",
+    "accessed": {
+      "date-parts": [
+        [
+          2021,
+          10,
+          2
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Hessler",
+        "given": "Peter"
+      }
+    ],
+    "container-title": "The New Yorker",
+    "id": "hessler2021",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          12,
+          27
+        ]
+      ]
+    },
+    "page": "45-55",
+    "title": "China’s reform generation adapts to life in the middle class",
+    "type": "article-magazine"
+  },
+  {
+    "author": [
+      {
+        "family": "曾問吾"
+      }
+    ],
+    "id": "zengwenwu1936",
+    "issued": {
+      "date-parts": [
+        [
+          1936,
+          5
+        ]
+      ]
+    },
+    "publisher": "商務印書館",
+    "publisher-place": "上海",
+    "title": "中國經營西域史",
+    "type": "book"
+  },
+  {
+    "URL": "https://history.state.gov/historicaldocuments/frus1942China/d192",
+    "accessed": {
+      "date-parts": [
+        [
+          2023,
+          9,
+          21
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Vincent",
+        "given": "John Carter"
+      }
+    ],
+    "id": "vincent1942",
+    "issued": {
+      "date-parts": [
+        [
+          1942,
+          10,
+          7
+        ]
+      ]
+    },
+    "publisher": "Foreign Relations of the United States: Diplomatic Papers, China",
+    "title": "Memorandum by the counselor of embassy in China (Vincent) to the ambassador in China (Gauss), document 192",
+    "title-short": "Memorandum by the counselor of embassy in China (Vincent) to the ambassador in China (Gauss)",
+    "type": "webpage"
+  },
+  {
+    "DOI": "10.2307/20034139",
+    "author": [
+      {
+        "family": "Garrett",
+        "given": "Geoffrey"
+      }
+    ],
+    "container-title": "Foreign Affairs",
+    "id": "garrett2004",
+    "issue": "6",
+    "issued": {
+      "date-parts": [
+        [
+          2004
+        ]
+      ]
+    },
+    "page": "84-96",
+    "title": "Globalization’s missing middle",
+    "type": "article-magazine",
+    "volume": "83"
+  },
+  {
+    "DOI": "10.48550/arXiv.2309.17421",
+    "author": [
+      {
+        "family": "Yang",
+        "given": "Zhengyuan"
+      },
+      {
+        "family": "Li",
+        "given": "Linjie"
+      },
+      {
+        "family": "Lin",
+        "given": "Kevin"
+      },
+      {
+        "family": "Wang",
+        "given": "Jianfeng"
+      },
+      {
+        "family": "Lin",
+        "given": "Chung-Ching"
+      },
+      {
+        "family": "Liu",
+        "given": "Zicheng"
+      },
+      {
+        "family": "Wang",
+        "given": "Lijuan"
+      }
+    ],
+    "id": "yang2023e",
+    "issued": {
+      "date-parts": [
+        [
+          2023,
+          9,
+          29
+        ]
+      ]
+    },
+    "title": "The dawn of LMMs: Preliminary explorations with GPT-4V(ision)",
+    "title-short": "The dawn of LMMs",
+    "type": "webpage"
+  },
+  {
+    "DOI": "10.11821/dlxb202004014",
+    "author": [
+      {
+        "family": "曹晶晶"
+      },
+      {
+        "family": "章锦河"
+      },
+      {
+        "family": "王昶"
+      },
+      {
+        "family": "孙晋坤"
+      },
+      {
+        "family": "陈敏"
+      }
+    ],
+    "container-title": "地理学报",
+    "id": "caojingjing2020",
+    "issue": "4",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "page": "860-877",
+    "title": "距离欲对旅游者目的地选择影响的解释框架",
+    "type": "article-journal",
+    "volume": "75"
+  },
+  {
+    "DOI": "10.6052/j.issn.1000-4750.2022.04.0339",
+    "author": [
+      {
+        "family": "赵继之"
+      },
+      {
+        "family": "辛公锋"
+      },
+      {
+        "family": "陶慕轩"
+      },
+      {
+        "family": "崔文涛"
+      }
+    ],
+    "container-title": "工程力学",
+    "id": "zhaojizhi2024",
+    "issue": "4",
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "page": "81-93",
+    "title": "超高性能混凝土单轴拉、压循环作用下力学性能及其本构模型研究",
+    "type": "article-journal",
+    "volume": "41"
+  },
+  {
+    "URL": "https://www.thewirechina.com/2022/11/06/frank-dikotter-on-paying-attention-to-chinas-primary-sources",
+    "accessed": {
+      "date-parts": [
+        [
+          2022,
+          11,
+          7
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Chatwin",
+        "given": "Jonathan"
+      }
+    ],
+    "id": "chatwin2022",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          11,
+          6
+        ]
+      ]
+    },
+    "publisher": "The Wire China",
+    "title": "Frank Dikötter on paying attention to China’s primary sources",
+    "type": "webpage"
+  },
+  {
+    "author": [
+      {
+        "family": "储安平"
+      }
+    ],
+    "container-title": "人民日报",
+    "id": "chuanping1955",
+    "issued": {
+      "date-parts": [
+        [
+          1955,
+          12,
+          16
+        ]
+      ]
+    },
+    "page": "3",
+    "title": "在阿尔泰山之巅",
+    "type": "article-newspaper"
+  },
+  {
+    "DOI": "10.11868/j.issn.1005-5053.2015.2.002",
+    "author": [
+      {
+        "family": "卢少微"
+      },
+      {
+        "family": "冯春林"
+      },
+      {
+        "family": "聂鹏"
+      },
+      {
+        "family": "王晓强"
+      },
+      {
+        "family": "熊需海"
+      },
+      {
+        "family": "马克明"
+      }
+    ],
+    "container-title": "航空材料学报",
+    "id": "lushaowei2015",
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "page": "12-20",
+    "title": "碳纳米管用于聚合物基复合材料健康监测的研究进展",
+    "type": "article-journal",
+    "volume": "35"
+  },
+  {
+    "DOI": "10.4159/harvard.9780674333482.c3",
+    "author": [
+      {
+        "family": "Fairbank",
+        "given": "John King"
+      }
+    ],
+    "container-title": "The Chinese world order: Traditional China’s foreign relations",
+    "editor": [
+      {
+        "family": "Fairbank",
+        "given": "John King"
+      }
+    ],
+    "id": "fairbank1968a",
+    "issued": {
+      "date-parts": [
+        [
+          1968
+        ]
+      ]
+    },
+    "page": "1-19",
+    "publisher": "Harvard University Press",
+    "publisher-place": "Cambridge, MA",
+    "title": "A preliminary framework",
+    "type": "chapter"
+  },
+  {
+    "DOI": "10.1017/CHOL9780521214476",
+    "editor": [
+      {
+        "family": "Fairbank",
+        "given": "John K."
+      }
+    ],
+    "id": "fairbank1978",
+    "issued": {
+      "date-parts": [
+        [
+          1978
+        ]
+      ]
+    },
+    "publisher": "Cambridge University Press",
+    "publisher-place": "Cambridge",
+    "title": "The Cambridge history of China: Late Ch’ing 1800–1911, part 1",
+    "title-short": "The Cambridge history of China",
+    "type": "book",
+    "volume": "10"
+  },
+  {
+    "DOI": "10.1017/CHOL9780521214476.008",
+    "author": [
+      {
+        "family": "Fletcher",
+        "given": "Joseph"
+      }
+    ],
+    "container-title": "The Cambridge history of China: Late Ch’ing 1800–1911, part 1",
+    "editor": [
+      {
+        "family": "Fairbank",
+        "given": "John K."
+      }
+    ],
+    "id": "fletcher1978",
+    "issued": {
+      "date-parts": [
+        [
+          1978
+        ]
+      ]
+    },
+    "page": "318-350",
+    "publisher": "Cambridge University Press",
+    "publisher-place": "Cambridge",
+    "title": "Sino-Russian relations, 1800–62",
+    "type": "chapter",
+    "volume": "10"
+  },
+  {
+    "DOI": "10.1017/CHOL9780521214476.003",
+    "author": [
+      {
+        "family": "Fletcher",
+        "given": "Joseph"
+      }
+    ],
+    "container-title": "The Cambridge history of China: Late Ch’ing 1800–1911, part 1",
+    "editor": [
+      {
+        "family": "Fairbank",
+        "given": "John K."
+      }
+    ],
+    "id": "fletcher1978a",
+    "issued": {
+      "date-parts": [
+        [
+          1978
+        ]
+      ]
+    },
+    "page": "35-106",
+    "publisher": "Cambridge University Press",
+    "publisher-place": "Cambridge",
+    "title": "Ch’ing Inner Asia <i>c</i>. 1800",
+    "type": "chapter",
+    "volume": "10"
+  },
+  {
+    "DOI": "10.1017/CHOL9780521214476.009",
+    "author": [
+      {
+        "family": "Fletcher",
+        "given": "Joseph"
+      }
+    ],
+    "container-title": "The Cambridge history of China: Late Ch’ing 1800–1911, part 1",
+    "editor": [
+      {
+        "family": "Fairbank",
+        "given": "John K."
+      }
+    ],
+    "id": "fletcher1978b",
+    "issued": {
+      "date-parts": [
+        [
+          1978
+        ]
+      ]
+    },
+    "page": "351-408",
+    "publisher": "Cambridge University Press",
+    "publisher-place": "Cambridge",
+    "title": "The heyday of the Ch’ing order in Mongolia, Sinkiang and Tibet",
+    "type": "chapter",
+    "volume": "10"
+  },
+  {
+    "author": [
+      {
+        "family": "迈克尔·赫克特"
+      }
+    ],
+    "id": "maikeerhekete2012",
+    "issued": {
+      "date-parts": [
+        [
+          2012,
+          7,
+          30
+        ]
+      ]
+    },
+    "publisher": "中国人民大学出版社",
+    "publisher-place": "北京",
+    "title": "遏制民族主义",
+    "translator": [
+      {
+        "family": "韩召颖"
+      }
+    ],
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "葛兆光"
+      }
+    ],
+    "id": "gezhaoguang2011",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "publisher": "中华书局",
+    "publisher-place": "北京",
+    "title": "宅兹中国：重建有关「中国」的历史论述",
+    "title-short": "宅兹中国",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "葛兆光"
+      }
+    ],
+    "id": "gezhaoguang2014",
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "publisher": "牛津大學出版社",
+    "publisher-place": "香港",
+    "title": "何為「中國」？——疆域、民族、文化與歷史",
+    "title-short": "何為「中國」",
+    "type": "book"
+  },
+  {
+    "DOI": "10.1515/9780804781879",
+    "author": [
+      {
+        "family": "Zarrow",
+        "given": "Peter"
+      }
+    ],
+    "id": "zarrow2012",
+    "issued": {
+      "date-parts": [
+        [
+          2012,
+          3,
+          28
+        ]
+      ]
+    },
+    "publisher": "Stanford University Press",
+    "publisher-place": "Stanford",
+    "title": "After empire: The conceptual transformation of the Chinese state, 1885–1924",
+    "title-short": "After empire",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "阚耀平"
+      }
+    ],
+    "genre": "博士学位论文",
+    "id": "kanyaoping2003",
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "清代天山北路人口迁移与区域开发研究",
+    "type": "thesis"
+  },
+  {
+    "author": [
+      {
+        "family": "Hua",
+        "given": "Rui"
+      }
+    ],
+    "genre": "PhD thesis",
+    "id": "hua2021a",
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "publisher": "Harvard University",
+    "publisher-place": "Cambridge, MA",
+    "title": "Peasants versus empires: Transnational civil justice and national legal decolonization in Manchuria, 1881–1951",
+    "title-short": "Peasants versus empires",
+    "type": "thesis"
+  },
+  {
+    "DOI": "10.46430/phen0041",
+    "author": [
+      {
+        "family": "Tenen",
+        "given": "Dennis"
+      },
+      {
+        "family": "Wythoff",
+        "given": "Grant"
+      }
+    ],
+    "container-title": "Programming Historian",
+    "editor": [
+      {
+        "family": "Gibbs",
+        "given": "Fred"
+      }
+    ],
+    "id": "tenen2014",
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          2014,
+          3,
+          19
+        ]
+      ]
+    },
+    "title": "Sustainable authorship in plain text using Pandoc and Markdown",
+    "type": "article-journal"
+  },
+  {
+    "DOI": "10.7717/peerj-cs.112",
+    "author": [
+      {
+        "family": "Krewinkel",
+        "given": "Albert"
+      },
+      {
+        "family": "Winkler",
+        "given": "Robert"
+      }
+    ],
+    "container-title": "PeerJ Computer Science",
+    "id": "krewinkel2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          5,
+          8
+        ]
+      ]
+    },
+    "page": "23",
+    "title": "Formatting open science: Agilely creating multiple document formats for academic manuscripts with Pandoc Scholar",
+    "title-short": "Formatting open science",
+    "type": "article-journal",
+    "volume": "3"
+  },
+  {
+    "DOI": "10.5281/zenodo.13894261",
+    "URL": "https://github.com/jgm/pandoc",
+    "accessed": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          19
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "MacFarlane",
+        "given": "John"
+      },
+      {
+        "family": "Krewinkel",
+        "given": "Albert"
+      },
+      {
+        "family": "Rosenthal",
+        "given": "Jesse"
+      }
+    ],
+    "id": "macfarlane2024",
+    "issued": {
+      "date-parts": [
+        [
+          2024,
+          10,
+          6
+        ]
+      ]
+    },
+    "title": "Pandoc",
+    "type": "software",
+    "version": "3.5"
+  },
+  {
+    "URL": "https://github.com/quarto-dev/quarto-cli",
+    "accessed": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          19
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Allaire",
+        "given": "J. J."
+      },
+      {
+        "family": "Teague",
+        "given": "Charles"
+      },
+      {
+        "family": "Scheidegger",
+        "given": "Carlos"
+      },
+      {
+        "family": "Xie",
+        "given": "Yihui"
+      },
+      {
+        "family": "Dervieux",
+        "given": "Christophe"
+      }
+    ],
+    "id": "allaire2024",
+    "issued": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          16
+        ]
+      ]
+    },
+    "title": "Quarto",
+    "type": "software",
+    "version": "1.6.36"
+  },
+  {
+    "DOI": "10.5281/zenodo.10841890",
+    "URL": "https://github.com/sergiocorreia/panflute",
+    "accessed": {
+      "date-parts": [
+        [
+          2024,
+          5,
+          27
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Correia",
+        "given": "Sergio"
+      }
+    ],
+    "id": "correia2024",
+    "issued": {
+      "date-parts": [
+        [
+          2024,
+          3,
+          20
+        ]
+      ]
+    },
+    "title": "Panflute",
+    "type": "software",
+    "version": "2.3.1"
+  },
+  {
+    "URL": "https://github.com/huacnlee/autocorrect",
+    "accessed": {
+      "date-parts": [
+        [
+          2024,
+          11,
+          19
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Lee",
+        "given": "Jason"
+      }
+    ],
+    "id": "lee2024c",
+    "issued": {
+      "date-parts": [
+        [
+          2024,
+          10,
+          15
+        ]
+      ]
+    },
+    "title": "AutoCorrect",
+    "type": "software",
+    "version": "2.13.0"
+  },
+  {
+    "DOI": "10.7666/d.y1970854",
+    "author": [
+      {
+        "family": "江远山"
+      }
+    ],
+    "genre": "博士学位论文",
+    "id": "jiangyuanshan2009",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "近代中国地域政治化研究——以广东为考察对象",
+    "title-short": "近代中国地域政治化研究",
+    "type": "thesis"
+  },
+  {
+    "author": [
+      {
+        "family": "沈志华"
+      }
+    ],
+    "id": "shenzhihua2003",
+    "issued": {
+      "date-parts": [
+        [
+          2003,
+          5
+        ]
+      ]
+    },
+    "publisher": "中国国际广播出版社",
+    "publisher-place": "北京",
+    "title": "苏联专家在中国",
+    "type": "book"
+  },
+  {
+    "DOI": "10.16183/j.cnki.jsjtu.2008.03.001",
+    "author": [
+      {
+        "family": "江泽民"
+      }
+    ],
+    "container-title": "上海交通大学学报",
+    "id": "jiangzemin2008",
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "page": "345-359",
+    "title": "对中国能源问题的思考",
+    "type": "article-journal"
+  },
+  {
+    "author": [
+      {
+        "family": "全国人民代表大会"
+      }
+    ],
+    "container-title": "人民日报",
+    "id": "qgrmdbdh2018",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          3,
+          22
+        ]
+      ]
+    },
+    "page": "1-3",
+    "title": "中华人民共和国宪法",
+    "type": "article-newspaper"
+  },
+  {
+    "DOI": "10.1163/9789004212732_002",
+    "author": [
+      {
+        "family": "Jaffe",
+        "given": "Philip"
+      }
+    ],
+    "container-author": [
+      {
+        "family": "Chiang",
+        "given": "Kai-shek"
+      }
+    ],
+    "container-title": "China’s destiny and Chinese economic theory",
+    "id": "jaffe2013",
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "original-date": {
+      "date-parts": [
+        [
+          1947
+        ]
+      ]
+    },
+    "page": "9-25",
+    "publisher": "Brill",
+    "publisher-place": "Leiden",
+    "title": "The secret of “China’s Destiny”",
+    "type": "chapter"
+  },
+  {
+    "DOI": "10.978.75097/91998",
+    "editor": [
+      {
+        "family": "马戎"
+      }
+    ],
+    "id": "marong2016",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          10,
+          20
+        ]
+      ]
+    },
+    "publisher": "社会科学文献出版社",
+    "publisher-place": "北京",
+    "title": "“中华民族是一个”——围绕1939年这一议题的大讨论",
+    "type": "book"
+  },
+  {
+    "DOI": "10.1073/pnas.2105061118",
+    "author": [
+      {
+        "family": "Ward",
+        "given": "Adrian F."
+      }
+    ],
+    "container-title": "Proceedings of the National Academy of Sciences",
+    "id": "ward2021",
+    "issue": "43",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          10,
+          26
+        ]
+      ]
+    },
+    "page": "e2105061118",
+    "title": "People mistake the internet’s knowledge for their own",
+    "type": "article-journal",
+    "volume": "118"
+  },
+  {
+    "URL": "https://www.pdfa.org/presentation/tagged-and-accessible-pdf-with-latex",
+    "accessed": {
+      "date-parts": [
+        [
+          2023,
+          2,
+          10
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Mittelbach",
+        "given": "Frank"
+      }
+    ],
+    "event": "PDF Days Europe 2022",
+    "event-place": "Berlin",
+    "id": "mittelbach2022",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          9
+        ]
+      ]
+    },
+    "title": "Tagged and accessible PDF with LaTeX",
+    "type": "speech"
+  },
+  {
+    "DOI": "10.2991/assehr.k.210609.113",
+    "author": [
+      {
+        "family": "Shi",
+        "given": "Peijie"
+      }
+    ],
+    "event": "2nd International Conference on Language, Art and Cultural Exchange (ICLACE 2021)",
+    "id": "shi2021a",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          6,
+          10
+        ]
+      ]
+    },
+    "page": "574-579",
+    "publisher": "Atlantis Press",
+    "title": "On Li Hongzhang’s coastal defense measures under the Sino-Japanese conflict in the 1870s",
+    "type": "paper-conference"
+  },
+  {
+    "DOI": "10.5281/zenodo.4273761",
+    "author": [
+      {
+        "family": "Holst",
+        "given": "Martin R."
+      },
+      {
+        "literal": "9 workshop participants who wished to remain anonymous"
+      }
+    ],
+    "id": "holst2020",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          11,
+          9
+        ]
+      ]
+    },
+    "title": "How to handle abuse of power by PhD supervisors: A workshop on early career researcher’s needs",
+    "title-short": "How to handle abuse of power by PhD supervisors",
+    "type": "manuscript"
+  },
+  {
+    "DOI": "10.31219/osf.io/t8jsm",
+    "author": [
+      {
+        "family": "Dahlgren",
+        "given": "Peter Mattias"
+      }
+    ],
+    "genre": "preprint",
+    "id": "dahlgren2022",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          5,
+          25
+        ]
+      ]
+    },
+    "publisher": "Open Science Framework",
+    "title": "Instructions for Reviewer 2: How to reject a manuscript for arbitrary reasons",
+    "title-short": "Instructions for Reviewer 2",
+    "type": "report"
+  },
+  {
+    "URL": "https://www.ohchr.org/en/instruments-mechanisms/instruments/general-assembly-resolution-1803-xvii-14-december-1962-permanent",
+    "accessed": {
+      "date-parts": [
+        [
+          2023,
+          3,
+          9
+        ]
+      ]
+    },
+    "author": [
+      {
+        "literal": "UN General Assembly"
+      }
+    ],
+    "id": "ungeneralassembly1962",
+    "issued": {
+      "date-parts": [
+        [
+          1962,
+          12,
+          14
+        ]
+      ]
+    },
+    "publisher": "United Nations",
+    "title": "General Assembly resolution 1803 (XVII) of 14 December 1962, “permanent sovereignty over natural resources”",
+    "type": "report"
+  },
+  {
+    "URL": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0000001",
+    "accessed": {
+      "date-parts": [
+        [
+          2023,
+          3,
+          9
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "國民大會"
+      }
+    ],
+    "id": "guomindahui1947",
+    "issued": {
+      "date-parts": [
+        [
+          1947,
+          1,
+          1
+        ]
+      ]
+    },
+    "title": "中華民國憲法",
+    "type": "legislation"
+  },
+  {
+    "URL": "https://www.youtube.com/watch?v=UQQHSbeIaB0",
+    "accessed": {
+      "date-parts": [
+        [
+          2020,
+          4,
+          1
+        ]
+      ]
+    },
+    "author": [
+      {
+        "family": "Kharkar",
+        "given": "Ritvik"
+      }
+    ],
+    "id": "ritvikmath2019",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          10,
+          3
+        ]
+      ]
+    },
+    "title": "Vector auto regression: Time series talk",
+    "title-short": "Vector auto regression",
+    "type": "motion_picture"
+  },
+  {
+    "DOI": "10.48550/arXiv.2403.05530",
+    "author": [
+      {
+        "literal": "Gemini Team"
+      }
+    ],
+    "id": "geminiteam2024",
+    "issued": {
+      "date-parts": [
+        [
+          2024,
+          8,
+          8
+        ]
+      ]
+    },
+    "title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+    "title-short": "Gemini 1.5",
+    "type": "webpage"
+  },
+  {
+    "DOI": "10.1162/ISEC.a.5",
+    "author": [
+      {
+        "family": "Kang",
+        "given": "David C."
+      },
+      {
+        "family": "Wong",
+        "given": "Jackie S. H."
+      },
+      {
+        "family": "Chan",
+        "given": "Zenobia T."
+      }
+    ],
+    "container-title": "International Security",
+    "container-title-short": "Int. Secur.",
+    "id": "kang2025",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2025,
+          8,
+          1
+        ]
+      ]
+    },
+    "page": "46-81",
+    "title": "What does China want?",
+    "type": "article-journal",
+    "volume": "50"
+  }
+]

@@ -23,7 +23,7 @@ crossref:
   fig-prefix: 图
   tbl-prefix: 表
 reference-section-title: 参考文献
-bibliography: bibliography.bib
+bibliography: bibliography.json
 csl: _styles/gb-author-date.csl  # Author-year style, comment this line and uncomment the following line to use `gb-numeric.csl`
 # csl: _styles/gb-numeric.csl  # Keep in mind to remove `sort-cnbib.py` in `Makefile` if you use `gb-numeric.csl`
 nocite: |
@@ -76,10 +76,10 @@ format:
       - _styles/custom.tex
     template-partials:
       - _styles/hypersetup.latex
-      - _styles/title.tex
+      # - _styles/title.tex
       - _styles/before-body.tex
       - _styles/toc.tex
-      - _styles/biblio.tex
+      # - _styles/biblio.tex
     pdf-engine: xelatex  # The default engine has been changed to `lualatex` since Quarto 1.8.10
     indent: true
     papersize: a4
@@ -89,18 +89,19 @@ format:
     citecolor: winered
     urlcolor: urlblue
     toccolor: wordblue
-    cite-method: biblatex
-    biblio-style: gb7714-2015ay  # Author-year style, `gb7714-2015` for numeric style
-    biblatexoptions:
-      - backend=biber
-      - backref=true
-      - dashed=false  # Do not replace repeated author names with a dash
-      - gblabelref=false  # Disable hyperlink for author names
-      - gblanorder=englishahead # English first
-      - gbnamefmt=lowercase  # Disable uppercase name
-      - gbfieldtype=true  # Enable field type for theses
-      # - gbalign=gb7714-2015  # Add numeric label, redundant for author-year style
-      # - autocite=plain  # Add bracket squares in citiations for numeric style
+    keep-tex: true
+    # cite-method: biblatex
+    # biblio-style: gb7714-2015ay  # Author-year style, `gb7714-2015` for numeric style
+    # biblatexoptions:
+    #   - backend=biber
+    #   - backref=true
+    #   - dashed=false  # Do not replace repeated author names with a dash
+    #   - gblabelref=false  # Disable hyperlink for author names
+    #   - gblanorder=englishahead # English first
+    #   - gbnamefmt=lowercase  # Disable uppercase name
+    #   - gbfieldtype=true  # Enable field type for theses
+    #   # - gbalign=gb7714-2015  # Add numeric label, redundant for author-year style
+    #   # - autocite=plain  # Add bracket squares in citiations for numeric style
 
   epub:
     epub-cover-image: figures/cover.png
