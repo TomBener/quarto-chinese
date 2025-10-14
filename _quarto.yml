@@ -24,8 +24,7 @@ crossref:
   tbl-prefix: 表
 reference-section-title: 参考文献
 bibliography: bibliography.json
-csl: _styles/gb-author-date.csl  # Author-year style, comment this line and uncomment the following line to use `gb-numeric.csl`
-# csl: _styles/gb-numeric.csl  # Keep in mind to remove `sort-cnbib.py` in `Makefile` if you use `gb-numeric.csl`
+csl: _styles/zju-social-science.csl
 nocite: |
   @*
 filters:
@@ -76,10 +75,9 @@ format:
       - _styles/custom.tex
     template-partials:
       - _styles/hypersetup.latex
-      # - _styles/title.tex
+      - _styles/title.tex
       - _styles/before-body.tex
       - _styles/toc.tex
-      # - _styles/biblio.tex
     pdf-engine: xelatex  # The default engine has been changed to `lualatex` since Quarto 1.8.10
     indent: true
     papersize: a4
@@ -89,7 +87,7 @@ format:
     citecolor: winered
     urlcolor: urlblue
     toccolor: wordblue
-    keep-tex: true
+    # keep-tex: true
     # cite-method: biblatex
     # biblio-style: gb7714-2015ay  # Author-year style, `gb7714-2015` for numeric style
     # biblatexoptions:
