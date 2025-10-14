@@ -46,20 +46,20 @@ dependencies:
 QUARTO := @quarto render index.qmd --to
 FILTERS := -L _extensions/localize-cnbib.lua \
 	-L _extensions/cnbib-quotes.lua \
+	-L _extensions/remove-doi-hyperlinks.lua \
 	--filter _extensions/sort-cnbib.py
 
 # Render DOCX
 docx: dependencies
-	$(QUARTO) $@ $(FILTERS) -L _extensions/remove-doi-hyperlinks.lua
+	$(QUARTO) $@ $(FILTERS)
 
 # Render HTML
 html: dependencies
-	$(QUARTO) $@ $(FILTERS) --filter _extensions/auto-correct.py \
-	-L _extensions/remove-doi-hyperlinks.lua
+	$(QUARTO) $@ $(FILTERS) --filter _extensions/auto-correct.py
 
 # Render PDF
 pdf: dependencies
-	$(QUARTO) $@ $(if $(findstring pdf,$@),--output $(PDF_OUTPUT) $(PDF_OPTION))
+	$(QUARTO) $@ $(FILTERS) $(if $(findstring pdf,$@),--output $(PDF_OUTPUT) $(PDF_OPTION))
 
 # Initial PDF settings
 PDF_OUTPUT := index.pdf
@@ -79,9 +79,7 @@ watermark: pdf
 
 # Render EPUB
 epub: dependencies
-	$(QUARTO) $@ -L _extensions/localize-cnbib.lua -L _extensions/cnbib-quotes.lua \
-	--filter _extensions/sort-cnbib.py --filter _extensions/auto-correct.py \
-	-L _extensions/remove-doi-hyperlinks.lua
+	$(QUARTO) $@ --filter _extensions/auto-correct.py
 
 # Render Reveal.js slides
 slides: dependencies
