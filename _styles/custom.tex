@@ -12,10 +12,6 @@
 \newcommand\HUGE{\@setfontsize\Huge{36}{44}}
 \makeatother
 
-\usepackage{etoolbox}   % 提供 \AtBeginEnvironment
-% 参考文献环境里让方括号两侧不加间距
-\AtBeginEnvironment{CSLReferences}{\normalspacedchars{[]}}
-
 % Change page label for cover page
 \newcommand{\CoverName}{Cover}
 
@@ -56,3 +52,9 @@
 \usepackage{fvextra}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 
+\usepackage{etoolbox}
+% In the bibliography, don't insert CJK–Latin glue around ASCII [ and ].
+% \AtBeginEnvironment{CSLReferences}{\normalspacedchars{[]}}
+
+% \setlength{\cslhangindent}{2em}   % change hanging indent width
+% \setlength{\csllabelwidth}{3em}   % if you also redefine left/right macros elsewhere
