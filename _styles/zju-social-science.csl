@@ -21,7 +21,7 @@
     <category citation-format="author-date"/>
     <category field="generic-base"/>
     <summary>浙江大学社会科学类研究生学术规范</summary>
-    <updated>2025-10-08T20:49:27+00:00</updated>
+    <updated>2025-10-14T12:17:54+00:00</updated>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -539,7 +539,7 @@
       <text macro="citation-layout"/>
     </layout>
   </citation>
-  <bibliography entry-spacing="0" et-al-min="4" et-al-use-first="3" hanging-indent="true">
+  <bibliography entry-spacing="0" et-al-min="4" et-al-use-first="3">
     <layout>
       <text macro="entry-layout"/>
     </layout>
