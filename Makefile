@@ -6,7 +6,7 @@
 # `make slides`: Render Reveal.js slides.
 # `make print`: Render PDF for print.
 # `make watermark`: Render PDF with watermark.
-# `make citebib`: Extract all bibliographies cited as BibLaTeX file `citebib.bib`.
+# `make citebib`: Extract all bibliographies cited as CSL JSON file `citebib.json`.
 # `make citedoc`: Copy cited reference files to a specified directory.
 # `make clean`: Remove auxiliary and output files.
 
@@ -23,19 +23,6 @@ citebib:
 .PHONY: citedoc
 citedoc:
 	@python _extensions/citation-tools.py --copy
-
-# Pandoc command for extracting bibliographies
-# CITE := @pandoc \
-# 	--quiet \
-# 	--file-scope \
-# 	--lua-filter _extensions/get-bib.lua \
-# 	--wrap=preserve \
-# 	contents/[0-9]*.md
-
-# Extract all bibliographies cited as `citebib.bib`
-# citebib:
-# 	$(CITE) --bibliography bibliography.bib --to biblatex | \
-# 	perl -pe 's/^}$$/}\n/ if !eof' > citebib.bib
 
 # Target for generating and processing QMD files
 .PHONY: dependencies
@@ -88,4 +75,4 @@ slides: dependencies
 # Clean up generated files
 .PHONY: clean
 clean:
-	@$(RM) -r .quarto .jupyter_cache *_cache *_files _freeze contents/[0-9]*.qmd cite* outputs
+	@$(RM) -r .quarto .jupyter_cache *_cache *_files _freeze contents_tmp cite* outputs
