@@ -17,6 +17,7 @@ import os
 import re
 import shutil
 import argparse
+import json
 from pathlib import Path
 
 
@@ -40,68 +41,59 @@ def extract_citation_keys(markdown_file):
         key.startswith('fig-') or key.startswith('tbl-'))}
 
 
-def parse_bibtex_file(bibtex_file):
-    """Parse BibLaTeX file and extract citation keys with file paths."""
-    with open(bibtex_file, 'r', encoding='utf-8') as f:
-        content = f.read()
+def load_csl_entries(csl_json_file):
+    """Load CSL JSON entries from file."""
+    with open(csl_json_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
 
-    # Dictionary to store citation key -> file path mappings
-    citations = {}
+    if not isinstance(data, list):
+        raise ValueError(
+            f"Expected a list of CSL JSON entries, got {type(data)} instead.")
 
-    # Find all BibLaTeX entries
-    entries = re.findall(
-        r'@\w+\{([^,]+),\s*(?:[^@]+?file\s*=\s*\{([^}]+)\}[^@]*?)?(?=@|\Z)', content, re.DOTALL)
-
-    for key, file_path in entries:
-        key = key.strip()
-        if file_path:
-            # Extract the file path from the file field
-            file_path = file_path.strip()
-            paths = re.findall(r'(/[^:;]+\.[a-zA-Z0-9]+)', file_path)
-            if paths:
-                citations[key] = paths[0]
-
-    return citations
+    return data
 
 
-def extract_full_bibtex_entries(bibtex_file, citation_keys, remove_fields=None):
-    """Extract full BibLaTeX entries for the given citation keys."""
+def parse_file_field(file_field):
+    """Return a list of file paths from a CSL JSON file field."""
+    if not file_field or not isinstance(file_field, str):
+        return []
+
+    return [path.strip() for path in file_field.split(';') if path.strip()]
+
+
+def build_citation_file_index(entries):
+    """Build a dictionary mapping citation IDs to attached file paths."""
+    index = {}
+
+    for entry in entries:
+        key = entry.get('id')
+        if not key:
+            continue
+        paths = parse_file_field(entry.get('file'))
+        if paths:
+            index[key] = paths
+
+    return index
+
+
+def extract_csl_json_entries(csl_json_file, citation_keys, remove_fields=None):
+    """Extract CSL JSON entries for the given citation keys."""
     if remove_fields is None:
         remove_fields = ['file']
 
-    with open(bibtex_file, 'r', encoding='utf-8') as f:
-        content = f.read()
+    entries = load_csl_entries(csl_json_file)
+    citation_keys = set(citation_keys)
+    filtered_entries = []
 
-    # Dictionary to store entries by citation key for sorting
-    entry_dict = {}
+    for entry in entries:
+        key = entry.get('id')
+        if key and key in citation_keys:
+            entry_copy = {k: v for k, v in entry.items()
+                          if k not in remove_fields}
+            filtered_entries.append(entry_copy)
 
-    # This regex captures the entire BibLaTeX entry
-    pattern = r'(@\w+\{([^,]+),[\s\S]*?)((?=@\w+\{)|$)'
-    matches = re.finditer(pattern, content)
-
-    for match in matches:
-        entry = match.group(1)
-        key = match.group(2).strip()
-
-        if key in citation_keys:
-            # Remove specified fields
-            for field in remove_fields:
-                # This regex removes the field and its value
-                entry = re.sub(r'\s*' + field +
-                               r'\s*=\s*\{[^}]*\},?', '', entry)
-
-            # Clean up any trailing commas before the closing brace
-            entry = re.sub(r',\s*\}$', '\n}', entry)
-
-            # Ensure entry ends with exactly one newline
-            entry = entry.rstrip('\n') + '\n'
-
-            # Store in dictionary with key for sorting
-            entry_dict[key] = entry
-
-    # Sort entries by citation key and join with a single newline
-    sorted_entries = [entry_dict[key] for key in sorted(entry_dict.keys())]
-    return '\n'.join(sorted_entries)
+    filtered_entries.sort(key=lambda item: item.get('id', ''))
+    return json.dumps(filtered_entries, ensure_ascii=False, indent=2) + '\n'
 
 
 def copy_cited_files(args):
@@ -115,7 +107,8 @@ def copy_cited_files(args):
     os.makedirs(args.output_dir, exist_ok=True)
 
     # Parse bibliography (silently)
-    citations = parse_bibtex_file(args.bib)
+    entries = load_csl_entries(args.bib)
+    citation_files = build_citation_file_index(entries)
 
     # Find all Markdown files in content directory
     markdown_files = list(Path(args.content_dir).glob('[0-9]*.md'))
@@ -133,14 +126,17 @@ def copy_cited_files(args):
     not_found_pairs = []
 
     for key in all_keys:
-        if key in citations:
-            source_path = citations[key]
+        if key in citation_files:
+            paths = citation_files[key]
+            existing_path = next(
+                (path for path in paths if os.path.exists(path)), None)
+            source_path = existing_path or paths[0]
             _, file_extension = os.path.splitext(source_path)
             dest_path = os.path.join(args.output_dir, f"{key}{file_extension}")
 
             try:
-                if os.path.exists(source_path):
-                    shutil.copy2(source_path, dest_path)
+                if existing_path and os.path.exists(existing_path):
+                    shutil.copy2(existing_path, dest_path)
                     copied_count += 1
                 else:
                     file_not_found_count += 1
@@ -173,7 +169,7 @@ def copy_cited_files(args):
 
 
 def extract_citations(args):
-    """Extract citations from Markdown files and save them to a BibLaTeX file."""
+    """Extract citations from Markdown files and save them to a CSL JSON file."""
     # Find all Markdown files in content directory
     markdown_files = list(Path(args.content_dir).glob('[0-9]*.md'))
 
@@ -182,13 +178,13 @@ def extract_citations(args):
     for md_file in markdown_files:
         all_keys.update(extract_citation_keys(md_file))
 
-    # Extract full BibLaTeX entries
-    bibtex_content = extract_full_bibtex_entries(
+    # Extract CSL JSON entries
+    json_content = extract_csl_json_entries(
         args.bib, all_keys, args.remove_fields)
 
     # Write to output file
     with open(args.output_bib, 'w', encoding='utf-8') as f:
-        f.write(bibtex_content)
+        f.write(json_content)
 
     # Print simplified summary
     print(f"Markdown files in content directory: {len(markdown_files)}")
@@ -209,31 +205,31 @@ def main():
 
     # Common arguments
     default_bib = os.path.expanduser(
-        "~/Library/CloudStorage/Dropbox/pkm/bibliography.bib")
+        "~/Library/CloudStorage/Dropbox/pkm/bibliography.json")
     default_content_dir = str(project_root / "contents")
 
     # Add command flags instead of subcommands
     parser.add_argument('--extract', action='store_true',
-                        help='Extract citations to a BibLaTeX file')
+                        help='Extract citations to a filtered CSL JSON file')
     parser.add_argument('--copy', action='store_true',
                         help='Copy cited files to a directory')
 
     # Common arguments for both commands
     parser.add_argument('--bib',
                         default=default_bib,
-                        help=f'Path to bibliography.bib file (default: {default_bib})')
+                        help=f'Path to bibliography.json file (default: {default_bib})')
     parser.add_argument('--content_dir',
                         default=default_content_dir,
                         help=f'Path to content directory with Markdown files (default: {default_content_dir})')
 
     # Arguments specific to extract
     parser.add_argument('--output_bib',
-                        default=str(project_root / "citebib.bib"),
-                        help=f'Path to output BibLaTeX file (default: {project_root}/citebib.bib)')
+                        default=str(project_root / "citebib.json"),
+                        help=f'Path to output CSL JSON file (default: {project_root}/citebib.json)')
     parser.add_argument('--remove_fields',
                         nargs='+',
                         default=['file'],
-                        help='Fields to remove from BibLaTeX entries (default: file)')
+                        help='Fields to remove from CSL JSON entries (default: file)')
 
     # Arguments specific to copy
     parser.add_argument('--output_dir',
