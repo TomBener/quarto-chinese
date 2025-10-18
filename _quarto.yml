@@ -88,18 +88,6 @@ format:
     urlcolor: urlblue
     toccolor: wordblue
     # keep-tex: true
-    # cite-method: biblatex
-    # biblio-style: gb7714-2015ay  # Author-year style, `gb7714-2015` for numeric style
-    # biblatexoptions:
-    #   - backend=biber
-    #   - backref=true
-    #   - dashed=false  # Do not replace repeated author names with a dash
-    #   - gblabelref=false  # Disable hyperlink for author names
-    #   - gblanorder=englishahead # English first
-    #   - gbnamefmt=lowercase  # Disable uppercase name
-    #   - gbfieldtype=true  # Enable field type for theses
-    #   # - gbalign=gb7714-2015  # Add numeric label, redundant for author-year style
-    #   # - autocite=plain  # Add bracket squares in citiations for numeric style
 
   epub:
     epub-cover-image: figures/cover.png
