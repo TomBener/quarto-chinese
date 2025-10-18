@@ -1,10 +1,10 @@
 \usepackage[zihao=-4,linespread=1.5]{ctex}
 
-\usepackage{newpxtext}
-% \setmainfont{Times New Roman}
-% \setCJKmainfont[AutoFakeBold=5,  % 伪粗体
-    % ItalicFont=KaiTi,  % 中易楷体
-    % ]{FangSong}  % 中易仿宋
+% \usepackage{newpxtext}
+\setmainfont{Times New Roman}
+\setCJKmainfont[AutoFakeBold=5,  % 伪粗体
+    ItalicFont=KaiTi,  % 中易楷体
+    ]{FangSong}  % 中易仿宋
     % ]{SimSun} % 华文宋体
 
 % Define HUGE font size for the title
@@ -54,7 +54,7 @@
 
 \usepackage{etoolbox}
 % In the bibliography, don't insert CJK–Latin glue around ASCII [ and ].
-% \AtBeginEnvironment{CSLReferences}{\normalspacedchars{[]}}
+\AtBeginEnvironment{CSLReferences}{\normalspacedchars{[]}}
 
 % \setlength{\cslhangindent}{2em}   % change hanging indent width
 % \setlength{\csllabelwidth}{3em}   % if you also redefine left/right macros elsewhere
