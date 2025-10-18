@@ -7,7 +7,7 @@ _freeze/
 outputs/
 
 # Temporary files
-contents/[0-9]*.qmd
+contents_tmp/
 
 # Word related files
 ~$*.doc*
