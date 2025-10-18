@@ -92,7 +92,8 @@ def reformat_math_equations(content):
     content = re.sub(labeled_pattern, replace_with_labeled_block, content)
 
     # Reformat display math without labels to block format
-    display_pattern = r"(?<!\$)\$\$([^\$]+?)\$\$(?!\{#)"  # Match `$$ ... $$` without label
+    # Match `$$ ... $$` without label
+    display_pattern = r"(?<!\$)\$\$([^\$]+?)\$\$(?!\{#)"
 
     def replace_with_display_block(match):
         equation = match.group(1).strip()
@@ -134,17 +135,26 @@ def process_file(input_file, output_file):
 
 def main():
     md_files = get_md_files()
-    # Convert *.md files to *.qmd files
-    qmd_files = [f.replace(".md", ".qmd") for f in md_files]
+
+    # Create contents_tmp directory if it doesn't exist
+    tmp_dir = "contents_tmp"
+    if not os.path.exists(tmp_dir):
+        os.makedirs(tmp_dir)
+
+    # Convert *.md files to *.qmd files in contents_tmp directory
+    qmd_files = [os.path.join(tmp_dir, os.path.basename(
+        f).replace(".md", ".qmd")) for f in md_files]
 
     for md_file, qmd_file in zip(md_files, qmd_files):
         process_file(md_file, qmd_file)
 
+    # Process existing .qmd files in contents directory and output to contents_tmp
     os.chdir('contents')
-    qmd_files = glob.glob('*.qmd')
+    existing_qmd_files = glob.glob('*.qmd')
 
-    for qmd_file in qmd_files:
-        process_file(qmd_file, qmd_file)
+    for qmd_file in existing_qmd_files:
+        output_file = os.path.join('..', tmp_dir, qmd_file)
+        process_file(qmd_file, output_file)
 
 
 if __name__ == "__main__":
