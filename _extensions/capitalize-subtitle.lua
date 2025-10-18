@@ -16,12 +16,22 @@ local function capitalize_first(str)
     if not str or str == "" then
         return str
     end
-    local first = str:sub(1, 1)
-    -- Only capitalize lowercase letters (preserves proper nouns)
-    if first:match("[a-z]") then
-        return first:upper() .. str:sub(2)
+    -- Separate leading punctuation/spaces from the word to evaluate
+    local leading, remainder = str:match("^([%s%p]*)(.*)")
+    if not remainder or remainder == "" then
+        return str
     end
-    return str
+    local word, suffix = remainder:match("^([a-z][%a%-']*)(.*)")
+    if not word then
+        return str
+    end
+    -- Only capitalize when the word is purely alphabetic (with optional hyphen/apostrophe)
+    -- and is followed by punctuation/space or nothing. This avoids changing items like e2105061118.
+    local next_char = suffix:sub(1, 1)
+    if suffix ~= "" and not next_char:match("[%s%p]") then
+        return str
+    end
+    return leading .. word:sub(1, 1):upper() .. word:sub(2) .. suffix
 end
 
 --- Process a list of inlines recursively: capitalize word after colon or em dash.
