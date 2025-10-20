@@ -70,7 +70,8 @@ format:
 
   pdf:
     filters:
-      - latex-quotes
+      - latex-body-quotes
+      - latex-header-quotes
     include-in-header:
       - _styles/custom.tex
     template-partials:
