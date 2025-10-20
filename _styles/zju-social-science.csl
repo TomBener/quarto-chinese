@@ -255,9 +255,6 @@
               <if type="article-newspaper">
                 <text macro="issued-date"/>
               </if>
-              <else-if type="article-magazine">
-                <!-- Do nothing for article-magazine !!-->
-              </else-if>
               <else>
                 <text macro="issued-year"/>
               </else>
@@ -268,12 +265,6 @@
         </group>
         <text variable="page"/>
       </group>
-      <!-- Add date for entries with URL (mainly `article-magazine`) -->
-      <choose>
-        <if variable="URL">
-          <text macro="issued-date" prefix=". (" suffix=")"/>
-        </if>
-      </choose>
       <text macro="accessed-date"/>
     </group>
   </macro>
