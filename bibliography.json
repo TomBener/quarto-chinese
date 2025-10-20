@@ -954,16 +954,6 @@
     "type": "book"
   },
   {
-    "URL": "https://www.newyorker.com/magazine/2022/01/03/chinas-reform-generation-adapts-to-life-in-the-middle-class",
-    "accessed": {
-      "date-parts": [
-        [
-          2021,
-          10,
-          2
-        ]
-      ]
-    },
     "author": [
       {
         "family": "Hessler",
@@ -983,6 +973,37 @@
     },
     "page": "45-55",
     "title": "China’s reform generation adapts to life in the middle class",
+    "type": "article-magazine"
+  },
+  {
+    "id": "congdon2014",
+    "author": [
+      {
+        "family": "Congdon",
+        "given": "Christine"
+      },
+      {
+        "family": "Flynn",
+        "given": "Donna"
+      },
+      {
+        "family": "Redman",
+        "given": "Melanie"
+      }
+    ],
+    "container-title": "Harvard Business Review",
+    "issued": {
+      "date-parts": [
+        [
+          "2014",
+          10,
+          1
+        ]
+      ]
+    },
+    "section": "Workspaces design",
+    "title": "Balancing “we” and “me”: the best collaborative spaces also support solitude",
+    "title-short": "Balancing “we” and “me”",
     "type": "article-magazine"
   },
   {
