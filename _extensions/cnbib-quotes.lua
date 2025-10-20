@@ -26,7 +26,7 @@ function quotes_in_bib(block)
                 -- HTML/EPUB: Use Chinese corner brackets
                 if FORMAT:match 'html' or FORMAT:match 'epub' then
                     replaced_text = (el.text == left_quote) and "「" or "」"
-                    -- LaTeX: Use German quotes for intermediate processing
+                    -- LaTeX: Use guillemets for intermediate processing
                 elseif FORMAT:match 'latex' then
                     replaced_text = (el.text == left_quote) and "«" or "»"
                 end
