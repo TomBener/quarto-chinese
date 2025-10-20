@@ -46,6 +46,18 @@ local function to_unicode_block(inlines)
             end
             result:insert(pandoc.Str(closing))
             return result
+        end,
+        Str = function(el)
+            -- Replace guillemets with curly quotes for PDF bookmarks
+            local text = el.text
+            text = text:gsub('«', '“')
+            text = text:gsub('»', '”')
+            text = text:gsub('‹', '‘')
+            text = text:gsub('›', '’')
+            if text ~= el.text then
+                return pandoc.Str(text)
+            end
+            return el
         end
     })
 end
