@@ -5,7 +5,7 @@
 
 function Str(el)
     -- If not DOCX output, return element unchanged
-    if FORMAT ~= 'docx' then
+    if not FORMAT:match('docx') then
         return el
     end
 
