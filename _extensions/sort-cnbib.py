@@ -51,6 +51,47 @@ def special_pinyin(text):
         return None
 
 
+# Bibliography numbering spacing (change this value to adjust spacing)
+BIB_NUMBER_SPACING = "1em"  # Options: "2em", "10pt", "0.5cm", etc.
+
+
+def create_custom_space(width=None):
+    """Create cross-format horizontal space"""
+    if width is None:
+        width = BIB_NUMBER_SPACING
+
+    # Convert width to approximate number of spaces for DOCX
+    # (1 space ≈ 0.25em in typical fonts)
+    import re
+    match = re.match(r'([\d.]+)(em|pt|cm)', width)
+    if match:
+        value = float(match.group(1))
+        unit = match.group(2)
+
+        if unit == 'em':
+            num_spaces = int(value * 4)  # 1em ≈ 4 spaces
+        elif unit == 'pt':
+            num_spaces = int(value / 3)  # 12pt ≈ 4 spaces, so 1pt ≈ 0.33 spaces
+        elif unit == 'cm':
+            num_spaces = int(value * 10)  # rough approximation
+        else:
+            num_spaces = 4  # fallback
+    else:
+        num_spaces = 4  # fallback
+
+    # Ensure at least 1 space
+    num_spaces = max(1, num_spaces)
+    docx_spaces = ' ' * num_spaces
+
+    return [
+        pf.RawInline(f"\\hspace{{{width}}}", format="latex"),
+        pf.RawInline(
+            f'<span style="display:inline-block;width:{width};"></span>', format="html"),
+        pf.RawInline(
+            f'<w:r><w:t xml:space="preserve">{docx_spaces}</w:t></w:r>', format="openxml")
+    ]
+
+
 def prepare(doc):
     doc.chinese_entries = []
     doc.non_chinese_entries = []
@@ -69,10 +110,10 @@ def action(elem, doc):
 
 
 def finalize(doc):
-    # Sort English entries alphabetically
+    # 英文文献按照字母顺序排序
     doc.non_chinese_entries.sort(key=lambda x: pf.stringify(x).lower())
 
-    # Sort Chinese entries by pinyin
+    # 中文文献按照拼音排序
     doc.chinese_entries.sort(key=lambda x: special_pinyin(pf.stringify(x)))
 
     # 合并所有条目并添加编号
@@ -84,8 +125,10 @@ def finalize(doc):
         # 在第一个段落开头插入编号
         if entry.content and isinstance(entry.content[0], pf.Para):
             first_para = entry.content[0]
-            # 在段落开头插入编号
-            first_para.content.insert(0, pf.Str(f"[{i}] "))
+            # 在段落开头插入编号和自定义间距
+            first_para.content.insert(0, pf.Str(f"[{i}]"))
+            for space_elem in reversed(create_custom_space(BIB_NUMBER_SPACING)):
+                first_para.content.insert(1, space_elem)
 
         numbered_entries.append(entry)
 
