@@ -21,7 +21,7 @@
     <category citation-format="author-date"/>
     <category field="generic-base"/>
     <summary>浙江大学社会科学类研究生学术规范</summary>
-    <updated>2025-10-19T21:11:05+00:00</updated>
+    <updated>2025-10-20T15:01:37+00:00</updated>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -193,7 +193,7 @@
         </group>
         <!-- 非电子资源显示“出版年” -->
         <choose>
-          <if variable="page" type="book chapter paper-conference thesis report" match="any">
+          <if variable="page" type="book chapter paper-conference thesis" match="any">
             <text macro="issued-year"/>
           </if>
           <else-if variable="URL DOI" match="none">
@@ -207,8 +207,8 @@
       <!-- 纯电子资源显示“更新或修改日期” -->
       <if variable="page" type="book chapter paper-conference thesis" match="none">
         <choose>
-          <if variable="URL">
-            <text macro="issued-date" prefix="(" suffix=")"/>
+          <if variable="URL DOI" match="any">
+            <text macro="issued-date" prefix=". (" suffix=")"/>
           </if>
         </choose>
       </if>
