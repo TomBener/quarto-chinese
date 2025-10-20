@@ -2161,5 +2161,1269 @@
     "title": "What does China want?",
     "type": "article-journal",
     "volume": "50"
+  },
+  {
+    "id": "liuzhuo2006",
+    "author": [
+      {
+        "literal": "刘卓"
+      }
+    ],
+    "DOI": "10.7666/d.y955345",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/Thesis/刘卓 - 2006 - 新疆的内地商人研究——以晚清、民国为中心.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2006"
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "新疆的内地商人研究——以晚清、民国为中心",
+    "type": "thesis"
+  },
+  {
+    "id": "zhangzhun2009",
+    "author": [
+      {
+        "literal": "张准"
+      }
+    ],
+    "DOI": "10.7666/d.y9026491",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/Thesis/张准 - 2009 - 美国镀金时代经济发展研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2009"
+        ]
+      ]
+    },
+    "publisher": "四川大学",
+    "publisher-place": "成都",
+    "title": "美国镀金时代经济发展研究",
+    "type": "thesis"
+  },
+  {
+    "id": "jiajianfei2002",
+    "author": [
+      {
+        "literal": "贾建飞"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/Thesis/贾建飞 - 2002 - 晚清西北史地学研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2002"
+        ]
+      ]
+    },
+    "publisher": "中国社会科学院研究生院",
+    "publisher-place": "北京",
+    "title": "晚清西北史地学研究",
+    "type": "thesis"
+  },
+  {
+    "id": "yaoyuting2022",
+    "author": [
+      {
+        "literal": "姚妤婷"
+      }
+    ],
+    "DOI": "10.27461/d.cnki.gzjdx.2022.000798",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/Thesis/姚妤婷 - 2022 - 利益、权利与规则：征地冲突研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2022"
+        ]
+      ]
+    },
+    "publisher": "浙江大学",
+    "publisher-place": "杭州",
+    "title": "利益、权利与规则：征地冲突研究",
+    "title-short": "利益、权利与规则",
+    "type": "thesis"
+  },
+  {
+    "id": "ouyangyunzi2002",
+    "author": [
+      {
+        "literal": "欧阳云梓"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/Thesis/欧阳云梓 - 2002 - 中苏关系中的新疆问题研究（1933–1949）.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2002"
+        ]
+      ]
+    },
+    "publisher": "南开大学",
+    "publisher-place": "天津",
+    "title": "中苏关系中的新疆问题研究（1933–1949）",
+    "type": "thesis"
+  },
+  {
+    "id": "chichuang2008",
+    "author": [
+      {
+        "literal": "迟闯"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/Thesis/迟闯 - 2008 - 俄罗斯远东地区自然资源开发利用与中俄资源合作研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2008"
+        ]
+      ]
+    },
+    "publisher": "吉林大学",
+    "publisher-place": "长春",
+    "title": "俄罗斯远东地区自然资源开发利用与中俄资源合作研究",
+    "type": "thesis"
+  },
+  {
+    "id": "wangmingye2005",
+    "author": [
+      {
+        "literal": "王鸣野"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/Thesis/王鸣野 - 2005 - 清季新疆二十八年——以军政一体化为中心.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2005"
+        ]
+      ]
+    },
+    "publisher": "中国社会科学院",
+    "publisher-place": "北京",
+    "title": "清季新疆二十八年——以军政一体化为中心",
+    "type": "thesis"
+  },
+  {
+    "id": "liuxitao2008",
+    "author": [
+      {
+        "literal": "刘喜韬"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/Thesis/刘喜韬 - 2008 - 新疆生产建设兵团与地方用地合作模式研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2008"
+        ]
+      ]
+    },
+    "publisher": "中国矿业大学",
+    "publisher-place": "北京",
+    "title": "新疆生产建设兵团与地方用地合作模式研究",
+    "type": "thesis"
+  },
+  {
+    "id": "wuyiqun2007",
+    "author": [
+      {
+        "literal": "吴轶群"
+      }
+    ],
+    "DOI": "10.7666/d.y1171452",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/thesis/吴轶群 - 2007 - 清代新疆边境地区城市对比研究——以伊犁、喀什噶尔为中心.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2007"
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "清代新疆边境地区城市对比研究——以伊犁、喀什噶尔为中心",
+    "type": "thesis"
+  },
+  {
+    "id": "mozhibin2020",
+    "author": [
+      {
+        "literal": "莫智斌"
+      }
+    ],
+    "DOI": "10.27461/d.cnki.gzjdx.2019.000562",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/thesis/莫智斌 - 2020 - 城乡住宅用地权能差异研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2020"
+        ]
+      ]
+    },
+    "publisher": "浙江大学",
+    "publisher-place": "杭州",
+    "title": "城乡住宅用地权能差异研究",
+    "type": "thesis"
+  },
+  {
+    "id": "wangjiang2007",
+    "author": [
+      {
+        "literal": "王江"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/Thesis/王江 - 2007 - 《禹贡》半月刊研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2007"
+        ]
+      ]
+    },
+    "publisher": "中国人民大学",
+    "publisher-place": "北京",
+    "title": "《禹贡》半月刊研究",
+    "type": "thesis"
+  },
+  {
+    "id": "gaoyue2011",
+    "author": [
+      {
+        "literal": "高月"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/高月 - 2011 - 清末东北新政研究——近代中国民族国家构建视野下的疆域统合.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2011"
+        ]
+      ]
+    },
+    "publisher": "中国社会科学院研究生院",
+    "publisher-place": "北京",
+    "title": "清末东北新政研究——近代中国民族国家构建视野下的疆域统合",
+    "type": "thesis"
+  },
+  {
+    "id": "luyuefeng2023",
+    "author": [
+      {
+        "literal": "吕悦风"
+      }
+    ],
+    "DOI": "10.27461/d.cnki.gzjdx.2023.000024",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/thesis/吕悦风 - 2023 - 城乡生态系统服务流的传导机理与量化模拟研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2023"
+        ]
+      ]
+    },
+    "publisher": "浙江大学",
+    "publisher-place": "杭州",
+    "title": "城乡生态系统服务流的传导机理与量化模拟研究",
+    "type": "thesis"
+  },
+  {
+    "id": "liuchao2005",
+    "author": [
+      {
+        "literal": "刘超"
+      }
+    ],
+    "DOI": "10.7666/d.y769580",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/刘超 - 2005 - 民族主义与中国历史书写——清末民国时期中学中国历史教科书研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2005"
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "民族主义与中国历史书写——清末民国时期中学中国历史教科书研究",
+    "type": "thesis"
+  },
+  {
+    "id": "huizeyu2013",
+    "author": [
+      {
+        "literal": "惠泽宇"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/thesis/惠泽宇 - 2013 - 民族地区资源开发中少数民族利益保障研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2013"
+        ]
+      ]
+    },
+    "publisher": "中央民族大学",
+    "publisher-place": "北京",
+    "title": "民族地区资源开发中少数民族利益保障研究",
+    "type": "thesis"
+  },
+  {
+    "id": "sunwen2020",
+    "author": [
+      {
+        "literal": "孙雯"
+      }
+    ],
+    "DOI": "10.27479/d.cnki.gzgcd.2019.000013",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/孙雯 - 2020 - 中国民族国家构建与边疆民族地区治理.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2020"
+        ]
+      ]
+    },
+    "publisher": "中共中央党校",
+    "publisher-place": "北京",
+    "title": "中国民族国家构建与边疆民族地区治理",
+    "type": "thesis"
+  },
+  {
+    "id": "gongfu2004",
+    "author": [
+      {
+        "literal": "宫富"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/宫富 - 2004 - 民族想象与国家叙事——“战国策派”的文化思想与文学形态研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2004"
+        ]
+      ]
+    },
+    "publisher": "浙江大学",
+    "publisher-place": "杭州",
+    "title": "民族想象与国家叙事——“战国策派”的文化思想与文学形态研究",
+    "type": "thesis"
+  },
+  {
+    "id": "ruannanyan2007",
+    "author": [
+      {
+        "literal": "阮南燕"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/阮南燕 - 2007 - 民族国家戏剧：想象、建构与歧路——1949–1966中国话剧创作研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2007"
+        ]
+      ]
+    },
+    "publisher": "南京大学",
+    "publisher-place": "南京",
+    "title": "民族国家戏剧：想象、建构与歧路——1949–1966中国话剧创作研究",
+    "type": "thesis"
+  },
+  {
+    "id": "yinlu2016",
+    "author": [
+      {
+        "literal": "殷璐"
+      }
+    ],
+    "DOI": "10.27235/d.cnki.gnjiu.2016.000894",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/殷璐 - 2016 - 民族国家想象下的现代性追求——清末民初的中国戏剧转型.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2016"
+        ]
+      ]
+    },
+    "publisher": "南京大学",
+    "publisher-place": "南京",
+    "title": "民族国家想象下的现代性追求——清末民初的中国戏剧转型",
+    "type": "thesis"
+  },
+  {
+    "id": "zhuyaohui2004",
+    "author": [
+      {
+        "literal": "朱耀辉"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/朱耀辉 - 2004 - 城市文明与近代西欧民族国家的兴起——以英国和法国为讨论中心（12–17世纪）.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2004"
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "城市文明与近代西欧民族国家的兴起——以英国和法国为讨论中心（12–17世纪）",
+    "type": "thesis"
+  },
+  {
+    "id": "lixiaopeng2014",
+    "author": [
+      {
+        "literal": "李晓鹏"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/李晓鹏 - 2014 - 迈向后现代国家：现代国家建构及其未来.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2014"
+        ]
+      ]
+    },
+    "publisher": "华中师范大学",
+    "publisher-place": "武汉",
+    "title": "迈向后现代国家：现代国家建构及其未来",
+    "title-short": "迈向后现代国家",
+    "type": "thesis"
+  },
+  {
+    "id": "zhangteng2013",
+    "author": [
+      {
+        "literal": "张腾"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/张腾 - 2013 - 从王朝体系到民族国家——清朝民族政策调整及其变化.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2013",
+          4
+        ]
+      ]
+    },
+    "publisher": "宁夏大学",
+    "publisher-place": "银川",
+    "title": "从王朝体系到民族国家——清朝民族政策调整及其变化",
+    "title-short": "从王朝体系到民族国家",
+    "type": "thesis"
+  },
+  {
+    "id": "wantao2014",
+    "author": [
+      {
+        "literal": "万涛"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/万涛 - 2014 - 近代大学的国家主义取向.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2014"
+        ]
+      ]
+    },
+    "publisher": "西南大学",
+    "publisher-place": "重庆",
+    "title": "近代大学的国家主义取向——以四川大学为例（1902–1945）",
+    "title-short": "近代大学的国家主义取向",
+    "type": "thesis"
+  },
+  {
+    "id": "liuye2002",
+    "author": [
+      {
+        "literal": "刘晔"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/刘晔 - 2002 - 迈向现代国家：知识分子与近代中国国家建设.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2002",
+          11,
+          8
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "迈向现代国家：知识分子与近代中国国家建设",
+    "title-short": "迈向现代国家",
+    "type": "thesis"
+  },
+  {
+    "id": "yangming2021",
+    "author": [
+      {
+        "literal": "杨明"
+      }
+    ],
+    "DOI": "10.27159/d.cnki.ghzsu.2021.003441",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/杨明 - 2021 - 联合到对立：村寨社会结构与国家边疆建设策略.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2021"
+        ]
+      ]
+    },
+    "publisher": "华中师范大学",
+    "publisher-place": "武汉",
+    "title": "联合到对立：村寨社会结构与国家边疆建设策略——基于20世纪上半叶川西北羌族村寨的调查",
+    "title-short": "联合到对立：村寨社会结构与国家边疆建设策略",
+    "type": "thesis"
+  },
+  {
+    "id": "yinwei2021",
+    "author": [
+      {
+        "literal": "尹威"
+      }
+    ],
+    "DOI": "10.27149/d.cnki.ghdsu.2021.002844",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/thesis/尹威 - 2021 - 抗战时期的边地书写研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2021"
+        ]
+      ]
+    },
+    "publisher": "华东师范大学",
+    "publisher-place": "上海",
+    "title": "抗战时期的边地书写研究",
+    "type": "thesis"
+  },
+  {
+    "id": "linshijun2011",
+    "author": [
+      {
+        "literal": "林士俊"
+      }
+    ],
+    "DOI": "10.7666/d.y1821225",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/thesis/林士俊 - 2011 - 清末边疆治理与国家整合研究.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2011"
+        ]
+      ]
+    },
+    "publisher": "中央民族大学",
+    "publisher-place": "北京",
+    "title": "清末边疆治理与国家整合研究",
+    "type": "thesis"
+  },
+  {
+    "id": "zhangyuan2014",
+    "author": [
+      {
+        "literal": "张媛"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/张媛 - 2014 - 媒介、地理与认同：中国西南地区少数民族国家认同的形成与变迁.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2014"
+        ]
+      ]
+    },
+    "publisher": "浙江大学",
+    "publisher-place": "杭州",
+    "title": "媒介、地理与认同：中国西南地区少数民族国家认同的形成与变迁",
+    "title-short": "媒介、地理与认同",
+    "type": "thesis"
+  },
+  {
+    "id": "maxuefeng2007",
+    "author": [
+      {
+        "literal": "马雪峰"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/马雪峰 - 2007 - 近代民族主义背景下的社群构建.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2007"
+        ]
+      ]
+    },
+    "publisher": "北京大学",
+    "publisher-place": "北京",
+    "title": "近代民族主义背景下的社群构建——以云南回族为例",
+    "title-short": "近代民族主义背景下的社群构建",
+    "type": "thesis"
+  },
+  {
+    "id": "hudifei2005",
+    "author": [
+      {
+        "literal": "胡涤非"
+      }
+    ],
+    "DOI": "10.7666/d.y650887",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/胡涤非 - 2005 - 近代中国政治变迁中的民族主义.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2005"
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "近代中国政治变迁中的民族主义",
+    "type": "thesis"
+  },
+  {
+    "id": "jiangyuanshan2009",
+    "author": [
+      {
+        "literal": "江远山"
+      }
+    ],
+    "DOI": "10.7666/d.y1970854",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/江远山 - 2009 - 近代中国地域政治化研究——以广东为考察对象.pdf",
+    "genre": "博士学位论文",
+    "issued": {
+      "date-parts": [
+        [
+          "2009"
+        ]
+      ]
+    },
+    "publisher": "复旦大学",
+    "publisher-place": "上海",
+    "title": "近代中国地域政治化研究——以广东为考察对象",
+    "title-short": "近代中国地域政治化研究",
+    "type": "thesis"
+  },
+  {
+    "id": "duzhongyuan1936",
+    "author": [
+      {
+        "literal": "杜重遠"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/book/杜重遠 - 1936 - 獄中雜感.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "1936",
+          11
+        ]
+      ]
+    },
+    "title": "獄中雜感",
+    "type": "book"
+  },
+  {
+    "id": "brown2023",
+    "author": [
+      {
+        "family": "Brown",
+        "given": "Tristan G."
+      }
+    ],
+    "DOI": "10.1515/9780691246727",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Brown - 2023 - Laws of the Land.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2023"
+        ]
+      ]
+    },
+    "publisher": "Princeton University Press",
+    "publisher-place": "Princeton",
+    "title": "Laws of the land: Fengshui and the state in Qing dynasty China",
+    "title-short": "Laws of the land",
+    "type": "book"
+  },
+  {
+    "id": "chiang2022",
+    "author": [
+      {
+        "family": "Chiang",
+        "given": "Yi-Lin"
+      }
+    ],
+    "DOI": "10.1515/9780691237190",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Chiang - 2022 - Study Gods.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2022"
+        ]
+      ]
+    },
+    "publisher": "Princeton University Press",
+    "publisher-place": "Princeton",
+    "title": "Study gods: how the new Chinese elite prepare for global competition",
+    "title-short": "Study gods",
+    "type": "book"
+  },
+  {
+    "id": "ke2024",
+    "author": [
+      {
+        "family": "Ke",
+        "given": "Xiaojun"
+      },
+      {
+        "family": "Li",
+        "given": "Shiyue"
+      }
+    ],
+    "container-title": "China Information",
+    "container-title-short": "China Inf.",
+    "DOI": "10.1177/0920203X231220191",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/journalArticle/Ke - 2024 - Ritual narratives of infrastructure ceremonies.pdf",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          "2024",
+          3,
+          1
+        ]
+      ]
+    },
+    "page": "68-89",
+    "title": "Ritual narratives of infrastructure ceremonies: time, demands, and relations in modern Chinese history",
+    "title-short": "Ritual narratives of infrastructure ceremonies",
+    "type": "article-journal",
+    "volume": "38"
+  },
+  {
+    "id": "gill2022",
+    "author": [
+      {
+        "family": "Gill",
+        "given": "Bates"
+      }
+    ],
+    "DOI": "10.1093/oso/9780197545645.001.0001",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Gill - 2022 - Daring to Struggle.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2022",
+          6,
+          3
+        ]
+      ]
+    },
+    "publisher": "Oxford University Press",
+    "publisher-place": "New York",
+    "title": "Daring to struggle: China’s global ambitions under Xi Jinping",
+    "title-short": "Daring to struggle",
+    "type": "book"
+  },
+  {
+    "id": "pantucci2022",
+    "author": [
+      {
+        "family": "Pantucci",
+        "given": "Raffaello"
+      },
+      {
+        "family": "Petersen",
+        "given": "Alexandros"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Pantucci - 2022 - Sinostan.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2022"
+        ]
+      ]
+    },
+    "publisher": "Oxford University Press",
+    "publisher-place": "New York",
+    "title": "Sinostan: China’s inadvertent empire",
+    "title-short": "Sinostan",
+    "type": "book"
+  },
+  {
+    "id": "kinkel2022",
+    "author": [
+      {
+        "family": "Kinkel",
+        "given": "Jonathan J."
+      }
+    ],
+    "DOI": "10.1017/9781009086868",
+    "issued": {
+      "date-parts": [
+        [
+          "2022"
+        ]
+      ]
+    },
+    "publisher": "Cambridge University Press",
+    "publisher-place": "Cambridge",
+    "title": "Growth and survival: an ecological analysis of court reform in urban China",
+    "title-short": "Growth and survival",
+    "type": "book"
+  },
+  {
+    "id": "qiaoan2022",
+    "author": [
+      {
+        "family": "Qiaoan",
+        "given": "Runya"
+      }
+    ],
+    "DOI": "10.4324/9781003049319",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Qiaoan - 2022 - Civil Society in China.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2022"
+        ]
+      ]
+    },
+    "publisher": "Routledge",
+    "publisher-place": "London",
+    "title": "Civil society in China: how society speaks to the state",
+    "title-short": "Civil society in China",
+    "type": "book"
+  },
+  {
+    "id": "lin2023d",
+    "author": [
+      {
+        "family": "Lin",
+        "given": "Chunfeng"
+      }
+    ],
+    "DOI": "10.4324/9781003231783",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/Book/Lin - 2023 - Red Tourism in China.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2023"
+        ]
+      ]
+    },
+    "publisher": "Routledge",
+    "publisher-place": "London",
+    "title": "Red tourism in China: commodification of propaganda",
+    "title-short": "Red tourism in China",
+    "type": "book"
+  },
+  {
+    "id": "sung2024",
+    "author": [
+      {
+        "family": "Sung",
+        "given": "Doris"
+      }
+    ],
+    "DOI": "10.1515/9783110798920",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Sung - 2024 - Women of Chinese Modern Art.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2024"
+        ]
+      ]
+    },
+    "publisher": "De Gruyter Oldenbourg",
+    "publisher-place": "Berlin",
+    "title": "Women of Chinese modern art: gender and reforming traditions in national and global spheres, 1900s–1930s",
+    "title-short": "Women of Chinese modern art",
+    "type": "book"
+  },
+  {
+    "id": "wang2022k",
+    "author": [
+      {
+        "family": "Wang",
+        "given": "Q. Edward"
+      }
+    ],
+    "DOI": "10.1515/9783110717495",
+    "editor": [
+      {
+        "family": "Michihiro",
+        "given": "Okamoto"
+      },
+      {
+        "family": "Li",
+        "given": "Longguo"
+      }
+    ],
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Wang - 2022 - Western Historiography in Asia.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2022",
+          2,
+          21
+        ]
+      ]
+    },
+    "publisher": "De Gruyter Oldenbourg",
+    "publisher-place": "Berlin",
+    "title": "Western historiography in Asia: circulation, critique and comparison",
+    "title-short": "Western historiography in Asia",
+    "type": "book"
+  },
+  {
+    "id": "grey2021",
+    "author": [
+      {
+        "family": "Grey",
+        "given": "Alexandra"
+      }
+    ],
+    "DOI": "10.1515/9781501512551",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Grey - 2021 - Language Rights in a Changing China.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2021",
+          5,
+          10
+        ]
+      ]
+    },
+    "publisher": "De Gruyter Mouton",
+    "publisher-place": "Boston",
+    "title": "Language rights in a changing China: a national overview and Zhuang case study",
+    "title-short": "Language rights in a changing China",
+    "type": "book"
+  },
+  {
+    "id": "xu2021e",
+    "author": [
+      {
+        "family": "Xu",
+        "given": "Aymeric"
+      }
+    ],
+    "DOI": "10.1515/9783110740189",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Xu - 2021 - From Culturalist Nationalism to Conservatism.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2021",
+          4,
+          19
+        ]
+      ]
+    },
+    "publisher": "De Gruyter Oldenbourg",
+    "publisher-place": "Berlin",
+    "title": "From culturalist nationalism to conservatism: origins and diversification of conservative ideas in Republican China",
+    "title-short": "From culturalist nationalism to conservatism",
+    "type": "book"
+  },
+  {
+    "id": "tan2023a",
+    "author": [
+      {
+        "family": "Tan",
+        "given": "Jia"
+      }
+    ],
+    "DOI": "10.18574/nyu/9781479811854.001.0001",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/Book/Tan - 2023 - Digital Masquerade.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2023",
+          2,
+          14
+        ]
+      ]
+    },
+    "publisher": "New York University Press",
+    "publisher-place": "New York",
+    "title": "Digital masquerade: feminist rights and queer media in China",
+    "title-short": "Digital masquerade",
+    "type": "book"
+  },
+  {
+    "id": "segawa2022",
+    "author": [
+      {
+        "family": "Segawa",
+        "given": "Masahisa"
+      }
+    ],
+    "DOI": "10.4324/9781003240365",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Segawa - 2022 - Ancestral Genealogies in Modern China.epub",
+    "issued": {
+      "date-parts": [
+        [
+          "2022"
+        ]
+      ]
+    },
+    "publisher": "Routledge",
+    "publisher-place": "London",
+    "title": "Ancestral genealogies in modern China: a study of lineage organizations in Hong Kong and mainland China",
+    "title-short": "Ancestral genealogies in modern China",
+    "type": "book"
+  },
+  {
+    "id": "ng2020",
+    "author": [
+      {
+        "family": "Ng",
+        "given": "Emily"
+      }
+    ],
+    "DOI": "10.1525/9780520972636",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Ng - 2020 - A Time of Lost Gods.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2020"
+        ]
+      ]
+    },
+    "publisher": "University of California Press",
+    "publisher-place": "Oakland",
+    "title": "A time of lost gods: mediumship, madness, and the ghost after Mao",
+    "title-short": "A time of lost gods",
+    "type": "book"
+  },
+  {
+    "id": "he2025",
+    "author": [
+      {
+        "family": "He",
+        "given": "Danna"
+      },
+      {
+        "family": "Tang",
+        "given": "Wenfang"
+      }
+    ],
+    "container-title": "Journal of Contemporary China",
+    "container-title-short": "J. Contemp. China",
+    "DOI": "10.1080/10670564.2024.2339303",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/journalArticle/He - 2025 - Constructed Community.pdf",
+    "issue": "153",
+    "issued": {
+      "date-parts": [
+        [
+          "2025",
+          5,
+          4
+        ]
+      ]
+    },
+    "page": "504-526",
+    "title": "Constructed community: rise and engines of Chinese nationalism under Xi Jinping",
+    "title-short": "Constructed community",
+    "type": "article-journal",
+    "volume": "34"
+  },
+  {
+    "id": "hasmath2024",
+    "author": [
+      {
+        "family": "Hasmath",
+        "given": "Reza"
+      }
+    ],
+    "container-title": "China Information",
+    "container-title-short": "China Inf.",
+    "DOI": "10.1177/0920203X231193086",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/journalArticle/Hasmath - 2024 - The operations of contemporary Han Chinese privilege.pdf",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          "2024",
+          3,
+          1
+        ]
+      ]
+    },
+    "page": "3-23",
+    "title": "The operations of contemporary Han Chinese privilege",
+    "type": "article-journal",
+    "volume": "38"
+  },
+  {
+    "id": "lin2024",
+    "author": [
+      {
+        "family": "Lin",
+        "given": "Zhili"
+      },
+      {
+        "family": "Lee",
+        "given": "Charity"
+      },
+      {
+        "family": "Kaur",
+        "given": "Surinderpal"
+      }
+    ],
+    "container-title": "China Information",
+    "container-title-short": "China Inf.",
+    "DOI": "10.1177/0920203X241241370",
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          "2024",
+          11
+        ]
+      ]
+    },
+    "page": "384-404",
+    "title": "The socialization of nationalist and socialist values: construction of the model youth in a Chinese reality TV show",
+    "title-short": "The socialization of nationalist and socialist values",
+    "type": "article-journal",
+    "volume": "38"
+  },
+  {
+    "id": "meng2024",
+    "author": [
+      {
+        "family": "Meng",
+        "given": "Weizhan"
+      },
+      {
+        "family": "Wang",
+        "given": "Feng"
+      },
+      {
+        "family": "Xin",
+        "given": "Ge"
+      }
+    ],
+    "container-title": "Journal of Chinese Governance",
+    "container-title-short": "J. Chin. Gov.",
+    "DOI": "10.1080/23812346.2024.2332005",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/journalArticle/Meng - 2024 - Making Agile Governance Work.pdf",
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          "2024",
+          4,
+          2
+        ]
+      ]
+    },
+    "page": "197-220",
+    "title": "Making agile governance work: the community grid as a ‘safety valve’ institution during the COVID-19 pandemic",
+    "title-short": "Making agile governance work",
+    "type": "article-journal",
+    "volume": "9"
+  },
+  {
+    "id": "rentola2024",
+    "author": [
+      {
+        "family": "Rentola",
+        "given": "Kimmo"
+      }
+    ],
+    "DOI": "10.12987/9780300274875",
+    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Rentola - 2024 - How Finland Survived Stalin.pdf",
+    "issued": {
+      "date-parts": [
+        [
+          "2024"
+        ]
+      ]
+    },
+    "publisher": "Yale University Press",
+    "publisher-place": "New Haven",
+    "title": "How Finland survived Stalin: from winter war to Cold War, 1939–1950",
+    "title-short": "How Finland survived Stalin",
+    "translator": [
+      {
+        "family": "Robinson",
+        "given": "Richard"
+      }
+    ],
+    "type": "book"
+  },
+  {
+    "id": "lavelle2011",
+    "author": [
+      {
+        "family": "Lavelle",
+        "given": "Peter"
+      }
+    ],
+    "container-title": "China on the margins",
+    "DOI": "10.1515/9781942242468-004",
+    "editor": [
+      {
+        "family": "Cochran",
+        "given": "Sherman"
+      },
+      {
+        "family": "Pickowicz",
+        "given": "Paul G."
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          "2011"
+        ]
+      ]
+    },
+    "page": "43-64",
+    "publisher": "Cornell University Press",
+    "publisher-place": "Ithaca",
+    "title": "Cultivating empire: Zuo Zongtang’s agriculture, environment, and reconstruction in the late Qing",
+    "title-short": "Cultivating empire",
+    "type": "chapter"
   }
 ]
