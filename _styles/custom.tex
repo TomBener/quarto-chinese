@@ -53,8 +53,12 @@
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 
 \usepackage{etoolbox}
-% In the bibliography, don't insert CJK–Latin glue around ASCII [ and ].
-\AtBeginEnvironment{CSLReferences}{\normalspacedchars{[]}}
-
-% \setlength{\cslhangindent}{2em}   % change hanging indent width
-% \setlength{\csllabelwidth}{3em}   % if you also redefine left/right macros elsewhere
+% 参考文献样式
+\AtBeginEnvironment{CSLReferences}{%
+    % \zihao{5}  % 字号；默认继承正文字号（\zihao{-4}）
+    % \linespread{1.2}\selectfont  % 行距；默认 1.0
+    % \setlength{\itemsep}{0.5\baselineskip}  % 条目间距；默认 #2\baselineskip
+    % \setlength{\parskip}{0pt}  % 段间距；默认 0pt
+    \setlength{\cslhangindent}{2.672em}  % 悬挂缩进距离；默认 1.5em
+    \normalspacedchars{[]}  % 移除文献标识符中括号 [ 前与汉字间的空格，默认 CJK 会自动插入空格
+}
