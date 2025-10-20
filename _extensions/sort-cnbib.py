@@ -4,6 +4,7 @@
 # Copyright: © 2024–Present Tom Ben
 # License: MIT License
 
+import re
 import panflute as pf
 from pypinyin import pinyin, Style
 
@@ -51,18 +52,54 @@ def special_pinyin(text):
         return None
 
 
-# Bibliography numbering spacing (change this value to adjust spacing)
-BIB_NUMBER_SPACING = "1em"  # Options: "2em", "10pt", "0.5cm", etc.
+# Minimum separation between the numeric label and the bibliography text.
+# Accepts either a float (em) or a string with unit (e.g. "10pt", "0.5cm").
+BIB_NUMBER_SPACING = "0.5em"
+
+# Optional override for the label column width.  Set to None to size automatically
+# based on the number of entries in the bibliography.
+BIB_LABEL_WIDTH = None
+
+# Estimated width (in em) for each character inside the label, including brackets.
+CHAR_EM_WIDTH = 0.5
 
 
-def create_custom_space(width=None):
-    """Create cross-format horizontal space"""
+def format_width(width):
+    """Return width as a LaTeX/CSS-friendly string with em as the unit."""
+    if isinstance(width, (int, float)):
+        return f"{width:.4f}em"
+    return width
+
+
+def to_em(width):
+    """Convert supported units to em for internal calculations."""
     if width is None:
-        width = BIB_NUMBER_SPACING
+        return None
+    if isinstance(width, (int, float)):
+        return float(width)
 
-    # Convert width to approximate number of spaces for DOCX
-    # (1 space ≈ 0.25em in typical fonts)
-    import re
+    match = re.match(r'([\d.]+)(em|pt|cm)', width)
+    if not match:
+        return None
+
+    value = float(match.group(1))
+    unit = match.group(2)
+
+    if unit == 'em':
+        return value
+    if unit == 'pt':
+        return value / 12  # 1em ≈ 12pt
+    if unit == 'cm':
+        return value / 0.423  # 1em ≈ 0.423cm (12pt)
+    return None
+
+
+def width_to_spaces(width):
+    """Approximate width in characters/spaces for formats without precise control."""
+    width = format_width(width)
+    if not width:
+        return 4
+
     match = re.match(r'([\d.]+)(em|pt|cm)', width)
     if match:
         value = float(match.group(1))
@@ -71,7 +108,8 @@ def create_custom_space(width=None):
         if unit == 'em':
             num_spaces = int(value * 4)  # 1em ≈ 4 spaces
         elif unit == 'pt':
-            num_spaces = int(value / 3)  # 12pt ≈ 4 spaces, so 1pt ≈ 0.33 spaces
+            # 12pt ≈ 4 spaces, so 1pt ≈ 0.33 spaces
+            num_spaces = int(value / 3)
         elif unit == 'cm':
             num_spaces = int(value * 10)  # rough approximation
         else:
@@ -79,17 +117,37 @@ def create_custom_space(width=None):
     else:
         num_spaces = 4  # fallback
 
-    # Ensure at least 1 space
-    num_spaces = max(1, num_spaces)
+    return max(1, num_spaces)
+
+
+def create_custom_space(width=None):
+    """Create cross-format horizontal space"""
+    if width is None:
+        width = BIB_NUMBER_SPACING
+
+    formatted_width = format_width(width)
+    num_spaces = width_to_spaces(formatted_width)
     docx_spaces = ' ' * num_spaces
 
     return [
-        pf.RawInline(f"\\hspace{{{width}}}", format="latex"),
+        pf.RawInline(f"\\hspace{{{formatted_width}}}", format="latex"),
         pf.RawInline(
-            f'<span style="display:inline-block;width:{width};"></span>', format="html"),
+            f'<span style="display:inline-block;width:{formatted_width};"></span>', format="html"),
         pf.RawInline(
             f'<w:r><w:t xml:space="preserve">{docx_spaces}</w:t></w:r>', format="openxml")
     ]
+
+
+def compute_label_column_width(total_entries):
+    """Return the width (em) allocated to the label column."""
+    override = to_em(BIB_LABEL_WIDTH)
+    if override:
+        return override
+
+    digits = max(1, len(str(total_entries)))
+    # Include brackets in width estimate
+    total_chars = digits + 2
+    return total_chars * CHAR_EM_WIDTH
 
 
 def prepare(doc):
@@ -119,16 +177,26 @@ def finalize(doc):
     # 合并所有条目并添加编号
     all_entries = doc.non_chinese_entries + doc.chinese_entries
     numbered_entries = []
+    max_label_width_em = compute_label_column_width(len(all_entries))
+    base_gap_em = to_em(BIB_NUMBER_SPACING) or 0.5
 
     for i, entry in enumerate(all_entries, 1):
         # 直接修改原有条目，保持所有属性和 ID
         # 在第一个段落开头插入编号
         if entry.content and isinstance(entry.content[0], pf.Para):
             first_para = entry.content[0]
-            # 在段落开头插入编号和自定义间距
-            first_para.content.insert(0, pf.Str(f"[{i}]"))
-            for space_elem in reversed(create_custom_space(BIB_NUMBER_SPACING)):
-                first_para.content.insert(1, space_elem)
+            label_text = f"[{i}]"
+            label_chars = len(label_text)
+            actual_label_width_em = max(label_chars * CHAR_EM_WIDTH, 0.4)
+            actual_label_width_em = min(
+                actual_label_width_em, max_label_width_em)
+            # Keep the paragraph indentation consistent while avoiding excessive space for short labels.
+            gap_em = max(max_label_width_em - actual_label_width_em +
+                         base_gap_em, base_gap_em * 0.5)
+
+            for space_elem in reversed(create_custom_space(gap_em)):
+                first_para.content.insert(0, space_elem)
+            first_para.content.insert(0, pf.Str(label_text))
 
         numbered_entries.append(entry)
 
