@@ -1,4 +1,4 @@
--- Process quotes for Chinese bibliographies in HTML and EPUB
+-- Process quotes for Chinese bibliographies in HTML, EPUB and LaTeX
 
 --- Copyright: © 2024–Present Tom Ben
 --- License: MIT License
@@ -8,20 +8,30 @@ function is_chinese(text)
 end
 
 function quotes_in_bib(block)
+    local left_quote = "\226\128\156"  -- “
+    local right_quote = "\226\128\157" -- ”
+
     local elements = block.c
     for i, el in ipairs(elements) do
-        if el.t == "Str" and (el.text == "“" or el.text == "”") then
+        -- Check if element is a string containing either quote mark
+        if el.t == "Str" and (el.text == left_quote or el.text == right_quote) then
+            -- Get adjacent text to check for Chinese characters
             local prev_text = i > 1 and elements[i - 1].t == "Str" and elements[i - 1].text or ""
             local next_text = i < #elements and elements[i + 1].t == "Str" and elements[i + 1].text or ""
 
+            -- Only replace quotes adjacent to Chinese text
             if is_chinese(prev_text) or is_chinese(next_text) then
+                local replaced_text
+
+                -- HTML/EPUB: Use Chinese corner brackets
                 if FORMAT:match 'html' or FORMAT:match 'epub' then
-                    local replaced_text = el.text
-                    if el.text == "“" then
-                        replaced_text = "「"
-                    elseif el.text == "”" then
-                        replaced_text = "」"
-                    end
+                    replaced_text = (el.text == left_quote) and "「" or "」"
+                    -- LaTeX: Use German quotes for intermediate processing
+                elseif FORMAT:match 'latex' then
+                    replaced_text = (el.text == left_quote) and "«" or "»"
+                end
+
+                if replaced_text then
                     elements[i] = pandoc.Str(replaced_text)
                 end
             end
