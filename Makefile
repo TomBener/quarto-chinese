@@ -67,7 +67,7 @@ watermark: pdf
 
 # Render EPUB
 epub: dependencies
-	$(QUARTO) $@ --filter _extensions/auto-correct.py
+	$(QUARTO) $@ $(FILTERS) --filter _extensions/auto-correct.py
 
 # Render Reveal.js slides
 slides: dependencies
