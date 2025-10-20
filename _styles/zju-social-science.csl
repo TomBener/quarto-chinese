@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Remove `default-locale="zh-CN"` !!-->
+<!-- Do not use `default-locale="zh-CN"` !!-->
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" names-delimiter=". " name-as-sort-order="all" sort-separator=" " demote-non-dropping-particle="never" initialize-with=" " initialize-with-hyphen="false" page-range-format="expanded">
   <info>
     <title>浙江大学社会科学类研究生参考文献规范</title>
@@ -21,7 +21,7 @@
     <category citation-format="author-date"/>
     <category field="generic-base"/>
     <summary>浙江大学社会科学类研究生学术规范</summary>
-    <updated>2025-10-14T12:17:54+00:00</updated>
+    <updated>2025-10-19T21:11:05+00:00</updated>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -45,12 +45,13 @@
   <!-- 主要责任者 -->
   <macro name="author">
     <names variable="author">
-      <!-- Separate multiple authors with the comma !!-->
+      <!-- Separate multiple authors with the comma -->
+      <!-- can add `and="symbol"` to use & connect last two authors !!-->
       <name delimiter=", ">
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
-      <et-al font-style="italic"/>
+      <!-- <et-al font-style="italic"/> -->
       <substitute>
         <names variable="composer"/>
         <names variable="illustrator"/>
@@ -71,7 +72,7 @@
       <name form="short" delimiter="&#160;" delimiter-precedes-et-al="always">
         <name-part name="family"/>
       </name>
-      <et-al font-style="italic"/>
+      <!-- <et-al font-style="italic"/> -->
       <substitute>
         <names variable="composer"/>
         <names variable="illustrator"/>
@@ -92,7 +93,6 @@
         <choose>
           <if is-numeric="volume">
             <group delimiter=" ">
-              <!-- Remove `text-case="capitalize-first"` to use `vol.` instead of `Vol.` !!-->
               <label variable="volume" form="short"/>
               <text variable="volume"/>
             </group>
@@ -112,7 +112,7 @@
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
-      <et-al font-style="italic"/>
+      <!-- <et-al font-style="italic"/> -->
       <substitute>
         <names variable="editorial-director"/>
         <names variable="collection-editor"/>
@@ -180,23 +180,12 @@
     <group delimiter=": ">
       <group delimiter=", ">
         <group delimiter=": ">
-          <choose>
-            <if type="thesis">
-              <!-- Omit publisher-place for thesis -->
-            </if>
-            <else>
-              <text variable="publisher-place"/>
-            </else>
-          </choose>
+          <text variable="publisher-place"/>
           <!-- Add `suffix=". "` for website title !!-->
           <choose>
             <if type="webpage">
               <text variable="publisher" suffix=". "/>
             </if>
-            <!-- Add `prefix=", "` for thesis !!-->
-            <else-if type="thesis">
-              <text variable="publisher" prefix=", "/>
-            </else-if>
             <else>
               <text variable="publisher"/>
             </else>
@@ -204,7 +193,7 @@
         </group>
         <!-- 非电子资源显示“出版年” -->
         <choose>
-          <if variable="publisher page" type="book chapter paper-conference thesis" match="any">
+          <if variable="page" type="book chapter paper-conference thesis report" match="any">
             <text macro="issued-year"/>
           </if>
           <else-if variable="URL DOI" match="none">
@@ -216,10 +205,9 @@
     </group>
     <choose>
       <!-- 纯电子资源显示“更新或修改日期” -->
-      <!-- Remove `publisher` as the `organization` field in biblatex's `online` entry equals to `publisher` !!-->
       <if variable="page" type="book chapter paper-conference thesis" match="none">
         <choose>
-          <if variable="URL" match="any">
+          <if variable="URL">
             <text macro="issued-date" prefix="(" suffix=")"/>
           </if>
         </choose>
@@ -234,7 +222,7 @@
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
-      <et-al font-style="italic"/>
+      <!-- <et-al font-style="italic"/> -->
       <label form="short" prefix=", "/>
     </names>
     <!-- Separate `translator` and `editor` !!-->
@@ -250,7 +238,7 @@
             <name-part name="family"/>
             <name-part name="given"/>
           </name>
-          <et-al font-style="italic"/>
+          <!-- <et-al font-style="italic"/> -->
           <label form="short" prefix=", "/>
         </names>
       </else>
@@ -301,7 +289,6 @@
             </if>
           </choose>
           <choose>
-            <!-- Remove `report` to not display `number` here !!-->
             <if type="bill legal_case legislation patent regulation standard" match="any">
               <text variable="number"/>
             </if>
@@ -391,7 +378,7 @@
         </else>
       </choose>
       <choose>
-        <if variable="URL" match="any">
+        <if variable="URL">
           <text value="OL"/>
         </if>
       </choose>
@@ -418,15 +405,6 @@
       <text macro="title"/>
       <text macro="secondary-contributor"/>
       <text macro="edition"/>
-      <text macro="publishing"/>
-      <text macro="access"/>
-    </group>
-  </macro>
-  <!-- 学位论文布局 !!-->
-  <macro name="thesis-layout">
-    <group delimiter=". " suffix=".">
-      <text macro="author"/>
-      <text macro="title"/>
       <text macro="publishing"/>
       <text macro="access"/>
     </group>
@@ -487,8 +465,7 @@
     <group delimiter=". " suffix=".">
       <text macro="author"/>
       <text macro="title"/>
-      <!-- Add version number for software !!-->
-      <text variable="version"/>
+      <!-- <text variable="version"/> -->
       <text macro="container-title"/>
       <text macro="publishing"/>
       <text macro="access"/>
@@ -520,7 +497,6 @@
       <else-if type="patent">
         <text macro="patent-layout"/>
       </else-if>
-      <!-- Add `chapter`, remove `variable="container-title"` !!-->
       <else-if type="paper-conference chapter" match="any">
         <text macro="chapter-in-book-layout"/>
       </else-if>
@@ -539,7 +515,7 @@
       <text macro="citation-layout"/>
     </layout>
   </citation>
-  <bibliography entry-spacing="0" et-al-min="4" et-al-use-first="3">
+  <bibliography hanging-indent="true" entry-spacing="0" et-al-min="4" et-al-use-first="3">
     <layout>
       <text macro="entry-layout"/>
     </layout>
