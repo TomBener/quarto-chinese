@@ -418,7 +418,7 @@
     },
     "title": "Retrieval-augmented generation for large language models: a survey",
     "title-short": "Retrieval-augmented generation for large language models",
-    "type": "webpage"
+    "type": "article"
   },
   {
     "author": [
@@ -1104,7 +1104,7 @@
     },
     "title": "The dawn of LMMs: preliminary explorations with GPT-4V(ision)",
     "title-short": "The dawn of LMMs",
-    "type": "webpage"
+    "type": "article"
   },
   {
     "DOI": "10.11821/dlxb202004014",
@@ -2001,7 +2001,6 @@
         "given": "Peter Mattias"
       }
     ],
-    "genre": "preprint",
     "id": "dahlgren2022",
     "issued": {
       "date-parts": [
@@ -2013,9 +2012,9 @@
       ]
     },
     "publisher": "Open Science Framework",
-    "title": "Instructions for Reviewer 2: how to reject a manuscript for arbitrary reasons",
-    "title-short": "Instructions for Reviewer 2",
-    "type": "report"
+    "title": "Instructions for reviewer 2: how to reject a manuscript for arbitrary reasons",
+    "title-short": "Instructions for reviewer 2",
+    "type": "article"
   },
   {
     "URL": "https://www.ohchr.org/en/instruments-mechanisms/instruments/general-assembly-resolution-1803-xvii-14-december-1962-permanent",
@@ -2126,7 +2125,7 @@
     },
     "title": "Gemini 1.5: unlocking multimodal understanding across millions of tokens of context",
     "title-short": "Gemini 1.5",
-    "type": "webpage"
+    "type": "article"
   },
   {
     "DOI": "10.1162/ISEC.a.5",
