@@ -954,6 +954,16 @@
     "type": "book"
   },
   {
+    "id": "hessler2021",
+    "accessed": {
+      "date-parts": [
+        [
+          "2021",
+          10,
+          2
+        ]
+      ]
+    },
     "author": [
       {
         "family": "Hessler",
@@ -961,11 +971,10 @@
       }
     ],
     "container-title": "The New Yorker",
-    "id": "hessler2021",
     "issued": {
       "date-parts": [
         [
-          2021,
+          "2021",
           12,
           27
         ]
@@ -973,10 +982,20 @@
     },
     "page": "45-55",
     "title": "China’s reform generation adapts to life in the middle class",
-    "type": "article-magazine"
+    "type": "article-magazine",
+    "URL": "https://www.newyorker.com/magazine/2022/01/03/chinas-reform-generation-adapts-to-life-in-the-middle-class"
   },
   {
     "id": "congdon2014",
+    "accessed": {
+      "date-parts": [
+        [
+          "2021",
+          10,
+          4
+        ]
+      ]
+    },
     "author": [
       {
         "family": "Congdon",
@@ -1001,10 +1020,10 @@
         ]
       ]
     },
-    "section": "Workspaces design",
     "title": "Balancing “we” and “me”: the best collaborative spaces also support solitude",
     "title-short": "Balancing “we” and “me”",
-    "type": "article-magazine"
+    "type": "article-magazine",
+    "URL": "https://hbr.org/2014/10/balancing-we-and-me-the-best-collaborative-spaces-also-support-solitude"
   },
   {
     "author": [
@@ -2190,7 +2209,6 @@
       }
     ],
     "DOI": "10.7666/d.y955345",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/Thesis/刘卓 - 2006 - 新疆的内地商人研究——以晚清、民国为中心.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2212,7 +2230,6 @@
       }
     ],
     "DOI": "10.7666/d.y9026491",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/Thesis/张准 - 2009 - 美国镀金时代经济发展研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2233,7 +2250,6 @@
         "literal": "贾建飞"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/Thesis/贾建飞 - 2002 - 晚清西北史地学研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2255,7 +2271,6 @@
       }
     ],
     "DOI": "10.27461/d.cnki.gzjdx.2022.000798",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/Thesis/姚妤婷 - 2022 - 利益、权利与规则：征地冲突研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2277,7 +2292,6 @@
         "literal": "欧阳云梓"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/Thesis/欧阳云梓 - 2002 - 中苏关系中的新疆问题研究（1933–1949）.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2298,7 +2312,6 @@
         "literal": "迟闯"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/Thesis/迟闯 - 2008 - 俄罗斯远东地区自然资源开发利用与中俄资源合作研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2319,7 +2332,6 @@
         "literal": "王鸣野"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/Thesis/王鸣野 - 2005 - 清季新疆二十八年——以军政一体化为中心.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2340,7 +2352,6 @@
         "literal": "刘喜韬"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/Thesis/刘喜韬 - 2008 - 新疆生产建设兵团与地方用地合作模式研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2362,7 +2373,6 @@
       }
     ],
     "DOI": "10.7666/d.y1171452",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/thesis/吴轶群 - 2007 - 清代新疆边境地区城市对比研究——以伊犁、喀什噶尔为中心.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2384,7 +2394,6 @@
       }
     ],
     "DOI": "10.27461/d.cnki.gzjdx.2019.000562",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/thesis/莫智斌 - 2020 - 城乡住宅用地权能差异研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2405,7 +2414,6 @@
         "literal": "王江"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/Thesis/王江 - 2007 - 《禹贡》半月刊研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2426,7 +2434,6 @@
         "literal": "高月"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/高月 - 2011 - 清末东北新政研究——近代中国民族国家构建视野下的疆域统合.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2448,7 +2455,6 @@
       }
     ],
     "DOI": "10.27461/d.cnki.gzjdx.2023.000024",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/thesis/吕悦风 - 2023 - 城乡生态系统服务流的传导机理与量化模拟研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2470,7 +2476,6 @@
       }
     ],
     "DOI": "10.7666/d.y769580",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/刘超 - 2005 - 民族主义与中国历史书写——清末民国时期中学中国历史教科书研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2491,7 +2496,6 @@
         "literal": "惠泽宇"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/thesis/惠泽宇 - 2013 - 民族地区资源开发中少数民族利益保障研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2513,7 +2517,6 @@
       }
     ],
     "DOI": "10.27479/d.cnki.gzgcd.2019.000013",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/孙雯 - 2020 - 中国民族国家构建与边疆民族地区治理.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2534,7 +2537,6 @@
         "literal": "宫富"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/宫富 - 2004 - 民族想象与国家叙事——“战国策派”的文化思想与文学形态研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2555,7 +2557,6 @@
         "literal": "阮南燕"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/阮南燕 - 2007 - 民族国家戏剧：想象、建构与歧路——1949–1966中国话剧创作研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2577,7 +2578,6 @@
       }
     ],
     "DOI": "10.27235/d.cnki.gnjiu.2016.000894",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/殷璐 - 2016 - 民族国家想象下的现代性追求——清末民初的中国戏剧转型.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2598,7 +2598,6 @@
         "literal": "朱耀辉"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/朱耀辉 - 2004 - 城市文明与近代西欧民族国家的兴起——以英国和法国为讨论中心（12–17世纪）.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2619,7 +2618,6 @@
         "literal": "李晓鹏"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/李晓鹏 - 2014 - 迈向后现代国家：现代国家建构及其未来.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2641,7 +2639,6 @@
         "literal": "张腾"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/张腾 - 2013 - 从王朝体系到民族国家——清朝民族政策调整及其变化.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2664,7 +2661,6 @@
         "literal": "万涛"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/万涛 - 2014 - 近代大学的国家主义取向.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2686,7 +2682,6 @@
         "literal": "刘晔"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/刘晔 - 2002 - 迈向现代国家：知识分子与近代中国国家建设.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2711,7 +2706,6 @@
       }
     ],
     "DOI": "10.27159/d.cnki.ghzsu.2021.003441",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/杨明 - 2021 - 联合到对立：村寨社会结构与国家边疆建设策略.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2734,7 +2728,6 @@
       }
     ],
     "DOI": "10.27149/d.cnki.ghdsu.2021.002844",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Xinjiang/thesis/尹威 - 2021 - 抗战时期的边地书写研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2756,7 +2749,6 @@
       }
     ],
     "DOI": "10.7666/d.y1821225",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Resource Frontier/thesis/林士俊 - 2011 - 清末边疆治理与国家整合研究.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2777,7 +2769,6 @@
         "literal": "张媛"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/张媛 - 2014 - 媒介、地理与认同：中国西南地区少数民族国家认同的形成与变迁.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2799,7 +2790,6 @@
         "literal": "马雪峰"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/马雪峰 - 2007 - 近代民族主义背景下的社群构建.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2822,7 +2812,6 @@
       }
     ],
     "DOI": "10.7666/d.y650887",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/胡涤非 - 2005 - 近代中国政治变迁中的民族主义.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2844,7 +2833,6 @@
       }
     ],
     "DOI": "10.7666/d.y1970854",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/thesis/江远山 - 2009 - 近代中国地域政治化研究——以广东为考察对象.pdf",
     "genre": "博士学位论文",
     "issued": {
       "date-parts": [
@@ -2866,7 +2854,6 @@
         "literal": "杜重遠"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/book/杜重遠 - 1936 - 獄中雜感.pdf",
     "issued": {
       "date-parts": [
         [
@@ -2887,7 +2874,6 @@
       }
     ],
     "DOI": "10.1515/9780691246727",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Brown - 2023 - Laws of the Land.pdf",
     "issued": {
       "date-parts": [
         [
@@ -2910,7 +2896,6 @@
       }
     ],
     "DOI": "10.1515/9780691237190",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Chiang - 2022 - Study Gods.pdf",
     "issued": {
       "date-parts": [
         [
@@ -2939,7 +2924,6 @@
     "container-title": "China Information",
     "container-title-short": "China Inf.",
     "DOI": "10.1177/0920203X231220191",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/journalArticle/Ke - 2024 - Ritual narratives of infrastructure ceremonies.pdf",
     "issue": "1",
     "issued": {
       "date-parts": [
@@ -2965,7 +2949,6 @@
       }
     ],
     "DOI": "10.1093/oso/9780197545645.001.0001",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Gill - 2022 - Daring to Struggle.pdf",
     "issued": {
       "date-parts": [
         [
@@ -2993,7 +2976,6 @@
         "given": "Alexandros"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Pantucci - 2022 - Sinostan.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3038,7 +3020,6 @@
       }
     ],
     "DOI": "10.4324/9781003049319",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Qiaoan - 2022 - Civil Society in China.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3061,7 +3042,6 @@
       }
     ],
     "DOI": "10.4324/9781003231783",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/Book/Lin - 2023 - Red Tourism in China.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3084,7 +3064,6 @@
       }
     ],
     "DOI": "10.1515/9783110798920",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Sung - 2024 - Women of Chinese Modern Art.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3117,7 +3096,6 @@
         "given": "Longguo"
       }
     ],
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Wang - 2022 - Western Historiography in Asia.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3142,7 +3120,6 @@
       }
     ],
     "DOI": "10.1515/9781501512551",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Grey - 2021 - Language Rights in a Changing China.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3167,7 +3144,6 @@
       }
     ],
     "DOI": "10.1515/9783110740189",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Xu - 2021 - From Culturalist Nationalism to Conservatism.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3192,7 +3168,6 @@
       }
     ],
     "DOI": "10.18574/nyu/9781479811854.001.0001",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/Book/Tan - 2023 - Digital Masquerade.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3217,7 +3192,6 @@
       }
     ],
     "DOI": "10.4324/9781003240365",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Segawa - 2022 - Ancestral Genealogies in Modern China.epub",
     "issued": {
       "date-parts": [
         [
@@ -3240,7 +3214,6 @@
       }
     ],
     "DOI": "10.1525/9780520972636",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Ng - 2020 - A Time of Lost Gods.pdf",
     "issued": {
       "date-parts": [
         [
@@ -3269,7 +3242,6 @@
     "container-title": "Journal of Contemporary China",
     "container-title-short": "J. Contemp. China",
     "DOI": "10.1080/10670564.2024.2339303",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Nationalism/journalArticle/He - 2025 - Constructed Community.pdf",
     "issue": "153",
     "issued": {
       "date-parts": [
@@ -3297,7 +3269,6 @@
     "container-title": "China Information",
     "container-title-short": "China Inf.",
     "DOI": "10.1177/0920203X231193086",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/journalArticle/Hasmath - 2024 - The operations of contemporary Han Chinese privilege.pdf",
     "issue": "1",
     "issued": {
       "date-parts": [
@@ -3366,7 +3337,6 @@
     "container-title": "Journal of Chinese Governance",
     "container-title-short": "J. Chin. Gov.",
     "DOI": "10.1080/23812346.2024.2332005",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Others/journalArticle/Meng - 2024 - Making Agile Governance Work.pdf",
     "issue": "2",
     "issued": {
       "date-parts": [
@@ -3392,7 +3362,6 @@
       }
     ],
     "DOI": "10.12987/9780300274875",
-    "file": "/Users/rentao/Library/Mobile Documents/com~apple~CloudDocs/Zotero/Inbox/Book/Rentola - 2024 - How Finland Survived Stalin.pdf",
     "issued": {
       "date-parts": [
         [
