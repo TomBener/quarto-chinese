@@ -34,7 +34,7 @@ FILTERS := -L _extensions/localize-cnbib.lua \
 	-L _extensions/cnbib-quotes.lua \
 	-L _extensions/remove-doi-hyperlinks.lua \
 	-L _extensions/capitalize-subtitle.lua \
-	--filter _extensions/sort-cnbib.py
+	--filter _extensions/sort-bib.py
 
 # Render DOCX
 docx: dependencies
