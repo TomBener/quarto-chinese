@@ -30,11 +30,12 @@ citedoc:
 dependencies:
 	@python _extensions/format-md.py
 
+# `-L _extensions/remove-doi-hyperlinks.lua` can be added to remove DOI hyperlinks
+# `-L _extensions/capitalize-subtitle.lua` can be added to capitalize subtitles,
+# as required by APA or similar styles
 QUARTO := @quarto render index.qmd --to
 FILTERS := -L _extensions/localize-cnbib.lua \
 	-L _extensions/cnbib-quotes.lua \
-	-L _extensions/remove-doi-hyperlinks.lua \
-	-L _extensions/capitalize-subtitle.lua \
 	--filter _extensions/sort-bib.py
 AUTOCORRECT := --filter _extensions/auto-correct.py
 
