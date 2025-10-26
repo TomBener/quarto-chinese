@@ -1,8 +1,9 @@
 # `make` or `make all`: Render DOCX, HTML, PDF, EPUB and Reveal.js slides at once.
 # `make docx`: Render DOCX.
 # `make html`: Render HTML.
-# `make pdf`: Render PDF.
 # `make epub`: Render EPUB.
+# `make typst`: Render PDF via Typst.
+# `make pdf`: Render PDF via LaTeX
 # `make slides`: Render Reveal.js slides.
 # `make print`: Render PDF for print.
 # `make watermark`: Render PDF with watermark.
@@ -10,9 +11,9 @@
 # `make citedoc`: Copy cited reference files to a specified directory.
 # `make clean`: Remove auxiliary and output files.
 
-# Render DOCX, HTML, PDF, EPUB and Reveal.js slides at once
+# Render DOCX, HTML, EPUB, PDF (via LaTeX or Typst) at once
 .PHONY: all
-all: docx html pdf epub slides
+all: docx html epub typst pdf slides
 
 # Extract all cited bibliographies
 .PHONY: citebib
@@ -35,6 +36,7 @@ FILTERS := -L _extensions/localize-cnbib.lua \
 	-L _extensions/remove-doi-hyperlinks.lua \
 	-L _extensions/capitalize-subtitle.lua \
 	--filter _extensions/sort-bib.py
+AUTOCORRECT := --filter _extensions/auto-correct.py
 
 # Render DOCX
 docx: dependencies
@@ -42,19 +44,26 @@ docx: dependencies
 
 # Render HTML
 html: dependencies
-	$(QUARTO) $@ $(FILTERS) --filter _extensions/auto-correct.py
+	$(QUARTO) $@ $(FILTERS) $(AUTOCORRECT)
 
-# Render PDF
+# Render EPUB
+epub: dependencies
+	$(QUARTO) $@ $(FILTERS) $(AUTOCORRECT)
+
+# Render PDF via LaTeX
 pdf: dependencies
 	$(QUARTO) $@ $(FILTERS) $(if $(findstring pdf,$@),--output $(PDF_OUTPUT) $(PDF_OPTION))
+
+# Render PDF via Typst
+typst: dependencies
+	$(QUARTO) $@ $(FILTERS)
 
 # Initial PDF settings
 PDF_OUTPUT := index.pdf
 
 # Special handling for print PDF
 .PHONY: print
-print: PDF_OPTION := -V draft -M biblatexoptions="backend=biber,backref=false,dashed=false, \
-gblabelref=false,gblanorder=englishahead,gbnamefmt=lowercase,gbfieldtype=true,doi=false"
+print: PDF_OPTION := -V print
 print: PDF_OUTPUT := print.pdf
 print: pdf
 
@@ -64,15 +73,11 @@ watermark: PDF_OPTION := -V watermark=true
 watermark: PDF_OUTPUT := watermark.pdf
 watermark: pdf
 
-# Render EPUB
-epub: dependencies
-	$(QUARTO) $@ $(FILTERS) --filter _extensions/auto-correct.py
-
 # Render Reveal.js slides
 slides: dependencies
-	@quarto render slides.qmd --to revealjs --filter _extensions/auto-correct.py
+	@quarto render slides.qmd --to revealjs $(AUTOCORRECT)
 
 # Clean up generated files
 .PHONY: clean
 clean:
-	@$(RM) -r .quarto .jupyter_cache *_cache *_files _freeze contents_tmp cite* outputs
+	@$(RM) -r .quarto *_cache *_files _freeze *_tmp cite* _outputs
