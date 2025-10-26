@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Do not use `default-locale="zh-CN"` !!-->
+<!-- Remove `default-locale="zh-CN"` !!-->
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" names-delimiter=". " name-as-sort-order="all" sort-separator=" " demote-non-dropping-particle="never" initialize-with=" " initialize-with-hyphen="false" page-range-format="expanded">
   <info>
-    <title>浙江大学社会科学类研究生参考文献规范</title>
-    <id>https://www.zotero.org/styles/zju-social-science</id>
-    <link href="https://www.zotero.org/styles/zju-social-science" rel="self"/>
-    <link href="http://www.grs.zju.edu.cn/2008/0825/c62927a2741378/page.htm" rel="documentation"/>
+    <title>China National Standard GB/T 7714-2015 (author-date)</title>
+    <id>https://www.zotero.org/styles/china-national-standard-gb-t-7714-2015-author-date</id>
+    <link href="https://www.zotero.org/styles/china-national-standard-gb-t-7714-2015-author-date" rel="self"/>
+    <link href="https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D8055ED3A7E05397BE0A0AB82A" rel="documentation"/>
     <author>
       <name>牛耕田</name>
       <email>buffalo_d@163.com</email>
@@ -20,8 +20,8 @@
     </contributor>
     <category citation-format="author-date"/>
     <category field="generic-base"/>
-    <summary>浙江大学社会科学类研究生学术规范</summary>
-    <updated>2025-10-20T15:01:37+00:00</updated>
+    <summary>The Chinese GB/T 7714-2015 author-date style</summary>
+    <updated>2025-10-26T18:50:13+00:00</updated>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -45,13 +45,13 @@
   <!-- 主要责任者 -->
   <macro name="author">
     <names variable="author">
-      <!-- Separate multiple authors with the comma -->
-      <!-- can add `and="symbol"` to use & connect last two authors !!-->
+      <!-- Separate multiple authors with the comma !!-->
       <name delimiter=", ">
+        <!-- Remove `text-case="uppercase"` in `<name-part name="family" text-case="uppercase"/>` !!-->
+        <!-- `text-case="capitalize-first"` can be used, but not set for preserving particle names like `van`, `von` !!-->
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
-      <!-- <et-al font-style="italic"/> -->
       <substitute>
         <names variable="composer"/>
         <names variable="illustrator"/>
@@ -65,6 +65,13 @@
       </substitute>
     </names>
   </macro>
+  <!-- 参考文献表的著者姓名与出版年 -->
+  <macro name="author-date">
+    <group delimiter=", ">
+      <text macro="author"/>
+      <text macro="issued-year"/>
+    </group>
+  </macro>
   <!-- 正文引用的著者姓名 -->
   <macro name="author-intext">
     <names variable="author">
@@ -72,7 +79,6 @@
       <name form="short" delimiter="&#160;" delimiter-precedes-et-al="always">
         <name-part name="family"/>
       </name>
-      <!-- <et-al font-style="italic"/> -->
       <substitute>
         <names variable="composer"/>
         <names variable="illustrator"/>
@@ -93,6 +99,7 @@
         <choose>
           <if is-numeric="volume">
             <group delimiter=" ">
+              <!-- Remove `text-case="capitalize-first"` to use `vol.` instead of `Vol.` !!-->
               <label variable="volume" form="short"/>
               <text variable="volume"/>
             </group>
@@ -112,7 +119,6 @@
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
-      <!-- <et-al font-style="italic"/> -->
       <substitute>
         <names variable="editorial-director"/>
         <names variable="collection-editor"/>
@@ -191,24 +197,16 @@
             </else>
           </choose>
         </group>
-        <!-- 非电子资源显示“出版年” -->
-        <choose>
-          <if variable="page" type="book chapter paper-conference thesis" match="any">
-            <text macro="issued-year"/>
-          </if>
-          <else-if variable="URL DOI" match="none">
-            <text macro="issued-year"/>
-          </else-if>
-        </choose>
       </group>
       <text variable="page"/>
     </group>
     <choose>
       <!-- 纯电子资源显示“更新或修改日期” -->
+      <!-- Remove `publisher` as the `organization` field in biblatex's `online` entry equals to `publisher` !!-->
       <if variable="page" type="book chapter paper-conference thesis" match="none">
         <choose>
           <if variable="URL DOI" match="any">
-            <text macro="issued-date" prefix=". (" suffix=")"/>
+            <text macro="issued-date" prefix="(" suffix=")"/>
           </if>
         </choose>
       </if>
@@ -222,7 +220,6 @@
         <name-part name="family"/>
         <name-part name="given"/>
       </name>
-      <!-- <et-al font-style="italic"/> -->
       <label form="short" prefix=", "/>
     </names>
     <!-- Separate `translator` and `editor` !!-->
@@ -238,7 +235,6 @@
             <name-part name="family"/>
             <name-part name="given"/>
           </name>
-          <!-- <et-al font-style="italic"/> -->
           <label form="short" prefix=", "/>
         </names>
       </else>
@@ -255,12 +251,6 @@
               <if type="article-newspaper">
                 <text macro="issued-date"/>
               </if>
-              <else-if type="article-magazine">
-                <!-- Do nothing for article-magazine !!-->
-              </else-if>
-              <else>
-                <text macro="issued-year"/>
-              </else>
             </choose>
             <text variable="volume"/>
           </group>
@@ -289,6 +279,7 @@
             </if>
           </choose>
           <choose>
+            <!-- Remove `report` to not display `number` here !!-->
             <if type="bill legal_case legislation patent regulation standard" match="any">
               <text variable="number"/>
             </if>
@@ -326,7 +317,8 @@
               <text value="A"/>
             </if>
             <else>
-              <text value="M"/>
+              <!-- Preprint in json -->
+              <text value="EB"/>
             </else>
           </choose>
         </if>
@@ -378,7 +370,7 @@
         </else>
       </choose>
       <choose>
-        <if variable="URL">
+        <if variable="URL DOI" match="any">
           <text value="OL"/>
         </if>
       </choose>
@@ -386,7 +378,10 @@
   </macro>
   <!-- 获取和访问路径、数字对象唯一标识符 -->
   <macro name="access">
-    <text variable="URL"/>
+    <group delimiter=". ">
+      <text variable="URL"/>
+      <text variable="DOI" prefix="DOI: "/>
+    </group>
   </macro>
   <!-- 连续出版物的年卷期 -->
   <macro name="year-volume-issue">
@@ -401,7 +396,7 @@
   <!-- 专著 -->
   <macro name="monograph-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author"/>
+      <text macro="author-date"/>
       <text macro="title"/>
       <text macro="secondary-contributor"/>
       <text macro="edition"/>
@@ -412,7 +407,7 @@
   <!-- 专著中的析出文献 -->
   <macro name="chapter-in-book-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author"/>
+      <text macro="author-date"/>
       <group delimiter="//">
         <group delimiter=". ">
           <text macro="title"/>
@@ -431,7 +426,7 @@
   <!-- 连续出版物 -->
   <macro name="serial-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author"/>
+      <text macro="author-date"/>
       <text macro="title"/>
       <text macro="year-volume-issue"/>
       <text macro="publishing"/>
@@ -441,7 +436,7 @@
   <!-- 连续出版物中的析出文献 -->
   <macro name="article-in-periodical-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author"/>
+      <text macro="author-date"/>
       <text macro="title"/>
       <text macro="periodical-publishing"/>
       <text macro="access"/>
@@ -450,7 +445,7 @@
   <!-- 专利文献 -->
   <macro name="patent-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author"/>
+      <text macro="author-date"/>
       <text macro="title"/>
       <group>
         <text macro="issued-date"/>
@@ -463,9 +458,10 @@
   <!-- Add `web-layout` !!-->
   <macro name="web-layout">
     <group delimiter=". " suffix=".">
-      <text macro="author"/>
+      <text macro="author-date"/>
       <text macro="title"/>
-      <!-- <text variable="version"/> -->
+      <!-- Add version number for software !!-->
+      <text variable="version"/>
       <text macro="container-title"/>
       <text macro="publishing"/>
       <text macro="access"/>
@@ -497,6 +493,7 @@
       <else-if type="patent">
         <text macro="patent-layout"/>
       </else-if>
+      <!-- Add `chapter`, remove `variable="container-title"` !!-->
       <else-if type="paper-conference chapter" match="any">
         <text macro="chapter-in-book-layout"/>
       </else-if>
@@ -516,6 +513,11 @@
     </layout>
   </citation>
   <bibliography hanging-indent="true" entry-spacing="0" et-al-min="4" et-al-use-first="3">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued-year"/>
+      <key variable="title"/>
+    </sort>
     <layout>
       <text macro="entry-layout"/>
     </layout>
