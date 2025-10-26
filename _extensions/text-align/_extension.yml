@@ -1,7 +1,7 @@
-title: Right Align Text
+title: Right or Center Align Text
 author: Tom Ben
 version: 1.0.0
 quarto-required: ">=1.5.0"
 contributes:
   filters:
-    - right-align.lua
+    - text-align.lua
