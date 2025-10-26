@@ -1,0 +1,369 @@
+// Use Chinese fake bold for strong text
+#import "@preview/cuti:0.3.0": show-cn-fakebold
+#show: show-cn-fakebold
+
+// Latin font for smart quotes
+// Chinese quotes use FangSong font
+#show smartquote: set text(font: "$mainfont$")
+
+// Define replacements for Chinese quotation marks
+#show "«": [“]
+#show "»": [”]
+#show "‹": [‘]
+#show "›": [’]
+
+#let punct = sym => text(font: "Palatino")[#sym]
+#show "[": sym => punct(sym)
+#show "]": sym => punct(sym)
+#show "(": sym => punct(sym)
+#show ")": sym => punct(sym)
+#show "·": sym => punct(sym)
+
+// Display block code in a larger block with more padding.
+#show raw.where(block: true): block.with(
+  fill: luma(240),
+  inset: 10pt,
+  radius: 4pt,
+  width: 100%
+)
+
+#let content-to-string(content) = {
+  if content.has("text") {
+    content.text
+  } else if content.has("children") {
+    content.children.map(content-to-string).join("")
+  } else if content.has("body") {
+    content-to-string(content.body)
+  } else if content == [ ] {
+    " "
+  }
+}
+#let conf(
+  title: none,
+  subtitle: none,
+  authors: (),
+  keywords: (),
+  date: none,
+  abstract-title: none,
+  abstract: none,
+  thanks: none,
+  cols: 1,
+  margin: (x: 1.25in, y: 1.25in),
+  paper: "us-letter",
+  lang: "en",
+  region: "US",
+  font: (),
+  fontsize: 11pt,
+  mathfont: none,
+  codefont: none,
+  linestretch: 1,
+  sectionnumbering: none,
+  linkcolor: none,
+  citecolor: none,
+  filecolor: none,
+  pagenumbering: "1",
+  doc,
+) = {
+  set document(
+    title: title,
+    keywords: keywords,
+  )
+  set document(
+      author: authors.map(author => content-to-string(author.name)).join(", ", last: " & "),
+  ) if authors != none and authors != ()
+  set page(
+    paper: paper,
+    margin: margin,
+    numbering: pagenumbering,
+
+    // Header and footer
+    header: context {
+      let page-counter = counter(page).get().first()
+      if page-counter > 0 {
+        let elems = query(selector(heading.where(level: 1)).before(here()))
+        let chapter-title = if elems.len() > 0 {
+          content-to-string(elems.last().body)
+        } else {
+          ""
+        }
+
+        set text(size: 10.5pt, font: "SimSun")
+        grid(
+          columns: (1fr, 1fr),
+          align: (left, right),
+          [浙江大学博士学位论文],
+          [#chapter-title]
+        )
+        v(-8pt)
+        line(length: 100%, stroke: 0.6pt)
+      }
+    },
+    footer: context align(center)[
+      #text(size: 10pt)[#counter(page).display()]
+    ],
+  )
+
+  set par(
+    justify: true,
+    leading: linestretch * 0.65em,
+    first-line-indent: (amount: 2em, all: true)
+  )
+  // citeproc marks the bibliography container with label refs; override indent there
+  let bib-indent = 2.65em
+  show block.where(label: <refs>): bib => {
+    set par(first-line-indent: 0em, hanging-indent: bib-indent)
+    bib
+  }
+  set text(lang: lang,
+           region: region,
+           font: font,
+           size: fontsize)
+
+  show math.equation: set text(font: mathfont) if mathfont != none
+  show raw: set text(font: codefont) if codefont != none
+
+  set heading(numbering: sectionnumbering)
+
+  // Heading styles
+  show heading.where(level: 1): it => {
+    set text(size: 16pt, weight: "bold")
+    v(12pt)  // beforeskip
+    it
+    v(6pt)   // afterskip
+  }
+
+  show heading.where(level: 2): it => {
+    set text(size: 14pt, weight: "bold")
+    v(13pt)  // beforeskip
+    it
+    v(13pt)  // afterskip
+  }
+
+  show heading.where(level: 3): it => {
+    set text(size: 12pt, weight: "bold")
+    v(13pt)  // beforeskip
+    it
+    v(13pt)  // afterskip
+  }
+
+  show heading.where(level: 4): it => {
+    set text(size: 12pt, weight: "regular")
+    v(0pt)   // beforeskip
+    it
+    v(0pt)   // afterskip
+  }
+
+  show link: set text(fill: rgb(content-to-string(linkcolor))) if linkcolor != none
+  show ref: set text(fill: rgb(content-to-string(citecolor))) if citecolor != none
+  show link: this => {
+    if filecolor != none and type(this.dest) == label {
+      text(this, fill: rgb(content-to-string(filecolor)))
+    } else {
+      text(this)
+    }
+  }
+
+  block(below: 3em, width: 100%)[
+    #if title != none {
+      align(center, block[
+          #text(weight: "bold", size: 1.8em)[#title #if thanks != none {
+              footnote(thanks, numbering: "*")
+              counter(footnote).update(n => n - 1)
+            }]
+          #(
+            if subtitle != none {
+              parbreak()
+              text(weight: "bold", size: 1.25em)[#subtitle]
+            }
+           )])
+    }
+
+    #if abstract != none {
+      block(inset: 2em)[
+        #text(weight: "semibold")[#abstract-title] #h(1em) #abstract
+      ]
+    }
+  ]
+
+  doc
+}
+
+// Style block and inline quotes: gray, no indent
+#show quote: q => {
+  if q.block {
+    block(
+      inset: (left: 5pt, right: 5pt),
+    )[
+      #set text(fill: gray)
+      #q.body
+    ]
+  } else {
+    text(fill: gray)[#q.body]
+  }
+}
+
+// Boilerplate Pandoc template
+
+#let horizontalrule = line(start: (25%,0%), end: (75%,0%))
+
+#show terms: it => {
+  it.children
+    .map(child => [
+      #strong[#child.term]
+      #block(inset: (left: 1.5em, top: -0.4em))[#child.description]
+      ])
+    .join()
+}
+
+#set table(
+  inset: 6pt,
+  stroke: none
+)
+
+#show figure.where(
+  kind: table
+): set figure.caption(position: $if(table-caption-position)$$table-caption-position$$else$top$endif$)
+
+#show figure.where(
+  kind: image
+): set figure.caption(position: $if(figure-caption-position)$$figure-caption-position$$else$bottom$endif$)
+
+$if(highlighting-definitions)$
+// syntax highlighting functions from skylighting:
+$highlighting-definitions$
+
+$endif$
+
+$if(smart)$
+$else$
+#set smartquote(enabled: false)
+
+$endif$
+$for(header-includes)$
+$header-includes$
+
+$endfor$
+#show: doc => conf(
+$if(title)$
+  title: [$title$],
+$endif$
+$if(subtitle)$
+  subtitle: [$subtitle$],
+$endif$
+$if(author)$
+  authors: (
+$for(author)$
+$if(author.name)$
+    ( name: [$author.name$],
+      affiliation: [$author.affiliation$],
+      email: [$author.email$] ),
+$else$
+    ( name: [$author$],
+      affiliation: "",
+      email: "" ),
+$endif$
+$endfor$
+    ),
+$endif$
+$if(keywords)$
+  keywords: ($for(keywords)$$keyword$$sep$,$endfor$),
+$endif$
+$if(date)$
+  date: [$date$],
+$endif$
+$if(lang)$
+  lang: "$lang$",
+$endif$
+$if(region)$
+  region: "$region$",
+$endif$
+$if(abstract-title)$
+  abstract-title: [$abstract-title$],
+$endif$
+$if(abstract)$
+  abstract: [$abstract$],
+$endif$
+$if(thanks)$
+  thanks: [$thanks$],
+$endif$
+$if(margin)$
+  margin: ($for(margin/pairs)$$margin.key$: $margin.value$,$endfor$),
+$endif$
+$if(papersize)$
+  paper: "$papersize$",
+$endif$
+$if(mainfont)$
+  font: (
+    (
+      name: "$mainfont$",
+      covers: "$if(covers)$$covers$$else$latin-in-cjk$endif$"
+    ),
+    (
+      name: "Noto Serif CJK SC", // Different font for dashes
+      covers: regex("[–—]"),
+    ),
+  $for(mainfontfallback)$ "$mainfontfallback$",$endfor$
+  ),
+$endif$
+$if(fontsize)$
+  fontsize: $fontsize$,
+$endif$
+$if(mathfont)$
+  mathfont: ($for(mathfont)$"$mathfont$",$endfor$),
+$endif$
+$if(codefont)$
+  codefont: ($for(codefont)$"$codefont$",$endfor$),
+$endif$
+$if(linestretch)$
+  linestretch: $linestretch$,
+$endif$
+$if(section-numbering)$
+  sectionnumbering: "$section-numbering$",
+$endif$
+  pagenumbering: $if(page-numbering)$"$page-numbering$"$else$none$endif$,
+$if(linkcolor)$
+  linkcolor: [$linkcolor$],
+$endif$
+$if(citecolor)$
+  citecolor: [$citecolor$],
+$endif$
+$if(filecolor)$
+  filecolor: [$filecolor$],
+$endif$
+  cols: $if(columns)$$columns$$else$1$endif$,
+  doc,
+)
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+$if(toc)$
+#outline(
+  title: auto,
+  depth: $toc-depth$
+);
+$endif$
+
+$body$
+
+$if(citations)$
+$for(nocite-ids)$
+#cite(label("${it}"), form: none)
+$endfor$
+$if(csl)$
+
+#set bibliography(style: "$csl$")
+$elseif(bibliographystyle)$
+
+#set bibliography(style: "$bibliographystyle$")
+$endif$
+$if(bibliography)$
+
+#bibliography($for(bibliography)$"$bibliography$"$sep$,$endfor$$if(full-bibliography)$, full: true$endif$)
+$endif$
+$endif$
+$for(include-after)$
+
+$include-after$
+$endfor$
