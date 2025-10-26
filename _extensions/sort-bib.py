@@ -1,13 +1,21 @@
 # Sort bibliography entries, placing Chinese entries (sorted by Pinyin) after non-Chinese entries (sorted alphabetically).
 # Add numeric labels to each entry with consistent spacing.
-# Be sure to remove the comment block ```{=comment}```
 
 # Copyright: © 2024–Present Tom Ben
 # License: MIT License
 
 import re
 import panflute as pf
+from panflute import elements as pf_elements
 from pypinyin import pinyin, Style
+
+
+# Patch until panflute release adds `typst` and `comment` raw formats.
+# https://github.com/sergiocorreia/panflute/blob/f99f82d62b245abb7f29e2d2d3bb560099d12cb8/panflute/elements.py#L1249
+ADDITIONAL_RAW_FORMATS = {'typst', 'comment'}
+if hasattr(pf_elements, 'RAW_FORMATS'):
+    pf_elements.RAW_FORMATS = set(pf_elements.RAW_FORMATS)
+    pf_elements.RAW_FORMATS.update(ADDITIONAL_RAW_FORMATS)
 
 
 def contains_chinese(text):
@@ -124,7 +132,8 @@ def create_custom_space(width=None):
         pf.RawInline(f'<span style="display:inline-block;width:{formatted_width};"></span>',
                      format="html"),
         pf.RawInline(f'<w:r><w:t xml:space="preserve">{docx_spaces}</w:t></w:r>',
-                     format="openxml")
+                     format="openxml"),
+        pf.RawInline(f'#h({formatted_width})', format="typst"),
     ]
 
 
@@ -134,12 +143,12 @@ def create_label_inline(label_text, width_em, max_label_chars):
     if not formatted_width:
         return [pf.Str(label_text)]
 
-    docx_text = label_text
+    padded_label_text = label_text
     if max_label_chars is not None:
         padding_chars = max(max_label_chars - len(label_text), 0)
         if padding_chars > 0:
             docx_padding = DOCX_FIGURE_SPACE * padding_chars
-            docx_text = f"{docx_padding}{label_text}"
+            padded_label_text = f"{docx_padding}{label_text}"
 
     return [
         pf.RawInline(
@@ -147,7 +156,10 @@ def create_label_inline(label_text, width_em, max_label_chars):
         pf.RawInline(f'<span style="display:inline-block;width:{formatted_width};text-align:right;">{label_text}</span>',
                      format="html"),
         pf.RawInline(
-            f'<w:r><w:t xml:space="preserve">{docx_text}</w:t></w:r>', format="openxml")
+            f'<w:r><w:t xml:space="preserve">{padded_label_text}</w:t></w:r>', format="openxml"),
+        pf.RawInline(
+            f'#box(width: {formatted_width})[#text("{padded_label_text}")]',
+            format="typst"),
     ]
 
 
