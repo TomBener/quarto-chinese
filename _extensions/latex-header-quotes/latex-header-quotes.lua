@@ -85,6 +85,7 @@ function Header(header)
 end
 
 local latex_heading_levels = {
+    "chapter",
     "section",
     "subsection",
     "subsubsection",
@@ -151,6 +152,9 @@ local function heading_to_raw(header)
 
     if unnumbered then
         table.insert(pieces, '\\addcontentsline{toc}{' .. command .. '}{' .. bookmark_escaped .. '}')
+        if command == 'chapter' then
+            table.insert(pieces, '\\markboth{' .. bookmark_escaped .. '}{' .. bookmark_escaped .. '}')
+        end
     end
 
     return pandoc.RawBlock('latex', table.concat(pieces, '') .. '\n')
