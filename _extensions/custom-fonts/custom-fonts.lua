@@ -1,4 +1,4 @@
---- Use custom fonts in DOCX, LaTeX/PDF, HTML and EPUB
+--- Use custom fonts in DOCX, HTML, EPUB, LaTeX and Typst
 
 --- Copyright: © 2025–Present Tom Ben
 --- License: MIT License
@@ -27,6 +27,11 @@ function Span(span)
                 "FZKai-Z03, KaiTi, STKaiti, 楷体, serif"
             span.attributes["style"] = string.format("font-family: %s;", fontFamily)
             return span
+        elseif FORMAT == "typst" then
+            -- For Typst output, use text function with font parameter
+            local fontName = isFangsong and "FZFangSong-Z02" or "FZKai-Z03"
+            local typst = string.format("#text(font: \"%s\")[%s]", fontName, text)
+            return pandoc.RawInline("typst", typst)
         else
             -- For other formats, preserve the original span with classes
             return span
