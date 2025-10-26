@@ -27,6 +27,45 @@
   width: 100%
 )
 
+// Icon functions for callouts
+#let fa-lightbulb() = sym.sun
+#let fa-info-circle() = "ℹ"
+#let fa-exclamation-triangle() = "⚠"
+#let fa-exclamation-circle() = "!"
+#let fa-check-circle() = "✓"
+#let fa-times-circle() = "✗"
+
+// Callout function for Quarto callouts
+#let callout(
+  body: [],
+  title: "Note",
+  background_color: rgb("#dae6fb"),
+  icon: none,
+  icon_color: rgb("#0758E5"),
+  body_background_color: white
+) = {
+  block(
+    fill: background_color,
+    width: 100%,
+    inset: 10pt,
+    radius: 4pt,
+    breakable: true,
+  )[
+    #if icon != none or title != "" [
+      #box(
+        inset: (top: 0pt, bottom: 0pt, left: 0pt, right: 5pt)
+      )[
+        #if icon != none [
+          #text(fill: icon_color, size: 1.2em)[#icon]
+        ]
+      ]
+      #strong[#title]
+      #v(-8pt)
+    ]
+    #body
+  ]
+}
+
 #let content-to-string(content) = {
   if content.has("text") {
     content.text
@@ -74,33 +113,7 @@
   set page(
     paper: paper,
     margin: margin,
-    numbering: pagenumbering,
-
-    // Header and footer
-    header: context {
-      let page-counter = counter(page).get().first()
-      if page-counter > 0 {
-        let elems = query(selector(heading.where(level: 1)).before(here()))
-        let chapter-title = if elems.len() > 0 {
-          content-to-string(elems.last().body)
-        } else {
-          ""
-        }
-
-        set text(size: 10.5pt, font: "SimSun")
-        grid(
-          columns: (1fr, 1fr),
-          align: (left, right),
-          [浙江大学博士学位论文],
-          [#chapter-title]
-        )
-        v(-8pt)
-        line(length: 100%, stroke: 0.6pt)
-      }
-    },
-    footer: context align(center)[
-      #text(size: 10pt)[#counter(page).display()]
-    ],
+    numbering: pagenumbering
   )
 
   set par(
@@ -109,7 +122,7 @@
     first-line-indent: (amount: 2em, all: true)
   )
   // citeproc marks the bibliography container with label refs; override indent there
-  let bib-indent = 2.65em
+  let bib-indent = 2em
   show block.where(label: <refs>): bib => {
     set par(first-line-indent: 0em, hanging-indent: bib-indent)
     bib
