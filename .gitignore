@@ -7,7 +7,7 @@ _freeze/
 outputs/
 
 # Temporary files
-contents_tmp/
+*_tmp/
 
 # Word related files
 ~$*.doc*
@@ -21,6 +21,7 @@ Backup of *.doc*
 /*.pdf
 /*.tex
 /*.html
+/*.typ
 
 # Plist fils by Ulysses
 *.plist
