@@ -24,13 +24,13 @@ crossref:
   tbl-prefix: 表
 reference-section-title: 参考文献
 bibliography: bibliography.json
-csl: _styles/zju-social-science.csl
+csl: _styles/gb-author-date.csl
 nocite: |
   @*
 filters:
   - links-to-citations
   - ignore-softbreaks
-  - right-align
+  - text-align
   - custom-fonts
 execute:
   cache: true
@@ -68,6 +68,39 @@ format:
       section-title-footnotes: 脚注
       related-formats-title: 其他格式
 
+  epub:
+    epub-cover-image: figures/epub-cover.png
+    rights: © 2025 Tom Ben
+
+  typst:
+    output-file: typst
+    template: _styles/custom.typst
+    filters:
+      - typst-quotes
+    citeproc: true
+    knitr:
+      opts_chunk:
+        dev: "png"
+    mainfont: Times New Roman
+    covers: latin-in-cjk
+    mainfontfallback:
+      - SimSun
+      - FangSong
+    # codefont: JetBrains Mono
+    fontsize: 12pt
+    papersize: a4
+    linestretch: 1.5
+    section-numbering: 1.1.1
+    margin:
+      top: 2.5cm
+      bottom: 2.5cm
+      left: 2.5cm
+      right: 2.5cm
+    linkcolor: "#7F0000"
+    citecolor: "#7F0000"
+    filecolor: "#3059EA"
+    # keep-typ: true
+
   pdf:
     filters:
       - latex-body-quotes
@@ -89,10 +122,6 @@ format:
     urlcolor: urlblue
     toccolor: wordblue
     # keep-tex: true
-
-  epub:
-    epub-cover-image: figures/cover.png
-    rights: © 2024--Present Tom Ben
 
   revealjs:
     template: _styles/revealjs.html
