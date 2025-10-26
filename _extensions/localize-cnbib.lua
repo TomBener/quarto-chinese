@@ -10,7 +10,29 @@ end
 
 -- Function to extract digits from a string
 function extract_digits(text)
-    return text:match("%d+")
+    return text and text:match("%d+")
+end
+
+-- Helper to find the closest previous Str (skips spaces and empty strings)
+local function find_prev_str(content, start_index)
+    for idx = start_index - 1, 1, -1 do
+        local item = content[idx]
+        if item and item.t == "Str" and item.text ~= "" then
+            return item, idx
+        end
+    end
+    return nil, nil
+end
+
+-- Helper to find the closest next Str (skips spaces and empty strings)
+local function find_next_str(content, start_index)
+    for idx = start_index + 1, #content do
+        local item = content[idx]
+        if item and item.t == "Str" and item.text ~= "" then
+            return item, idx
+        end
+    end
+    return nil, nil
 end
 
 -- Function to check if Emph contains "et al." or "et al.,"
@@ -130,38 +152,38 @@ function process_bibliography(elem)
     -- Process other localizations
     for i = 1, #elem.content do
         local v = elem.content[i]
-        local prev_str = elem.content[i - 2]
-        local next_str = elem.content[i + 2]
+        local prev_str, prev_idx = find_prev_str(elem.content, i)
+        local next_str, next_idx = find_next_str(elem.content, i)
 
         if v and v.t == "Str" then
             local text = v.text:lower()
 
-            if text == "vol." and i < #elem.content - 2 then
-                if prev_str and prev_str.t == "Str" and contains_chinese(prev_str.text) then
-                    if next_str and next_str.t == "Str" then
-                        local vol_num, identifier = next_str.text:match("([^%[]+)%[(.+)%]")
-                        if vol_num and identifier then
-                            elem.content[i] = pandoc.Str("第" .. vol_num .. "卷[" .. identifier .. "].")
-                            table.remove(elem.content, i + 2)
-                            table.remove(elem.content, i + 1)
+            if text == "vol." and next_str then
+                if prev_str and contains_chinese(prev_str.text) then
+                    local vol_num, identifier = next_str.text:match("([^%[]+)%[(.+)%]")
+                    if vol_num and identifier then
+                        elem.content[i] = pandoc.Str("第" .. vol_num .. "卷[" .. identifier .. "].")
+                        for remove_idx = next_idx, i + 1, -1 do
+                            table.remove(elem.content, remove_idx)
                         end
                     end
                 end
             elseif (text == "tran." or text == "trans.") and i > 2 then
-                if prev_str and prev_str.t == "Str" and contains_chinese(prev_str.text) and prev_str.text:match(",$") then
+                if prev_str and contains_chinese(prev_str.text) and prev_str.text:match(",$") then
                     elem.content[i] = pandoc.Str("译.")
                 end
             elseif (text == "ed." or text == "eds.") and i > 2 and prev_str and prev_str.t == "Str" then
                 if contains_chinese(prev_str.text) and prev_str.text:match(",$") then
                     elem.content[i] = pandoc.Str("编.")
                 else
-                    local ed_text = elem.content[i - 2] and elem.content[i - 2].text
-                    local ed_num = extract_digits(ed_text)
-                    local prev_prev_str = elem.content[i - 4]
-                    if ed_num and prev_prev_str and prev_prev_str.t == "Str" and contains_chinese(prev_prev_str.text) then
-                        elem.content[i - 2] = pandoc.Str(ed_num .. "版.")
+                    local ed_num = extract_digits(prev_str.text)
+                    local prev_prev_str = prev_idx and select(1, find_prev_str(elem.content, prev_idx))
+                    if ed_num and prev_prev_str and contains_chinese(prev_prev_str.text) then
+                        elem.content[prev_idx] = pandoc.Str(ed_num .. "版.")
                         table.remove(elem.content, i)
-                        table.remove(elem.content, i - 1)
+                        if elem.content[i - 1] and elem.content[i - 1].t == "Space" then
+                            table.remove(elem.content, i - 1)
+                        end
                     end
                 end
             end
