@@ -81,11 +81,11 @@ format:
     knitr:
       opts_chunk:
         dev: "png"
-    # mainfont: Times New Roman
-    # covers: latin-in-cjk
-    # mainfontfallback:
-    #   - SimSun
-    #   - FangSong
+    mainfont: Times New Roman
+    covers: latin-in-cjk
+    mainfontfallback:
+      - SimSun
+      - FangSong
     # codefont: JetBrains Mono
     fontsize: 12pt
     papersize: a4
