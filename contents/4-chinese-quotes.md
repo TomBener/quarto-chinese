@@ -18,11 +18,13 @@
 具体来说，在 Markdown 中使用直角引号 `「`、`」`、`『`、`』`，
 借助以下这几个 Lua filters，可以实现引号的自动转换：
 
-- `docx-quotes.lua`：处理 Word 正文中的引号，使包裹中文的引号看上去更宽。
-- `cnbib-quotes.lua`：处理 Word 和 HTML 参考文献中的引号，使 Word 包裹中文的引号看上去更宽，HTML 将蝌蚪引号转换为直角引号。
-- `latex-quotes.lua`：处理 LaTeX 中的引号，将中文直角引号转换为德语引号（其他东欧语系也有类似的引号），然后通过 [newunicodechar][1] 宏包将其转换为蝌蚪引号，并对标题中的中文引号进行特别处理。
+- `_extensions/docx-quotes/`：处理 Word 正文中的引号，使包裹中文的引号看上去更宽。
+- `_extensions/latex-body-quotes/`：处理 LaTeX 正文中的引号，将中文直角引号转换为德语引号（其他东欧语系也有类似的引号），再交给 [newunicodechar][1] 宏包恢复为蝌蚪引号。
+- `_extensions/latex-header-quotes/`：专门处理 LaTeX 标题，既保证 PDF 里显示正确，也让 PDF 书签保持 Unicode 文本。
+- `_extensions/typst-quotes/`：在 Typst 输出中转换中文直角引号，避免 PDF 中的中西文混排问题。
+- `_extensions/cnbib-quotes.lua`：处理 HTML、EPUB、LaTeX 和 Typst 参考文献中的引号，确保中文条目使用期望的直角引号，而英文条目保持蝌蚪引号。
 
 [1]: https://ctan.org/pkg/newunicodechar
 
-这样，无论是在 Word 中还是在 LaTeX 中，都可以得到符合规范的引号效果，
-而对于 HTML 来说，则做「反向处理」，将包裹中文的蝌蚪引号转换为直角引号。
+这样，无论是在 Word、LaTeX 还是 Typst 中，都可以得到符合规范的引号效果；
+而对于 HTML/EPUB 的参考文献，则会做「反向处理」，将包裹中文的蝌蚪引号转换回直角引号。

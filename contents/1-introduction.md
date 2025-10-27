@@ -64,4 +64,5 @@ ggplot(mtcars2, aes(hp, mpg, color = am)) +
 解决中文写作者在使用 Markdown 写作时遇到的各种问题，
 包括中文引号处理、中西文自动添加空格、
 参考文献列表按拼音排序（包括多音字）、
-中文参考文献本地化等，最终输出为格式完美的 Word、HTML、PDF 等格式。
+中文参考文献本地化等，最终输出为格式完美的 Word、HTML、
+LaTeX/PDF、Typst/PDF、EPUB 以及 Reveal.js 幻灯片等格式。

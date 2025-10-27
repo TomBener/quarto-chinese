@@ -4,7 +4,7 @@ Pandoc 使用 CSL（[Citation Style Language](https://citationstyles.org/)）来
 然而 CSL 不支持多语言的参考文献格式化，例如在 Pandoc 中将语言设置为 `en-US` 时，
 所有文献的本地化字符都会被转换为英文，例如 `et al.`、`vol.`、`ed.` 等。
 
-本项目使用 Lua filter `localiz-cnbib.lua` 来解决这个问题。
+本项目使用 Lua filter `_extensions/localize-cnbib.lua` 来解决这个问题。
 
 ## "et al." 替换为「等」
 
@@ -50,15 +50,15 @@ Pandoc 使用 CSL（[Citation Style Language](https://citationstyles.org/)）来
 在中文文献中，`tran.` 和 `trans.` 应该替换为 `译`
 [@hanqilan2004; @yishabai2018; @maikeerhekete2012; @ludefu2019]。
 
-值得一提的是，Lua filter `localiz-cnbib.lua` 同时
+值得一提的是，Lua filter `_extensions/localize-cnbib.lua` 同时
 支持 author-date 和 numeric 两种引用格式，
 并且在 `link-citation` 开启或关闭时都能正常工作。
 当然，上述替换只考虑了常见中文文献字符本地化的情况，
-如果有其他字符需要本地化，请自行修改 `localiz-cnbib.lua` 文件，
+如果有其他字符需要本地化，请自行修改 `_extensions/localize-cnbib.lua` 文件，
 或者提交 issue 给我。
 
 需要注意，本项目中 `gb-author-date.csl` 和 `gb-numeric.csl` 是
 我根据 Zotero Styles 网站下载的 CSL 样式文件修改而来。
 与原始样式文件相比，我修改之后的样式文件更加符合 GB/T 7714-2015 的标准，
-`localiz-cnbib.lua` 也是根据这两个样式文件的格式来编写的，
-因此 `localiz-cnbib.lua` 可能无法正常工作在其他 CSL 样式文件上。
+`_extensions/localize-cnbib.lua` 也是根据这两个样式文件的格式来编写的，
+因此 `_extensions/localize-cnbib.lua` 可能无法正常工作在其他 CSL 样式文件上。

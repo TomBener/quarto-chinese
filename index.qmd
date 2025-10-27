@@ -5,6 +5,6 @@
 {{< include contents_tmp/3-sort-cnbib.qmd >}}
 {{< include contents_tmp/4-chinese-quotes.qmd >}}
 {{< include contents_tmp/5-pangu-space.qmd >}}
-{{< include contents_tmp/6-right-align.qmd >}}
+{{< include contents_tmp/6-text-align.qmd >}}
 {{< include contents_tmp/7-custom-fonts.qmd >}}
 {{< include contents_tmp/8-no-first-paragraph.qmd >}}

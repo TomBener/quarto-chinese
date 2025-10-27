@@ -12,7 +12,7 @@
 尽管手动在中英文、数字之间加一个空格是一个好 [习惯](https://www.zhihu.com/question/19587406)，
 然而在实际写作中，我们往往会忘记这个细节，因此在排版时，我们可以借助工具来自动完成这个工作。
 
-本项目提供了一个 Python filter `auto-correct.py` 来解决这个问题，
+本项目提供了一个 Python filter `_extensions/auto-correct.py` 来解决这个问题，
 借助 [AutoCorrect](https://github.com/huacnlee/autocorrect) [@lee2024c] 的 Python 库，
 「自动纠正」或「检查并建议」文案，给 CJK（中文、日语、韩语）与英文混写的场景，
 补充正确的空格，纠正单词，同时尝试以安全的方式自动纠正标点符号等。

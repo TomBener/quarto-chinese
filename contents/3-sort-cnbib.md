@@ -7,7 +7,7 @@
 
 [1]: https://github.com/hushidong/biblatex-gb7714-2015
 
-本项目使用 Python filter `sort-cnbib.py` 来解决这个问题，
+本项目使用 Python filter `_extensions/sort-bib.py` 来解决这个问题，
 借助 Python 的 `pypinyin` 库获取中文文献的著者拼音，
 然后通过 Panflute [@correia2024] 修改 Pandoc AST，
 根据拼音对中文文献进行排序，并且对姓氏读音的多音字进行了特殊处理：
@@ -38,7 +38,7 @@ def special_pinyin(text):
 
 对于参考文献中中文和英文文献哪个在前的问题，
 各个学校和期刊的要求不一样，有的要求中文在前，有的要求非中文（英文）在前。
-`sort-cnbib.py` 默认是英文在前，如果你需要中文在前，可以将对应代码修改为：
+`_extensions/sort-bib.py` 默认是英文（或其他非中文）在前，如果你需要中文在前，可以将对应代码修改为：
 
 ```py
 for elem in doc.content:
@@ -47,5 +47,5 @@ for elem in doc.content:
             break
 ```
 
-需要注意的是，`sort-cnbib.py` 只需用于 author-date 引用格式，
+需要注意的是，`_extensions/sort-bib.py` 只需用于 author-date 引用格式，
 numeric 引用格式不需要排序，因为数字本身就是有序的。

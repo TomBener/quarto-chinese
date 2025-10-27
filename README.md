@@ -9,20 +9,20 @@ papers in Chinese, such as the localization and sorting of Chinese citations and
 bibliographies, conversion of Chinese quotation marks, and correcting spaces between
 Chinese and English characters. With the help of these templates and scripts,
 you can write your academic papers in Markdown, and convert them into various
-formats like Word, HTML, LaTeX, PDF, and EPUB via Quarto.
+formats like Word, HTML, LaTeX/PDF, Typst/PDF, EPUB, and Reveal.js slides via Quarto.
 
 ## Features
 
-- **Render Multiple Formats**: Render DOCX, HTML, PDF, EPUB, and Reveal.js slides at once with the same source file, and PDF can be customized for print or with watermark.
+- **Render Multiple Formats**: Render DOCX, HTML, PDF (LaTeX), PDF (Typst), EPUB, and Reveal.js slides at once with the same source file, and PDF can be customized for print or with watermark.
 - **Localize Chinese Bibliographies**: Change `et al.` to `等` and other English localization strings to Chinese in citations and references, both author-date and numeric styles are supported.
-- **Sort Chinese Bibliographies**: Sort Chinese bibliographies by Pinyin, and can be customized to sort Chinese entries first or last.
-- **Correct Chinese Quotes**: Tweak Chinese quotes for sophisticated typesetting.
-- **Correct Spaces**: Improve copywriting, correct spaces, words, and punctuations between CJK.
-- **Extract Bibliographies**: Extract all bibliographies cited in the document as a BibTeX/BibLaTeX file, and copy cited reference files to a specified directory.
+- **Sort Chinese Bibliographies**: Sort Chinese bibliographies by Pinyin while keeping non-Chinese entries alphabetized, and customize whether Chinese entries appear first or last.
+- **Correct Chinese Quotes**: Automatically tailor quotation marks for DOCX, HTML/EPUB bibliographies, LaTeX body text, LaTeX headings, and Typst outputs.
+- **Correct Spaces**: Improve copywriting, correct spaces, words, and punctuations between CJK and Western text.
+- **Extract Bibliographies**: Filter cited references to a CSL JSON file and copy cited attachments to a specified directory.
 - **Generate Backlinks**: Generate backlinks for bibliography entries to the corresponding citations.
 - **Remove DOI Hyperlinks**: Remove DOI hyperlinks formatted by `citeproc` if they are not needed in the bibliography.
-- **Right Align Text**: Right align certain text in DOCX, PDF, HTML and EPUB.
-- **Custom Fonts**: Use custom fonts in DOCX, PDF, HTML and EPUB.[^epub]
+- **Align Text Blocks**: Right- or center-align specific text in DOCX, PDF, HTML, EPUB, and Typst.
+- **Custom Fonts**: Use custom fonts in DOCX, PDF, HTML, EPUB, and Typst.
 
 ## Prerequisites
 
@@ -45,15 +45,16 @@ formats like Word, HTML, LaTeX, PDF, and EPUB via Quarto.
 
 This project uses a [Makefile](Makefile) to manage the build process. Here are the available commands:
 
-- `make` or `make all`: Render DOCX, HTML, PDF, EPUB and Reveal.js slides at once.
+- `make` or `make all`: Render DOCX, HTML, EPUB, PDF (LaTeX), PDF (Typst) and Reveal.js slides at once.
 - `make docx`: Render DOCX.
 - `make html`: Render HTML.
-- `make pdf`: Render PDF.
+- `make pdf`: Render PDF via LaTeX.
+- `make typst`: Render PDF via Typst.
 - `make epub`: Render EPUB.
 - `make slides`: Render Reveal.js slides.
 - `make print`: Render PDF for print.
 - `make watermark`: Render PDF with watermark.
-- `make citebib`: Extract all bibliographies cited as BibLaTeX file `citebib.bib`.
+- `make citebib`: Extract all cited references into `citebib.json` (filtered CSL JSON).
 - `make citedoc`: Copy cited reference files to a specified directory.
 - `make clean`: Remove auxiliary and output files.
 
@@ -64,22 +65,25 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 
 - [auto-correct](_extensions/auto-correct.py): Improve copywriting, correct spaces, words, and punctuations between CJK and English with AutoCorrect.
 - [citation-backlinks](_extensions/citation-backlinks.lua): Generate backlinks for bibliography entries to the corresponding citations.
-- [citation-tools](_extensions/citation-tools.py): Extract citation keys from Markdown files, and copy cited reference files to a specified directory.
+- [capitalize-subtitle](_extensions/capitalize-subtitle.lua): Capitalize the first word after colons or em dashes inside bibliography subtitles, following APA style.
+- [citation-tools](_extensions/citation-tools.py): Extract citation keys to a filtered CSL JSON file, and copy cited reference files to a specified directory.
 - [cnbib-quotes](_extensions/cnbib-quotes.lua): Process quotes for Chinese bibliographies in HTML and EPUB outputs.
 - [confetti](_extensions/confetti/): Send some 🎊 in Reveal.js slides.
-- [custom-fonts](_extensions/custom-fonts/): Use custom fonts in DOCX, PDF, HTML and EPUB.
+- [custom-fonts](_extensions/custom-fonts/): Use custom fonts in DOCX, PDF, HTML, EPUB, and Typst.[^epub]
 - [docx-quotes](_extensions/docx-quotes/): Convert straight angle quotation marks to curly quotation marks in DOCX.
 - [format-md](_extensions/format-md.py): Preprocess Markdown files for conversion with Quarto.
 - [get-bib](_extensions/get-bib.lua): Extract all bibliographies cited in the document as a BibLaTeX file.[^bib]
 - [ignore-softbreaks](_extensions/ignore-softbreaks/): Emulate Pandoc’s extension `east_asian_line_breaks` [in Quarto](https://github.com/quarto-dev/quarto-cli/issues/8520).
-- [latex-quotes](_extensions/latex-quotes/): Replaces straight quotes with German quotes for intermediate in LaTeX output, and specific processing for headers to avoid issues in PDF bookmarks.
+- [latex-body-quotes](_extensions/latex-body-quotes/): Replace Chinese corner quotes with guillemets in LaTeX body text.
+- [latex-header-quotes](_extensions/latex-header-quotes/): Keep LaTeX/PDF headers readable while rendering body quotes correctly.
 - [links-to-citations](_extensions/links-to-citations/): Remove local links but keep the link text as normal citations.
 - [localize-cnbib](_extensions/localize-cnbib.lua): Localize Chinese bibliographies, change `et al.` to `等` and other English localization strings to Chinese.
 - [no-first-paragraph](_extensions/no-first-paragraph/): Remove the `First Paragraph` style by applying `Body Text` to all paragraphs in DOCX.
 - [remove-doi-hyperlinks](_extensions/remove-doi-hyperlinks.lua): Remove [DOI hyperlinks](https://github.com/jgm/pandoc/issues/10393) formatted by `citeproc` in the bibliography.[^doi]
 - [remove-spaces](_extensions/remove-spaces/): Remove spaces before or after Chinese characters in DOCX.
-- [right-align](_extensions/right-align/): Right align certain text in DOCX, PDF, HTML and EPUB.
-- [sort-cnbib](_extensions/sort-cnbib.py): Sort Chinese bibliographies by Pinyin, and can be customized to sort Chinese entries first or last.
+- [sort-bib](_extensions/sort-bib.py): Sort bibliographies by grouping Chinese entries (sorted by Pinyin) and non-Chinese entries (alphabetical).
+- [text-align](_extensions/text-align/): Right- or center-align specific blocks across DOCX, PDF, HTML, EPUB, and Typst outputs.
+- [typst-quotes](_extensions/typst-quotes/): Replace Chinese corner quotes for Typst output so the PDF looks correct.
 
 ## License
 

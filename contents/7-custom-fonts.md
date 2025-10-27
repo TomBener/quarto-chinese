@@ -1,7 +1,7 @@
 # 使用自定义字体
 
 在文章的某些段落，或者出于排版需要，或者出于学校要求，我们可能需要使用自定义字体。本项目提供了一个
-Lua filter `custom-fonts.lua`，可以实现在 DOCX、PDF、HTML 和 EPUB
+Lua filter `_extensions/custom-fonts/custom-fonts.lua`，可以实现在 DOCX、PDF（LaTeX/Typst）、HTML 和 EPUB
 输出中使用自定义字体。
 
 在 Markdown 中，我们可以使用 `{.fangsong}` 和 `{.kaiti}` 类来指定使用自定义字体。例如：
@@ -33,6 +33,13 @@ Lua filter `custom-fonts.lua`，可以实现在 DOCX、PDF、HTML 和 EPUB
 
 - 仿宋：`\fangsong`
 - 楷体：`\kaishu`
+
+### PDF 格式（Typst）
+
+通过 Typst 的 `#text(font: "...")[...]` 语法直接切换字体，渲染时会写入 `custom.typst` 中声明的字体：
+
+- 仿宋：`#text(font: "FZFangSong-Z02")[...]`
+- 楷体：`#text(font: "FZKai-Z03")[...]`
 
 ### HTML 和 EPUB 格式
 
