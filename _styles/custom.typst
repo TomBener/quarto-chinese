@@ -191,6 +191,26 @@
            )])
     }
 
+    #if authors != none and authors != [] {
+      let count = authors.len()
+      let ncols = calc.min(count, 3)
+      grid(
+        columns: (1fr,) * ncols,
+        row-gutter: 1.5em,
+        ..authors.map(author => align(center)[
+          #author.name \
+          #author.affiliation \
+          #author.email
+        ])
+      )
+    }
+
+    #if date != none {
+      align(center)[#block(inset: 1em)[
+          #date
+        ]]
+    }
+
     #if abstract != none {
       block(inset: 2em)[
         #text(weight: "semibold")[#abstract-title] #h(1em) #abstract
