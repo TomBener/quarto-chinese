@@ -96,9 +96,9 @@ format:
       bottom: 2.5cm
       left: 2.5cm
       right: 2.5cm
-    linkcolor: "#7F0000"
-    citecolor: "#7F0000"
-    filecolor: "#3059EA"
+    linkcolor: "#1A73E8" # Google Blue for external links
+    citecolor: "#4B6FA8" # Slate Blue for citations
+    filecolor: "#800000" # Wine Red for cross references
     # keep-typ: true
 
   pdf:

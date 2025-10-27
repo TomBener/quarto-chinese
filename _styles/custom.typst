@@ -27,6 +27,9 @@
   width: 100%
 )
 
+// Style outline
+#show outline: set text(fill: rgb("#800000"))
+
 // Icon functions for callouts
 #let fa-lightbulb() = sym.sun
 #let fa-info-circle() = "ℹ"
@@ -167,10 +170,10 @@
   }
 
   show link: set text(fill: rgb(content-to-string(linkcolor))) if linkcolor != none
-  show ref: set text(fill: rgb(content-to-string(citecolor))) if citecolor != none
+  show ref: set text(fill: rgb(content-to-string(filecolor))) if filecolor != none
   show link: this => {
-    if filecolor != none and type(this.dest) == label {
-      text(this, fill: rgb(content-to-string(filecolor)))
+    if citecolor != none and type(this.dest) == label {
+      text(this, fill: rgb(content-to-string(citecolor)))
     } else {
       text(this)
     }
