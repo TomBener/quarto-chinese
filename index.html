@@ -525,7 +525,7 @@ div.csl-indent {
 </section>
 <section id="使用自定义字体" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="使用自定义字体"><span class="header-section-number">7</span> 使用自定义字体</h2>
-<p>在文章的某些段落，或者出于排版需要，或者出于学校要求，我们可能需要使用自定义字体。本项目提供了一个 Lua filter <code>_extensions/custom-fonts/custom-fonts.lua</code>，可以实现在 DOCX、PDF（LaTeX/Typst）、HTML 和 EPUB 输出中使用自定义字体。</p>
+<p>在文章的某些段落，或者出于排版需要，或者出于学校要求，我们可能需要使用自定义字体。本项目提供了一个 Lua filter <code>_extensions/custom-fonts/custom-fonts.lua</code>，可以实现在 DOCX、PDF（LaTeX/Typst）、HTML 和 EPUB 输出中使用自定义字体。当然，前提是你的系统中已经安装了这些字体。</p>
 <p>在 Markdown 中，我们可以使用 <code>{.fangsong}</code> 和 <code>{.kaiti}</code> 类来指定使用自定义字体。例如：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">这是一段使用仿宋字体的文本</span><span class="co">]</span>{.fangsong}，之后还是使用默认字体。</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
