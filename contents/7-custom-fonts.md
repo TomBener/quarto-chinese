@@ -2,7 +2,7 @@
 
 在文章的某些段落，或者出于排版需要，或者出于学校要求，我们可能需要使用自定义字体。本项目提供了一个
 Lua filter `_extensions/custom-fonts/custom-fonts.lua`，可以实现在 DOCX、PDF（LaTeX/Typst）、HTML 和 EPUB
-输出中使用自定义字体。
+输出中使用自定义字体。当然，前提是你的系统中已经安装了这些字体。
 
 在 Markdown 中，我们可以使用 `{.fangsong}` 和 `{.kaiti}` 类来指定使用自定义字体。例如：
 
