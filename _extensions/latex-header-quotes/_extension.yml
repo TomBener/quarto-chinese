@@ -1,7 +1,7 @@
-title: Tailor Quotes for Chinese Characters in LaTeX
+title: Prepare LaTeX Headers with Correct Quotes
 author: Tom Ben
 version: 1.0.0
 quarto-required: ">=1.5.0"
 contributes:
   filters:
-    - latex-quotes.lua
+    - latex-header-quotes.lua

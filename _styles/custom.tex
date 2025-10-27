@@ -1,10 +1,10 @@
 \usepackage[zihao=-4,linespread=1.5]{ctex}
 
 \usepackage{newpxtext}
-% \setmainfont{Times New Roman}
-% \setCJKmainfont[AutoFakeBold=5,  % 伪粗体
-    % ItalicFont=KaiTi,  % 中易楷体
-    % ]{FangSong}  % 中易仿宋
+% \setmainfont{Palatino}
+\setCJKmainfont[AutoFakeBold=5,  % 伪粗体
+    ItalicFont=KaiTi,  % 中易楷体
+    ]{FangSong}  % 中易仿宋
     % ]{SimSun} % 华文宋体
 
 % Define HUGE font size for the title
@@ -52,3 +52,13 @@
 \usepackage{fvextra}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 
+\usepackage{etoolbox}
+% 参考文献样式
+\AtBeginEnvironment{CSLReferences}{%
+    % \zihao{5}  % 字号；默认继承正文字号（\zihao{-4}）
+    % \linespread{1.2}\selectfont  % 行距；默认 1.0
+    % \setlength{\itemsep}{0.5\baselineskip}  % 条目间距；默认 #2\baselineskip
+    % \setlength{\parskip}{0pt}  % 段间距；默认 0pt
+    \setlength{\cslhangindent}{2.65em}  % 悬挂缩进距离；默认 1.5em
+    \normalspacedchars{[]}  % 移除文献标识符中括号 [ 前与汉字间的空格，默认 CJK 会自动插入空格
+}

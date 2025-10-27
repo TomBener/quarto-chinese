@@ -1,19 +1,19 @@
---- Convert straight angle quotation marks to curly quotation marks in DOCX
+-- Replace Chinese corner brackets with curly quotes for Typst output.
+-- The filter is run before citeproc to avoid touching bibliography
 
 --- Copyright: © 2025–Present Tom Ben
 --- License: MIT License
 
 function Str(el)
-    -- If not DOCX output, return element unchanged
-    if not FORMAT:match('docx') then
+    if not FORMAT:match('typst') then
         return el
     end
 
     local replacements = {
-        ['「'] = '“',
-        ['」'] = '”',
-        ['『'] = '‘',
-        ['』'] = '’'
+        ['「'] = '«',
+        ['」'] = '»',
+        ['『'] = '‹',
+        ['』'] = '›'
     }
 
     for original, replacement in pairs(replacements) do

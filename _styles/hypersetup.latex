@@ -28,4 +28,7 @@ $endif$
 $endif$
   pdfcreator={$if(pdfcreator)$$pdfcreator$$else$LaTeX via Pandoc$endif$},
   pdfproducer={$if(pdfproducer)$$pdfproducer$$else$Produced by Quarto$endif$},
-  $if(draft)$draft$endif$}
+$if(print)$
+  draft,
+  bookmarksdepth=-2
+$endif$}

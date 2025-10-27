@@ -21,7 +21,7 @@
     <category citation-format="numeric"/>
     <category field="generic-base"/>
     <summary>The Chinese GB/T 7714-2015 numeric style</summary>
-    <updated>2025-10-08T21:39:03+00:00</updated>
+    <updated>2025-10-26T18:53:02+00:00</updated>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -293,7 +293,8 @@
               <text value="A"/>
             </if>
             <else>
-              <text value="M"/>
+              <!-- Preprint in json -->
+              <text value="EB"/>
             </else>
           </choose>
         </if>
@@ -478,7 +479,7 @@
       <text macro="citation-layout"/>
     </layout>
   </citation>
-  <bibliography entry-spacing="0" et-al-min="4" et-al-use-first="3" second-field-align="flush">
+  <bibliography hanging-indent="true" entry-spacing="0" et-al-min="4" et-al-use-first="3" second-field-align="flush">
     <layout>
       <text variable="citation-number" prefix="[" suffix="]"/>
       <text macro="entry-layout"/>

@@ -4,7 +4,7 @@
 
 --- citation-backlinks.lua – adds citation backlinks to the bibliography
 -- https://github.com/tarleb/citation-backlinks
---- Copyright: © 2022–Present John MacFarlane and Albert Krewinkel and Bernardo Vasconcelos
+--- Copyright: © 2022–2024 John MacFarlane and Albert Krewinkel and Bernardo Vasconcelos
 --- License: MIT – see LICENSE for details
 
 -- Makes sure users know if their pandoc version is too old for this
