@@ -1,4 +1,4 @@
--- Replace Chinese corner brackets with curly quotes for Typst output.
+-- Replace Chinese corner brackets with guillemets for Typst output.
 -- The filter is run before citeproc to avoid touching bibliography
 
 --- Copyright: © 2025–Present Tom Ben

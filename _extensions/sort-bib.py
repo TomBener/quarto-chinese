@@ -1,4 +1,5 @@
 # Sort bibliography entries, placing Chinese entries (sorted by Pinyin) after non-Chinese entries (sorted alphabetically).
+# Must be run after Citeproc
 
 # Copyright: © 2024–Present Tom Ben
 # License: MIT License
