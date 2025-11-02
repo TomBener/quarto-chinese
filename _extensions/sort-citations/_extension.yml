@@ -1,0 +1,7 @@
+title: Sort Citation Clusters
+author: Tom Ben
+version: 0.1.0
+quarto-required: ">=1.5.0"
+contributes:
+  filters:
+    - sort-citations.py

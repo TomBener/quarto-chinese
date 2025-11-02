@@ -81,6 +81,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - [no-first-paragraph](_extensions/no-first-paragraph/): Remove the `First Paragraph` style by applying `Body Text` to all paragraphs in DOCX.
 - [remove-doi-hyperlinks](_extensions/remove-doi-hyperlinks.lua): Remove [DOI hyperlinks](https://github.com/jgm/pandoc/issues/10393) formatted by `citeproc` in the bibliography.[^doi]
 - [remove-spaces](_extensions/remove-spaces/): Remove spaces before or after Chinese characters in DOCX.
+- [sort-citations](_extensions/sort-citations/): Reorder multi-entry citation clusters so English items precede Chinese items (sorted by Pinyin) while keeping prefixes/suffixes with their citations.
 - [sort-bib](_extensions/sort-bib.py): Sort bibliographies by grouping Chinese entries (sorted by Pinyin) and non-Chinese entries (alphabetical).
 - [text-align](_extensions/text-align/): Right- or center-align specific blocks across DOCX, PDF, HTML, EPUB, and Typst outputs.
 - [typst-quotes](_extensions/typst-quotes/): Replace Chinese corner quotes for Typst output so the PDF looks correct.
