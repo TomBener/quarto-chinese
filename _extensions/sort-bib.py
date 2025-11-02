@@ -4,7 +4,11 @@
 # Copyright: © 2024–Present Tom Ben
 # License: MIT License
 
-import re
+# ============ CONFIGURATION ============
+# Set to True to place Chinese entries first, False to place them last
+CHINESE_FIRST = False
+# =======================================
+
 import panflute as pf
 from panflute import elements as pf_elements
 from pypinyin import pinyin, Style
@@ -61,6 +65,14 @@ def special_pinyin(text):
         return None
 
 
+def get_entry_sort_key(entry_elem):
+    """Extract sort key from bibliography entry for alphabetical sorting."""
+    entry_text = pf.stringify(entry_elem)
+    # Extract the first author/creator name or title for sorting
+    # Typically bibliography entries start with author name
+    return entry_text.lower()
+
+
 def prepare(doc):
     doc.chinese_entries = []
     doc.non_chinese_entries = []
@@ -79,14 +91,20 @@ def action(elem, doc):
 
 
 def finalize(doc):
+    # Sort Chinese entries by Pinyin
     doc.chinese_entries.sort(key=lambda x: special_pinyin(pf.stringify(x)))
+
+    # Sort non-Chinese entries alphabetically
+    doc.non_chinese_entries.sort(key=get_entry_sort_key)
 
     # 用排序后的条目替换 Div 中的内容
     for elem in doc.content:
         if isinstance(elem, pf.Div) and "references" in elem.classes:
-            # 按拼音排序中文参考文献条目，并将其附加到非中文条目的末尾
-            # 交换加号前后的顺序可以改变中文和非中文参考文献条目的顺序
-            elem.content = doc.non_chinese_entries + doc.chinese_entries
+            # Determine order based on configuration
+            if CHINESE_FIRST:
+                elem.content = doc.chinese_entries + doc.non_chinese_entries
+            else:
+                elem.content = doc.non_chinese_entries + doc.chinese_entries
             break
 
 
