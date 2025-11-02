@@ -21,7 +21,7 @@
     <category citation-format="numeric"/>
     <category field="generic-base"/>
     <summary>The Chinese GB/T 7714-2015 numeric style</summary>
-    <updated>2025-10-26T18:53:02+00:00</updated>
+    <updated>2025-11-01T22:43:55+00:00</updated>
     <rights license="https://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -185,55 +185,59 @@
   </macro>
   <!-- 其他责任者 -->
   <macro name="secondary-contributor">
-    <names variable="translator">
-      <name delimiter=", ">
-        <name-part name="family"/>
-        <name-part name="given"/>
-      </name>
-      <label form="short" prefix=", "/>
-    </names>
-    <!-- Separate `translator` and `editor` !!-->
-    <text value=". " />
-    <!-- Add editor field except for `chapter` !!-->
-    <choose>
-      <if type="chapter">
-        <!-- Don't display the editor for `chapter` !!-->
-      </if>
-      <else>
-        <names variable="editor">
-          <name delimiter=", ">
-            <name-part name="family"/>
-            <name-part name="given"/>
-          </name>
-          <label form="short" prefix=", "/>
-        </names>
-      </else>
-    </choose>
+    <group delimiter=". ">
+      <choose>
+        <if type="chapter">
+          <!-- Don't display the editor for `chapter` !!-->
+        </if>
+        <else>
+          <names variable="editor">
+            <name delimiter=", ">
+              <name-part name="family"/>
+              <name-part name="given"/>
+            </name>
+            <label form="short" prefix=", "/>
+          </names>
+        </else>
+      </choose>
+      <names variable="translator">
+        <name delimiter=", ">
+          <name-part name="family"/>
+          <name-part name="given"/>
+        </name>
+        <label form="short" prefix=", "/>
+      </names>
+    </group>
   </macro>
   <!-- 连续出版物中的析出文献的出处项（年、卷、期等信息） -->
   <macro name="periodical-publishing">
     <group>
-      <group delimiter=": ">
-        <group>
-          <group delimiter=", ">
-            <text macro="container-title"/>
-            <choose>
-              <if type="article-newspaper">
-                <text macro="issued-date"/>
-              </if>
-              <else-if type="article-magazine">
-                <!-- Do nothing for article-magazine !!-->
-              </else-if>
-              <else>
-                <text macro="issued-year"/>
-              </else>
-            </choose>
-            <text variable="volume"/>
-          </group>
-          <text variable="issue" prefix="(" suffix=")"/>
+      <group>
+        <group delimiter=", ">
+          <text macro="container-title"/>
+          <choose>
+            <if type="article-newspaper">
+              <text macro="issued-date"/>
+            </if>
+            <else-if type="article-magazine">
+              <!-- Do nothing for article-magazine !!-->
+            </else-if>
+            <else>
+              <text macro="issued-year"/>
+            </else>
+          </choose>
+          <text variable="volume"/>
         </group>
-        <text variable="page"/>
+        <text variable="issue" prefix="(" suffix=")"/>
       </group>
+      <choose>
+        <if type="article-newspaper">
+          <text variable="page" prefix="(" suffix=")"/>
+        </if>
+        <else>
+          <text variable="page" prefix=": "/>
+        </else>
+      </choose>
       <!-- Add date for entries with URL (mainly `article-magazine`) -->
       <choose>
         <if variable="URL">
