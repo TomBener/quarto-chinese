@@ -67,6 +67,7 @@ format:
       title-block-modified: 更新于
       section-title-footnotes: 脚注
       related-formats-title: 其他格式
+    include-in-header: _styles/citation-order.html
 
   epub:
     epub-cover-image: figures/cover.png

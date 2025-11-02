@@ -1,0 +1,24 @@
+<script>
+  (function () {
+    function extractId(a) {
+      const dc = a.getAttribute('data-cites');
+      if (dc) return dc.trim().split(/\s+/)[0];
+      const href = a.getAttribute('href') || '';
+      const m = href.match(/#ref-(.+)$/);
+      return m ? decodeURIComponent(m[1]) : null;
+    }
+    function patch() {
+      document.querySelectorAll('span.citation[data-cites]').forEach(function (cit) {
+        const ids = Array.from(cit.querySelectorAll('a[role="doc-biblioref"]'))
+          .map(extractId)
+          .filter(Boolean);
+        if (ids.length) cit.setAttribute('data-cites', ids.join(' '));
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', patch);
+    } else {
+      patch();
+    }
+  })();
+</script>
