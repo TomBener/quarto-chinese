@@ -33,6 +33,7 @@ dependencies:
 # `-L _extensions/remove-doi-hyperlinks.lua` can be added to remove DOI hyperlinks
 # `-L _extensions/capitalize-subtitle.lua` can be added to capitalize subtitles,
 # as required by APA or similar styles
+# Remove `--filter _extensions/sort-bib.py` if using numeric citation style
 QUARTO := @quarto render index.qmd --to
 FILTERS := -L _extensions/localize-cnbib.lua \
 	-L _extensions/cnbib-quotes.lua \
