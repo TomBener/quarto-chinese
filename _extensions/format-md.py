@@ -6,7 +6,7 @@
 #
 # Transforms
 # 1) Merge adjacent citations into one cluster
-#    - Before: `[@a][; [@b]`
+#    - Before: `[@a]; [@b]` (or `[@a](some-link); [@b](some-link)`)
 #    - After:  `[@a; @b]`
 #
 # 2) Randomize numeric footnote identifiers to avoid collisions across files
@@ -56,6 +56,11 @@ def process_file(input_file, output_file):
         content = f.read()
 
     # Merge multiple adjacent citations into one
+    content = re.sub(
+        r"(\[@[^\]]+\])\s*;\s*(\[@[^\]]+\])",
+        lambda m: m.group(1)[:-1] + "; " + m.group(2)[1:],
+        content,
+    )
     content = re.sub(r"\][\(\[].*?;\s*\[", "; ", content)
 
     # Randomize footnote identifiers
