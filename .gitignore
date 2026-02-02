@@ -23,9 +23,7 @@ Backup of *.doc*
 /*.html
 /*.typ
 
-# Plist fils by Ulysses
-*.plist
-.Ulysses-ActivityHistory/
+*.pyc
 
 # symbolic link of Obsidian configuration
 .obsidian

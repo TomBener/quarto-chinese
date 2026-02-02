@@ -1,8 +1,17 @@
-# Convert *.md files to *.qmd files and pre-process them
-# Randomize footnote identifiers in multiple Quarto files to avoid conflicts
-# Convert reference-style links to inline links
-# Remove line breaks within a straight angle quotation mark
-# Reformat display math equations in Ulysses
+# Preprocess Markdown/Quarto sources for Quarto rendering.
+#
+# What it does
+# - Reads: `contents/[0-9]*.md` and `contents/*.qmd`
+# - Writes: processed `.qmd` files into `contents_tmp/` (original files are untouched)
+#
+# Transforms
+# 1) Merge adjacent citations into one cluster
+#    - Before: `[@a][; [@b]`
+#    - After:  `[@a; @b]`
+#
+# 2) Randomize numeric footnote identifiers to avoid collisions across files
+#    - Before: `text[^1] ...\n\n[^1]: note`
+#    - After:  `text[^aB3x9] ...\n\n[^aB3x9]: note`  (example id)
 
 # Copyright: © 2024–Present Tom Ben
 # License: MIT License
@@ -42,92 +51,15 @@ def randomize_footnote_identifiers(qmd_content):
     return qmd_content
 
 
-def convert_reference_to_inline(qmd_content):
-    # Extract reference links
-    reference_links = {}
-    reference_pattern = re.compile(r'\n\[(\d+)\]:\s*(.*)')
-    for match in reference_pattern.findall(qmd_content):
-        reference_links[match[0]] = match[1]
-
-    # Remove the reference link definitions from the qmd_content
-    qmd_content = reference_pattern.sub('', qmd_content)
-
-    # Replace reference-style link usages with inline links
-    def replace_link(match):
-        text = match.group(1)
-        key = match.group(2)
-        url = reference_links.get(key, '')
-        return f'[{text}]({url})'
-
-    usage_pattern = re.compile(r'\[(.*?)\]\[(\d+)\]')
-    qmd_content = usage_pattern.sub(replace_link, qmd_content)
-
-    return qmd_content
-
-
-def remove_linebreaks_in_quotes(text):
-    # Regular expression pattern to find blocks within single Chinese quotes
-    pattern = r'「[^」]*?」'
-
-    # Function to replace newlines in the found quoted text
-    def replace_newlines(m):
-        # Remove all newlines within the quote block
-        return m.group(0).replace('\n', '')
-
-    # Use re.sub to replace the newline characters in each match
-    cleaned_text = re.sub(pattern, replace_newlines, text)
-
-    return cleaned_text
-
-
-def reformat_math_equations(content):
-    # Reformat display math with labels to block format
-    labeled_pattern = r"\$(.+?)\$ *(\{#.+?\})"
-
-    def replace_with_labeled_block(match):
-        equation = match.group(1).strip()
-        label = match.group(2).strip()
-        return f"$$\n{equation}\n$$ {label}"
-
-    content = re.sub(labeled_pattern, replace_with_labeled_block, content)
-
-    # Reformat display math without labels to block format
-    # Match `$$ ... $$` without label
-    display_pattern = r"(?<!\$)\$\$([^\$]+?)\$\$(?!\{#)"
-
-    def replace_with_display_block(match):
-        equation = match.group(1).strip()
-        return f"$$\n{equation}\n$$"
-
-    content = re.sub(display_pattern, replace_with_display_block, content)
-
-    return content
-
-
 def process_file(input_file, output_file):
     with open(input_file, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Remove links with `[@]` and a space before it
-    content = re.sub(r"\s*\[@\].*?[\]\)]", "", content)
-    # Remove square brackets enclosing the caption
-    content = re.sub(r"^\[(.*)\}\]$", r"\n  :\1}", content, flags=re.MULTILINE)
     # Merge multiple adjacent citations into one
     content = re.sub(r"\][\(\[].*?;\s*\[", "; ", content)
-    # Replace '{{\<...\>}}' with '{{<...>}}'
-    content = re.sub(r"\{\{\\<(.*)\\>}}", r"{{<\1>}}", content)
-    # Remove comment blocks to avoid errors of Python filter
-    content = re.sub(r"^```{=comment}.*?^```$", "",
-                     content, flags=re.DOTALL | re.MULTILINE)
 
     # Randomize footnote identifiers
     content = randomize_footnote_identifiers(content)
-    # Convert reference-style links to inline links
-    content = convert_reference_to_inline(content)
-    # Remove line breaks in quotes
-    content = remove_linebreaks_in_quotes(content)
-    # Reformat math equations
-    content = reformat_math_equations(content)
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(content)
