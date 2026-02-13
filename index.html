@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.18">
+<meta name="generator" content="quarto-1.9.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -90,14 +90,14 @@ div.csl-indent {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-e3fecfe3565d481478fb93785bd05dc0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-b0284e5dabb999684391aa1683ffdc93.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-e3fecfe3565d481478fb93785bd05dc0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-3512cbed9e2527d986e9b0b56d261405.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-7038d31925839fcd0b50e6237b0ff245.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-3512cbed9e2527d986e9b0b56d261405.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-5301b88c76c402546335cc84eff23004.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="index_files/libs/bootstrap/bootstrap-dark-38500f95e71a6d830521a354986c96eb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="index_files/libs/bootstrap/bootstrap-5301b88c76c402546335cc84eff23004.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-0a98a81204462dd8d04800c1aed82710.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-dark-bcf8c2f5afae3c8e5db4ac0aeed6b491.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="index_files/libs/bootstrap/bootstrap-0a98a81204462dd8d04800c1aed82710.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="index_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="index_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="index_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -306,7 +306,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">更新于</div>
             <div class="quarto-title-meta-contents">
-              <p class="date-modified">2026 年 2 月 2 日</p>
+              <p class="date-modified">2026 年 2 月 13 日</p>
             </div>
           </div>
                 
@@ -440,7 +440,7 @@ div.csl-indent {
 </section>
 <section id="中文参考文献按照拼音排序" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="中文参考文献按照拼音排序"><span class="header-section-number">3</span> 中文参考文献按照拼音排序</h2>
-<p>在著者年份制的参考文献表中，中文参考文献一般需要按照拼音排序。基于 GB/T 7714-2015 的 BibLaTeX 样式包 <a href="https://github.com/vinta/pangu.js">biblatex-gb7714-2015</a> 支持使用 <code>biber</code> 对中文文献按照排序，但对于 Pandoc 使用的 Citeproc 来说，并不支持这个功能。因此，中文参考文献的排序问题一直是一个头疼的问题。</p>
+<p>在著者年份制的参考文献表中，中文参考文献一般需要按照拼音排序。基于 GB/T 7714-2015 的 BibLaTeX 样式包 <a href="https://github.com/hushidong/biblatex-gb7714-2015">biblatex-gb7714-2015</a> 支持使用 <code>biber</code> 对中文文献按照排序，但对于 Pandoc 使用的 Citeproc 来说，并不支持这个功能。因此，中文参考文献的排序问题一直是一个头疼的问题。</p>
 <p>本项目使用 Python filter <code>_extensions/sort-bib.py</code> 来解决这个问题，借助 Python 的 <code>pypinyin</code> 库获取中文文献的著者拼音，然后通过 Panflute <span class="citation" data-cites="correia2024">(<a href="#ref-correia2024" role="doc-biblioref">Correia, 2024</a>)</span> 修改 Pandoc AST，根据拼音对中文文献进行排序，并且对姓氏读音的多音字进行了特殊处理：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> special_pinyin(text):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 多音字的姓氏拼音</span></span>
@@ -477,7 +477,7 @@ div.csl-indent {
 <p>为了解决这个问题，本项目提供了一套完整的引号处理方案，具体来说，在 Markdown 中使用直角引号 <code>「</code>、<code>」</code>、<code>『</code>、<code>』</code>，借助以下这几个 Lua filters，可以实现引号的自动转换：</p>
 <ul>
 <li><code>_extensions/docx-quotes/</code>：处理 Word 正文中的引号，使包裹中文的引号看上去更宽。</li>
-<li><code>_extensions/latex-body-quotes/</code>：处理 LaTeX 正文中的引号，将中文直角引号转换为德语引号（其他东欧语系也有类似的引号），再交给 <a href="https://github.com/vinta/pangu.js">newunicodechar</a> 宏包恢复为蝌蚪引号。</li>
+<li><code>_extensions/latex-body-quotes/</code>：处理 LaTeX 正文中的引号，将中文直角引号转换为德语引号（其他东欧语系也有类似的引号），再交给 <a href="https://ctan.org/pkg/newunicodechar">newunicodechar</a> 宏包恢复为蝌蚪引号。</li>
 <li><code>_extensions/latex-header-quotes/</code>：专门处理 LaTeX 标题，既保证 PDF 里显示正确，也让 PDF 书签保持 Unicode 文本。</li>
 <li><code>_extensions/typst-quotes/</code>：在 Typst 输出中转换中文直角引号，避免 PDF 中的中西文混排问题。</li>
 <li><code>_extensions/cnbib-quotes.lua</code>：处理 HTML、EPUB、LaTeX 和 Typst 参考文献中的引号，确保中文条目使用期望的直角引号，而英文条目保持蝌蚪引号。</li>
@@ -515,7 +515,7 @@ div.csl-indent {
 <div class="right" style="text-align: right;">
 <p>这段文字会右对齐</p>
 <p>支持 DOCX、PDF（LaTeX/Typst）、HTML 和 EPUB 等格式。</p>
-<p>2026 年 2 月 2 日</p>
+<p>2026 年 2 月 13 日</p>
 </div>
 <p>如果希望段落居中，只需使用 <code>.center</code> 类：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>::: {.center}</span>
