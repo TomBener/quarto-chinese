@@ -1,97 +1,102 @@
-# Preprocess Markdown/Quarto sources for Quarto rendering.
-#
-# What it does
-# - Reads: `contents/[0-9]*.md` and `contents/*.qmd`
-# - Writes: processed `.qmd` files into `contents_tmp/` (original files are untouched)
-#
-# Transforms
-# 1) Merge adjacent citations into one cluster
-#    - Before: `[@a]; [@b]` (or `[@a](some-link); [@b](some-link)`)
-#    - After:  `[@a; @b]`
-#
-# 2) Randomize numeric footnote identifiers to avoid collisions across files
-#    - Before: `text[^1] ...\n\n[^1]: note`
-#    - After:  `text[^aB3x9] ...\n\n[^aB3x9]: note`  (example id)
+"""
+Preprocess Markdown/Quarto sources for Quarto rendering.
 
-# Copyright: © 2024–Present Tom Ben
-# License: MIT License
+What it does:
+- Reads: `_contents/[0-9]*.md` and `_contents/*.qmd`
+- Writes: processed `.qmd` files into `contents/` (original files are untouched)
 
-import re
-import glob
-import os
+Transforms:
+1) Merge adjacent citations into one cluster
+   - Before: `[@a]; [@b]`
+   - After:  `[@a; @b]`
+2) Randomize numeric footnote identifiers to avoid collisions across files
+   - Before: `text[^1] ...` and `[^1]: note`
+   - After:  `text[^aB3x9] ...` and `[^aB3x9]: note` (example id)
+3) Uniquify numeric link-reference identifiers across files
+   - Before: `... [label][1] ...` and `[1]: https://example.org`
+   - After:  `... [label][chapter-1] ...` and `[chapter-1]: https://example.org`
+"""
+
+from pathlib import Path
 import random
+import re
 import string
 
-
-def get_md_files():
-    # Get all *.md files
-    return [f for f in glob.glob("contents/[0-9]*.md")]
-
-
-def randomize_footnote_identifiers(qmd_content):
-    # Find all existing footnote identifiers (numbers)
-    existing_ids = set(re.findall(r'\[\^(\d+)\]', qmd_content))
-
-    # Generate a unique random identifier for each existing footnote
-    unique_ids = {}
-    for id in existing_ids:
-        # Generate a random string of 5 characters
-        new_id = ''.join(random.choices(
-            string.ascii_letters + string.digits, k=5))
-        while new_id in unique_ids.values():
-            new_id = ''.join(random.choices(
-                string.ascii_letters + string.digits, k=5))
-        unique_ids[id] = new_id
-
-    # Replace all footnote references and definitions with new identifiers
-    for old_id, new_id in unique_ids.items():
-        qmd_content = re.sub(rf'\[\^{old_id}\]', f'[^{new_id}]', qmd_content)
-        qmd_content = re.sub(rf'\[\^{old_id}\]:', f'[^{new_id}]:', qmd_content)
-
-    return qmd_content
+SOURCE_DIR = Path("_contents")
+OUTPUT_DIR = Path("contents")
+RANDOM_ID_LEN = 5
+RANDOM_ID_CHARS = string.ascii_letters + string.digits
 
 
-def process_file(input_file, output_file):
-    with open(input_file, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    # Merge multiple adjacent citations into one
-    content = re.sub(
+def merge_adjacent_citations(text):
+    """Merge adjacent citation blocks into a single cluster."""
+    # Join patterns like `[@a]; [@b]` into `[@a; @b]`.
+    text = re.sub(
         r"(\[@[^\]]+\])\s*;\s*(\[@[^\]]+\])",
         lambda m: m.group(1)[:-1] + "; " + m.group(2)[1:],
-        content,
+        text,
     )
-    content = re.sub(r"\][\(\[].*?;\s*\[", "; ", content)
+    # Also handle cases where citation labels carry optional link wrappers.
+    return re.sub(r"\][\(\[].*?;\s*\[", "; ", text)
 
-    # Randomize footnote identifiers
-    content = randomize_footnote_identifiers(content)
 
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(content)
+def randomize_numeric_footnotes(text):
+    """Randomize numeric footnote IDs (e.g. [^1]) to avoid collisions."""
+    ids_in_refs = set(re.findall(r"\[\^(\d+)\]", text))
+    ids_in_defs = set(re.findall(r"(?m)^[ \t]{0,3}\[\^(\d+)\]:", text))
+    # Include both references and definitions so partial footnotes are still normalized.
+    old_ids = ids_in_refs | ids_in_defs
+    if not old_ids:
+        return text
+
+    new_ids = {}
+    for old_id in old_ids:
+        new_id = "".join(random.choices(RANDOM_ID_CHARS, k=RANDOM_ID_LEN))
+        while new_id in new_ids.values():
+            new_id = "".join(random.choices(RANDOM_ID_CHARS, k=RANDOM_ID_LEN))
+        new_ids[old_id] = new_id
+
+    for old_id, new_id in new_ids.items():
+        text = re.sub(rf"\[\^{old_id}\]", f"[^{new_id}]", text)
+        text = re.sub(rf"(?m)^([ \t]{{0,3}})\[\^{old_id}\]:", rf"\1[^{new_id}]:", text)
+
+    return text
+
+
+def uniquify_numeric_link_references(text, prefix):
+    """Make numeric link-reference labels unique (e.g. [1] -> [chapter-1])."""
+    old_ids = set(re.findall(r"(?m)^[ \t]{0,3}\[(\d+)\]:", text))
+    if not old_ids:
+        return text
+
+    for old_id in old_ids:
+        new_id = f"{prefix}-{old_id}"
+        # `(?<!\^)` keeps footnotes like `[^1]` untouched.
+        text = re.sub(rf"(?<!\^)\[{old_id}\](?!:)", f"[{new_id}]", text)
+        text = re.sub(rf"(?m)^([ \t]{{0,3}})\[{old_id}\]:", rf"\1[{new_id}]:", text)
+
+    return text
+
+
+def process_file(source_file, output_file):
+    text = source_file.read_text(encoding="utf-8")
+    # Keep transform order stable: citations -> footnotes -> link references.
+    text = merge_adjacent_citations(text)
+    text = randomize_numeric_footnotes(text)
+    text = uniquify_numeric_link_references(text, output_file.stem)
+    output_file.write_text(text, encoding="utf-8")
 
 
 def main():
-    md_files = get_md_files()
+    OUTPUT_DIR.mkdir(exist_ok=True)
 
-    # Create contents_tmp directory if it doesn't exist
-    tmp_dir = "contents_tmp"
-    if not os.path.exists(tmp_dir):
-        os.makedirs(tmp_dir)
+    for source_file in sorted(SOURCE_DIR.glob("[0-9]*.md")):
+        output_file = OUTPUT_DIR / f"{source_file.stem}.qmd"
+        process_file(source_file, output_file)
 
-    # Convert *.md files to *.qmd files in contents_tmp directory
-    qmd_files = [os.path.join(tmp_dir, os.path.basename(
-        f).replace(".md", ".qmd")) for f in md_files]
-
-    for md_file, qmd_file in zip(md_files, qmd_files):
-        process_file(md_file, qmd_file)
-
-    # Process existing .qmd files in contents directory and output to contents_tmp
-    os.chdir('contents')
-    existing_qmd_files = glob.glob('*.qmd')
-
-    for qmd_file in existing_qmd_files:
-        output_file = os.path.join('..', tmp_dir, qmd_file)
-        process_file(qmd_file, output_file)
+    for source_file in sorted(SOURCE_DIR.glob("*.qmd")):
+        output_file = OUTPUT_DIR / source_file.name
+        process_file(source_file, output_file)
 
 
 if __name__ == "__main__":

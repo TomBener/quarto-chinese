@@ -253,7 +253,7 @@ def main():
     # Common arguments
     default_bib = os.path.expanduser(
         "~/Library/CloudStorage/Dropbox/pkm/bibliography.json")
-    default_content_dir = str(project_root / "contents")
+    default_content_dir = str(project_root / "_contents")
 
     # Add command flags instead of subcommands
     parser.add_argument('--extract', action='store_true',

@@ -7,7 +7,7 @@ _freeze/
 outputs/
 
 # Temporary files
-*_tmp/
+contents/
 
 # Word related files
 ~$*.doc*
