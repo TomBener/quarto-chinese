@@ -82,4 +82,4 @@ slides: dependencies
 # Clean up generated files
 .PHONY: clean
 clean:
-	@$(RM) -r .quarto *_cache *_files _freeze *_tmp contents cite* outputs
+	@$(RM) -r .quarto *_cache *_files _freeze contents cite* outputs
