@@ -70,7 +70,7 @@ format:
       related-formats-title: 其他格式
 
   epub:
-    epub-cover-image: figures/cover.png
+    epub-cover-image: _figures/cover.png
     rights: © 2025 Tom Ben
 
   typst:
@@ -128,7 +128,7 @@ format:
     template: _styles/revealjs.html
     theme: _styles/metropolis.scss
     output-file: slides.html
-    logo: figures/logo.svg
+    logo: _figures/logo.svg
     citeproc: false
     toc-depth: 1
     menu: false
