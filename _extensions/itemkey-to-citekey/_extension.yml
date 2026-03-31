@@ -1,0 +1,7 @@
+title: Item Key to Citekey
+author: Tao Ren
+version: 1.0.0
+quarto-required: ">=1.5.0"
+contributes:
+  filters:
+    - itemkey-to-citekey.lua

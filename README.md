@@ -16,6 +16,7 @@ formats like Word, HTML, LaTeX/PDF, Typst/PDF, EPUB, and Reveal.js slides via Qu
 - **Render Multiple Formats**: Render DOCX, HTML, PDF (LaTeX), PDF (Typst), EPUB, and Reveal.js slides at once with the same source file, and PDF can be customized for print or with watermark.
 - **Localize Chinese Bibliographies**: Change `et al.` to `等` and other English localization strings to Chinese in citations and references, both author-date and numeric styles are supported.
 - **Sort Chinese Bibliographies**: Sort Chinese bibliographies by Pinyin while keeping non-Chinese entries alphabetized, and customize whether Chinese entries appear first or last.
+- **Use Zotero Item Keys in Citations**: Write citations with Zotero item keys in your Markdown source and convert them to Pandoc citation keys automatically at render time (Perfect for AI Agents).
 - **Correct Chinese Quotes**: Automatically tailor quotation marks for DOCX, HTML/EPUB bibliographies, LaTeX body text, LaTeX headings, and Typst outputs.
 - **Correct Spaces**: Improve copywriting, correct spaces, words, and punctuations between CJK and Western text.
 - **Extract Bibliographies**: Filter cited references to a CSL JSON file and copy cited attachments to a specified directory.
@@ -74,6 +75,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - [format-md](_extensions/format-md.py): Preprocess Markdown files for conversion with Quarto.
 - [get-bib](_extensions/get-bib.lua): Extract all bibliographies cited in the document as a BibLaTeX file.[^bib]
 - [ignore-softbreaks](_extensions/ignore-softbreaks/): Emulate Pandoc’s extension `east_asian_line_breaks` [in Quarto](https://github.com/quarto-dev/quarto-cli/issues/8520).
+- [itemkey-to-citekey](_extensions/itemkey-to-citekey/): Replace Zotero item-key citations with Pandoc citation keys at render time by reading `zotero-item-key` values from the configured CSL JSON bibliography.
 - [latex-body-quotes](_extensions/latex-body-quotes/): Replace Chinese corner quotes with guillemets in LaTeX body text.
 - [latex-header-quotes](_extensions/latex-header-quotes/): Keep LaTeX/PDF headers readable while rendering body quotes correctly.
 - [links-to-citations](_extensions/links-to-citations/): Remove local links but keep the link text as normal citations.

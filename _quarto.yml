@@ -29,6 +29,7 @@ nocite: |
   @*
 filters:
   - links-to-citations
+  - itemkey-to-citekey
   - ignore-softbreaks
   - text-align
   - custom-fonts
