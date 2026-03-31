@@ -43,8 +43,9 @@ normalize-itemkeys: setup-bib
 # Remove `--filter _extensions/sort-bib.py` if using numeric citation style
 QUARTO := @quarto render index.qmd --to
 FILTERS := -L _extensions/localize-cnbib.lua \
-	-L _extensions/cnbib-quotes.lua \
-	--filter _extensions/sort-bib.py
+		   -L _extensions/cnbib-quotes.lua \
+		   -L _extensions/docx-table-styles.lua \
+		   --filter _extensions/sort-bib.py
 AUTOCORRECT := --filter _extensions/auto-correct.py
 
 # Render DOCX
