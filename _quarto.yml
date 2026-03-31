@@ -30,6 +30,7 @@ nocite: |
 filters:
   - links-to-citations
   - itemkey-to-citekey
+  - citation-punctuation
   - ignore-softbreaks
   - text-align
   - custom-fonts

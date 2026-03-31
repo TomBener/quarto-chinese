@@ -66,6 +66,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 
 - [auto-correct](_extensions/auto-correct.py): Improve copywriting, correct spaces, words, and punctuations between CJK and English with AutoCorrect.
 - [citation-backlinks](_extensions/citation-backlinks.lua): Generate backlinks for bibliography entries to the corresponding citations.
+- [citation-punctuation](_extensions/citation-punctuation/): Move punctuation to after standalone citations and turn citation-leading line breaks into normal inline spacing.
 - [capitalize-subtitle](_extensions/capitalize-subtitle.lua): Capitalize the first word after colons or em dashes inside bibliography subtitles, following APA style.
 - [citation-tools](_extensions/citation-tools.py): Extract citation keys to a filtered CSL JSON file, and copy cited reference files to a specified directory.
 - [cnbib-quotes](_extensions/cnbib-quotes.lua): Process quotes for Chinese bibliographies in HTML and EPUB outputs.

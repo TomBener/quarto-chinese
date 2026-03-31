@@ -53,4 +53,5 @@ numeric 引用格式不需要排序，因为数字本身就是有序的。
 使用 `_extensions/itemkey-to-citekey`，可以直接在 Markdown 中使用 Zotero Item Key
 来引用文献，例如使用 `[@FUTCYFS3; @ATQ7MWG6]` 来引用文献，而不需要使用 Citation Key。
 [@FUTCYFS3; @ATQ7MWG6]
+
 这种引用方式对 AI Agents 来说非常友好，因为 Item Key 基本不会改变，AI Agents 可以直接从 Zotero 数据库中获取 Item Key 来引用文献，比 Citation Key 更加稳定可靠。
