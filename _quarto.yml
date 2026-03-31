@@ -43,8 +43,8 @@ fig-dpi: 300
 
 format:
   docx:
-    reference-doc: _styles/custom.docx
-    template: _styles/custom.openxml
+    reference-doc: _styles/pandoc-docx/reference.docx
+    template: _styles/pandoc-docx/custom.openxml
     filters:
       - remove-spaces
       - docx-quotes

@@ -48,8 +48,17 @@ FILTERS := -L _extensions/localize-cnbib.lua \
 		   --filter _extensions/sort-bib.py
 AUTOCORRECT := --filter _extensions/auto-correct.py
 
+DOCX_TEMPLATE := _styles/pandoc-docx/reference.docx
+
+# Generate DOCX reference template if it doesn't exist
+.PHONY: docx-template
+docx-template:
+	@if [ ! -f $(DOCX_TEMPLATE) ]; then \
+		cd _styles/pandoc-docx && ./pandoc-docx.sh zip; \
+	fi
+
 # Render DOCX
-docx: dependencies
+docx: dependencies docx-template
 	$(QUARTO) $@ $(FILTERS)
 
 # Render HTML
