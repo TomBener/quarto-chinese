@@ -72,6 +72,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - [confetti](_extensions/confetti/): Send some 🎊 in Reveal.js slides.
 - [custom-fonts](_extensions/custom-fonts/): Use custom fonts in DOCX, PDF, HTML, EPUB, and Typst.[^epub]
 - [docx-quotes](_extensions/docx-quotes/): Convert straight angle quotation marks to curly quotation marks in DOCX.
+- [docx-table-styles](_extensions/docx-table-styles.lua): Apply DOCX table styles automatically, using `FigureTable` for Quarto wrapper to avoid the redundant lines in tables and figures.
 - [format-md](_extensions/format-md.py): Preprocess Markdown files for conversion with Quarto.
 - [get-bib](_extensions/get-bib.lua): Extract all bibliographies cited in the document as a BibLaTeX file.[^bib]
 - [ignore-softbreaks](_extensions/ignore-softbreaks/): Emulate Pandoc’s extension `east_asian_line_breaks` [in Quarto](https://github.com/quarto-dev/quarto-cli/issues/8520).
