@@ -54,7 +54,7 @@ DOCX_TEMPLATE := _styles/pandoc-docx/reference.docx
 .PHONY: docx-template
 docx-template:
 	@if [ ! -f $(DOCX_TEMPLATE) ]; then \
-		cd _styles/pandoc-docx && bash ./pandoc-docx.sh zip; \
+		cd _styles/pandoc-docx && ./pandoc-docx.sh zip; \
 	fi
 
 # Render DOCX
