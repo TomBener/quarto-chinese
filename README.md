@@ -9,11 +9,11 @@ papers in Chinese, such as the localization and sorting of Chinese citations and
 bibliographies, conversion of Chinese quotation marks, and correcting spaces between
 Chinese and English characters. With the help of these templates and scripts,
 you can write your academic papers in Markdown, and convert them into various
-formats like Word, HTML, LaTeX/PDF, Typst/PDF, EPUB, and Reveal.js slides via Quarto.
+formats like Word, HTML, PDF (LaTeX or Typst), EPUB, and Reveal.js slides via Quarto.
 
 ## Features
 
-- **Render Multiple Formats**: Render DOCX, HTML, PDF (LaTeX), PDF (Typst), EPUB, and Reveal.js slides at once with the same source file, and PDF can be customized for print or with watermark.
+- **Render Multiple Formats**: Render DOCX, HTML, PDF (LaTeX or Typst), and EPUB from the same paper source, and generate Reveal.js slides from `slides.qmd`. PDF can also be customized for print or with watermark.
 - **Localize Chinese Bibliographies**: Change `et al.` to `等` and other English localization strings to Chinese in citations and references, both author-date and numeric styles are supported.
 - **Sort Chinese Bibliographies**: Sort Chinese bibliographies by Pinyin while keeping non-Chinese entries alphabetized, and customize whether Chinese entries appear first or last.
 - **Use Zotero Item Keys in Citations**: Write citations with Zotero item keys in your Markdown source and convert them to Pandoc citation keys automatically at render time (Perfect for AI Agents).
@@ -40,6 +40,14 @@ formats like Word, HTML, LaTeX/PDF, Typst/PDF, EPUB, and Reveal.js slides via Qu
 
 ## Usage
 
+This repository uses the Git submodule `_styles/pandoc-docx`. Clone with submodules enabled:
+
+```bash
+git clone --recurse-submodules https://github.com/TomBener/quarto-chinese.git
+```
+
+If you have already cloned the repository without submodules, run `git submodule update --init --recursive`.
+
 > [!NOTE]
 > Currently [Lua filters](https://github.com/quarto-dev/quarto-cli/issues/7888) cannot be run after `citeproc` in Quarto.
 > As a workaround, some extensions are run on the command line in the Makefile. This can be improved in the future.
@@ -56,6 +64,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - `make print`: Render PDF for print.
 - `make watermark`: Render PDF with watermark.
 - `make citebib`: Extract all cited references into `citebib.json` (filtered CSL JSON).
+- `make normalize-itemkeys`: Rewrite Zotero item-key citations in `_contents/` to citation keys.
 - `make citedoc`: Copy cited reference files to a specified directory.
 - `make clean`: Remove auxiliary and output files.
 

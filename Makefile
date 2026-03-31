@@ -33,7 +33,7 @@ dependencies:
 
 # Rewrite item-key citations in source files
 .PHONY: normalize-itemkeys
-normalize-itemkeys: setup-bib
+normalize-itemkeys:
 	@python _extensions/citation-tools.py --normalize-itemkeys
 
 # Variables
