@@ -5,11 +5,13 @@ This script provides utilities for managing citations in academic writing:
 1. Extract citation keys from Markdown files and create a filtered CSL JSON bibliography
 2. Copy cited reference files to a specified directory for backup or sharing
 3. Extract Chinese-only bibliography entries based on Chinese characters in the title
+4. Normalize Zotero item-key citations in source files to Pandoc citation keys
 
 Typical usage:
     python citation-tools.py --extract
     python citation-tools.py --extract-cn
     python citation-tools.py --copy
+    python citation-tools.py --normalize-itemkeys
 
 Copyright: © 2025–Present Tom Ben
 License: MIT License
@@ -21,6 +23,8 @@ import shutil
 import json
 import argparse
 from pathlib import Path
+
+ITEMKEY_TOKEN_PATTERN = re.compile(r'(?<![A-Za-z0-9])@([A-Z0-9]{8})\b')
 
 
 def extract_citation_keys(markdown_file):
@@ -43,10 +47,20 @@ def extract_citation_keys(markdown_file):
         key.startswith('fig-') or key.startswith('tbl-'))}
 
 
-def parse_json_file(json_file):
-    """Parse CSL JSON file and extract citation keys with file paths."""
+def parse_bibliography_entries(json_file):
+    """Parse a CSL JSON file and return the bibliography entries."""
     with open(json_file, 'r', encoding='utf-8') as f:
         entries = json.load(f)
+
+    if isinstance(entries, dict):
+        return entries.get('items') or entries.get('references') or []
+
+    return entries
+
+
+def parse_json_file(json_file):
+    """Parse CSL JSON file and extract citation keys with file paths."""
+    entries = parse_bibliography_entries(json_file)
 
     # Dictionary to store citation key -> file path mappings
     citations = {}
@@ -68,8 +82,7 @@ def extract_full_json_entries(json_file, citation_keys, remove_fields=None):
     if remove_fields is None:
         remove_fields = ['file']
 
-    with open(json_file, 'r', encoding='utf-8') as f:
-        entries = json.load(f)
+    entries = parse_bibliography_entries(json_file)
 
     # Filter entries by citation keys
     filtered_entries = []
@@ -161,6 +174,69 @@ def copy_cited_files(args):
     return all_keys
 
 
+def load_item_key_map(json_file):
+    """Load Zotero item key -> citation key mappings from CSL JSON."""
+    entries = parse_bibliography_entries(json_file)
+    item_key_map = {}
+
+    for entry in entries:
+        item_key = entry.get('zotero-item-key')
+        citation_key = entry.get('id')
+        if not item_key or not citation_key:
+            continue
+
+        item_key_map[item_key] = citation_key
+
+    return item_key_map
+
+
+def replace_item_keys(text, item_key_map):
+    """Replace `@ITEMKEY` citations with their Pandoc citation keys."""
+    replaced = 0
+
+    def repl(match):
+        nonlocal replaced
+        key = match.group(1)
+        citation_key = item_key_map.get(key)
+        if citation_key and citation_key != key:
+            replaced += 1
+            return f"@{citation_key}"
+        return match.group(0)
+
+    return ITEMKEY_TOKEN_PATTERN.sub(repl, text), replaced
+
+
+def iter_source_files(content_dir):
+    """Yield source Markdown/Quarto files in a stable order."""
+    content_path = Path(content_dir)
+    for pattern in ('[0-9]*.md', '*.qmd'):
+        yield from sorted(content_path.glob(pattern))
+
+
+def normalize_itemkeys(args):
+    """Rewrite Zotero item-key citations in source files."""
+    item_key_map = load_item_key_map(args.bib)
+    updated_files = 0
+    total_replacements = 0
+
+    for source_file in iter_source_files(args.content_dir):
+        text = source_file.read_text(encoding='utf-8')
+        normalized_text, replacements = replace_item_keys(text, item_key_map)
+        if replacements == 0:
+            continue
+
+        source_file.write_text(normalized_text, encoding='utf-8')
+        updated_files += 1
+        total_replacements += replacements
+
+    print(
+        f"Normalized {total_replacements} item-key citation(s) "
+        f"across {updated_files} source file(s)."
+    )
+
+    return total_replacements
+
+
 def extract_citations(args):
     """Extract citations from Markdown files and save them to a CSL JSON file."""
     # Find all Markdown files in content directory
@@ -174,6 +250,9 @@ def extract_citations(args):
     # Extract full JSON entries
     json_entries = extract_full_json_entries(
         args.bib, all_keys, args.remove_fields)
+
+    # Ensure output directory exists
+    Path(args.output_bib).parent.mkdir(parents=True, exist_ok=True)
 
     # Write to output file with proper formatting
     with open(args.output_bib, 'w', encoding='utf-8') as f:
@@ -204,8 +283,7 @@ def extract_chinese_citations(args):
         all_keys.update(extract_citation_keys(md_file))
 
     # Read the entire JSON file
-    with open(args.bib, 'r', encoding='utf-8') as f:
-        entries = json.load(f)
+    entries = parse_bibliography_entries(args.bib)
 
     # Filter entries with Chinese titles
     chinese_entries = {}
@@ -227,6 +305,9 @@ def extract_chinese_citations(args):
     # Sort entries by citation key
     sorted_entries = [chinese_entries[key]
                       for key in sorted(chinese_entries.keys())]
+
+    # Ensure output directory exists
+    Path(args.output_bib).parent.mkdir(parents=True, exist_ok=True)
 
     # Write to output file with proper formatting
     with open(args.output_bib, 'w', encoding='utf-8') as f:
@@ -252,8 +333,9 @@ def main():
 
     # Common arguments
     default_bib = os.path.expanduser(
-        "~/Library/CloudStorage/Dropbox/pkm/bibliography.json")
+        "~/Library/CloudStorage/Dropbox/bibliography/bibliography.json")
     default_content_dir = str(project_root / "_contents")
+    default_output_bib = str(project_root / "_references" / "citebib.json")
 
     # Add command flags instead of subcommands
     parser.add_argument('--extract', action='store_true',
@@ -262,6 +344,8 @@ def main():
                         help='Extract Chinese citations to a CSL JSON file')
     parser.add_argument('--copy', action='store_true',
                         help='Copy cited files to a directory')
+    parser.add_argument('--normalize-itemkeys', action='store_true',
+                        help='Rewrite Zotero item keys in source files to citation keys')
 
     # Common arguments for both commands
     parser.add_argument('--bib',
@@ -273,8 +357,8 @@ def main():
 
     # Arguments specific to extract
     parser.add_argument('--output_bib',
-                        default=str(project_root / "citebib.json"),
-                        help=f'Path to output CSL JSON file (default: {project_root}/citebib.json)')
+                        default=default_output_bib,
+                        help=f'Path to output CSL JSON file (default: {default_output_bib})')
     parser.add_argument('--remove_fields',
                         nargs='+',
                         default=['file'],
@@ -292,12 +376,12 @@ def main():
     args = parser.parse_args()
 
     # Set different default output files based on the command
-    if args.extract and args.output_bib == str(project_root / "citebib.json"):
+    if args.extract and args.output_bib == default_output_bib:
         # Keep the default for --extract
         pass
-    elif args.extract_cn and args.output_bib == str(project_root / "citebib.json"):
+    elif args.extract_cn and args.output_bib == default_output_bib:
         # Change default for --extract-cn to citecn.json
-        args.output_bib = str(project_root / "citecn.json")
+        args.output_bib = str(project_root / "_references" / "citecn.json")
 
     if args.extract:
         extract_citations(args)
@@ -305,6 +389,8 @@ def main():
         extract_chinese_citations(args)
     elif args.copy:
         copy_cited_files(args)
+    elif args.normalize_itemkeys:
+        normalize_itemkeys(args)
     else:
         parser.print_help()
 
