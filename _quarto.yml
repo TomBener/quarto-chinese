@@ -23,8 +23,8 @@ crossref:
   fig-prefix: 图
   tbl-prefix: 表
 reference-section-title: 参考文献
-bibliography: bibliography.json
-csl: _styles/gb-author-date.csl
+bibliography: _references/bibliography.json
+csl: _references/gb-author-date.csl
 nocite: |
   @*
 filters:
