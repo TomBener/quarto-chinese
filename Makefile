@@ -8,6 +8,7 @@
 # `make print`: Render PDF for print.
 # `make watermark`: Render PDF with watermark.
 # `make citebib`: Extract all bibliographies cited as CSL JSON file `citebib.json`.
+# `make normalize-itemkeys`: Rewrite Zotero item keys in `_contents/` to citation keys.
 # `make citedoc`: Copy cited reference files to a specified directory.
 # `make clean`: Remove auxiliary and output files.
 
@@ -30,6 +31,12 @@ citedoc:
 dependencies:
 	@python _extensions/format-md.py
 
+# Rewrite item-key citations in source files
+.PHONY: normalize-itemkeys
+normalize-itemkeys: setup-bib
+	@python _extensions/citation-tools.py --normalize-itemkeys
+
+# Variables
 # `-L _extensions/remove-doi-hyperlinks.lua` can be added to remove DOI hyperlinks
 # `-L _extensions/capitalize-subtitle.lua` can be added to capitalize subtitles,
 # as required by APA or similar styles
@@ -82,4 +89,4 @@ slides: dependencies
 # Clean up generated files
 .PHONY: clean
 clean:
-	@$(RM) -r .quarto *_cache *_files _freeze contents cite* outputs
+	@$(RM) -r .quarto .jupyter_cache *_cache *_files _freeze contents outputs
