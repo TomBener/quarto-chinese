@@ -19,31 +19,10 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8
         with:
-          python-version: "3.10"
-          cache: "pip"
-          cache-dependency-path: "requirements.txt"
-
-      - name: Install Python packages
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2
-
-      - name: Cache R packages
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ hashFiles('DESCRIPTION') }}
-          restore-keys: ${{ runner.os }}-r-
-
-      - name: Install R packages
-        run: |
-          Rscript -e "install.packages(c('knitr', 'rmarkdown', 'ggplot2'))"
+          cache: true
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -52,8 +31,7 @@ jobs:
           tinytex: true
 
       - name: Render outputs
-        run: |
-          make
+        run: pixi run make
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

@@ -1,0 +1,19 @@
+[workspace]
+name = "quarto-chinese"
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[activation]
+env = { R_PROFILE_USER = "", R_LIBS_USER = "" }
+
+[dependencies]
+python = ">=3.10,<3.14"
+r-base = ">=4.3,<4.5"
+r-knitr = "*"
+r-rmarkdown = "*"
+r-ggplot2 = "*"
+
+[pypi-dependencies]
+autocorrect-py = ">=2.14.0"
+panflute = ">=2.3.1"
+pypinyin = ">=0.55.0"

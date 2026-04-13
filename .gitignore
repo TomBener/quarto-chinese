@@ -24,6 +24,7 @@ Backup of *.doc*
 /*.typ
 
 *.pyc
+.pixi/
 
 # symbolic link of Obsidian configuration
 .obsidian

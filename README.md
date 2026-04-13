@@ -29,14 +29,7 @@ formats like Word, HTML, PDF (LaTeX or Typst), EPUB, and Reveal.js slides via Qu
 
 - [Quarto](https://quarto.org), with [Pandoc](https://pandoc.org) included, and
   you can install TinyTeX via `quarto install tinytex --update-path`.
-- Python, and the following packages:
-  - [autocorrect_py](https://github.com/huacnlee/autocorrect/tree/main/autocorrect-py)
-  - [pypinyin](https://github.com/mozillazg/python-pinyin)
-  - [panflute](https://github.com/sergiocorreia/panflute)
-- R, and the following packages:
-  - [rmarkdown](https://github.com/rstudio/rmarkdown)
-  - [knitr](https://github.com/yihui/knitr)
-  - [ggplot2](https://github.com/tidyverse/ggplot2)
+- [pixi](https://pixi.sh) for dependency management (Python and R). Run `pixi install` to install all required packages.
 
 ## Usage
 
