@@ -28,7 +28,6 @@ csl: _references/gb-author-date.csl
 nocite: |
   @*
 filters:
-  - links-to-citations
   - itemkey-to-citekey
   - citation-punctuation
   - ignore-softbreaks
