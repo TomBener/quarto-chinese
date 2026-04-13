@@ -29,6 +29,13 @@ jobs:
           version: "pre-release"
           tinytex: true
 
+      - name: Cache Quarto freeze
+        uses: actions/cache@v4
+        with:
+          path: _freeze
+          key: quarto-freeze-${{ hashFiles('**/*.qmd') }}
+          restore-keys: quarto-freeze-
+
       - name: Render outputs
         run: pixi run make
 
