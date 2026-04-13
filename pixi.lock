@@ -90,6 +90,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-bslib-0.10.0-r44hc72bb7e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/r-cachem-1.1.0-r44h54b55ab_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/r-cli-3.6.6-r44h3697838_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/r-codetools-0.2_20-r44hc72bb7e_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/r-colorspace-2.1_2-r44h54b55ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-cpp11-0.5.4-r44h785f33e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/r-digest-0.6.39-r44h3697838_0.conda
@@ -248,6 +249,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-bslib-0.10.0-r44hc72bb7e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/r-cachem-1.1.0-r44h6168396_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/r-cli-3.6.6-r44h1380947_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/r-codetools-0.2_20-r44hc72bb7e_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/r-colorspace-2.1_2-r44h6168396_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/r-cpp11-0.5.4-r44h785f33e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/r-digest-0.6.39-r44hc1cd577_0.conda
@@ -2621,6 +2623,16 @@ packages:
   purls: []
   size: 1325539
   timestamp: 1775734162346
+- conda: https://conda.anaconda.org/conda-forge/noarch/r-codetools-0.2_20-r44hc72bb7e_2.conda
+  sha256: 3cf1c320913ddae7bd91ba770535a9d4765862a9fb1bac419a4ea41b8c39d693
+  md5: d81c629f78e571b14f9a617253c44552
+  depends:
+  - r-base >=4.4,<4.5.0a0
+  license: GPL-2.0-or-later
+  license_family: GPL
+  purls: []
+  size: 109324
+  timestamp: 1757452124857
 - conda: https://conda.anaconda.org/conda-forge/linux-64/r-colorspace-2.1_2-r44h54b55ab_0.conda
   sha256: 31ce342cdaccc3ec17d988e13d06d61ce7f6684552b2b86c513f7b547978ce1f
   md5: 209970b5b939d6f778c78aa304d3df4a

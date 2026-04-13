@@ -12,6 +12,7 @@ r-base = ">=4.3,<4.5"
 r-knitr = "*"
 r-rmarkdown = "*"
 r-ggplot2 = "*"
+r-codetools = "*"
 
 [pypi-dependencies]
 autocorrect-py = ">=2.14.0"
