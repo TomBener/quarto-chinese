@@ -9,6 +9,8 @@
 CHINESE_FIRST = False
 # =======================================
 
+import re
+
 import panflute as pf
 from panflute import elements as pf_elements
 from pypinyin import pinyin, Style
@@ -65,12 +67,41 @@ def special_pinyin(text):
         return None
 
 
-def get_entry_sort_key(entry_elem):
-    """Extract sort key from bibliography entry for alphabetical sorting."""
+# 著者-出版年制把年份紧跟在著者之后输出（`著者, 年份. 题名. 出版信息.`），
+# 故从条目开头锚定提取，而不是取全文最后一个年份——后者会抓到条目末尾的
+# 访问日期（示例文献库 128 条中有 9 条的访问年与出版年不同）。
+# 年份前必须有逗号，可避开团体著者名中的数字（如「《1949 年鉴》编委会」）。
+AUTHOR_YEAR_RE = re.compile(r'^(.*?),\s*(1[0-9]{3}|20\d{2})([a-z]?)(?![0-9A-Za-z])')
+
+# 团体著者可能以书名号、引号或括号起头（如「《王震传》编写组」），排序时忽略
+LEADING_PUNCT_RE = re.compile(r'^[《〈「『“"\'(（\[]+')
+
+
+def sort_key(entry_elem):
+    """Sort by author, then year, then the citeproc year suffix (1978a, 1978b).
+
+    旧实现把整条文字作为排序键。中文条目走 `special_pinyin(整条)`，而该函数
+    内部在首个逗号处截断，键退化成「第一著者姓名」：同一著者名下的条目键全部
+    相同，年份不参与排序，排列顺序只是 citeproc 的输出顺序，于是 2020 年的
+    著作可能排在 2010 年之前。
+
+    年份后缀在此前是间接成立的：本样式的 <bibliography> 没有 <sort>，citeproc
+    按引用顺序输出并按同一顺序赋后缀，先引用者得 `a`，稳定排序又保留了它。
+    这里把著者、年份、后缀三项显式取出作键，年份据此正确排序，后缀也直接参与
+    比较，不再依赖引用顺序恰好对齐。
+    """
     entry_text = pf.stringify(entry_elem)
-    # Extract the first author/creator name or title for sorting
-    # Typically bibliography entries start with author name
-    return entry_text.lower()
+    match = AUTHOR_YEAR_RE.match(entry_text)
+    if match:
+        author, year, suffix = match.group(1), int(match.group(2)), match.group(3)
+    else:
+        # 无可识别年份（如「出版年不详」）的条目按著者排，并置于同著者条目之后
+        author, year, suffix = entry_text.split('.', 1)[0], 9999, ''
+
+    author = LEADING_PUNCT_RE.sub('', author).strip()
+    # 中文著者按拼音，西文著者按字母；special_pinyin 只取第一著者
+    key = special_pinyin(author) if contains_chinese(author) else author.lower()
+    return (key, year, suffix)
 
 
 def prepare(doc):
@@ -91,11 +122,10 @@ def action(elem, doc):
 
 
 def finalize(doc):
-    # Sort Chinese entries by Pinyin
-    doc.chinese_entries.sort(key=lambda x: special_pinyin(pf.stringify(x)))
-
-    # Sort non-Chinese entries alphabetically
-    doc.non_chinese_entries.sort(key=get_entry_sort_key)
+    # Chinese entries by Pinyin, non-Chinese alphabetically; both then by
+    # year and year suffix
+    doc.chinese_entries.sort(key=sort_key)
+    doc.non_chinese_entries.sort(key=sort_key)
 
     # 用排序后的条目替换 Div 中的内容
     for elem in doc.content:
