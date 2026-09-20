@@ -35,6 +35,50 @@ local function find_next_str(content, start_index)
     return nil, nil
 end
 
+-- 无著者条目：CSL 用英文 "Anon" 占位，中文条目改为「佚名」。
+-- 各 CSL 样式在 "Anon" 之后接的标点不同（gb-author-date 接逗号「Anon, 1823」，
+-- 另一些样式接句点「Anon. 题名」），故用 frontier 模式 %f[%W] 匹配词尾，
+-- 既覆盖各种标点，又不会误伤 "Anonymous" 这类以 Anon 起头的词。
+-- 第一遍扫描参考文献表，记下以 "Anon" 起头且含中文的条目（键为去掉 "ref-" 前缀的 citation key）；
+-- 第二遍改写这些条目的著者位置，以及指向它们的文内引用（link-citations 下为 Link，否则为 Cite）。
+local anon_refs = {}
+
+local function collect_anon_refs(doc)
+    doc:walk({
+        Div = function(div)
+            if div.classes:includes("csl-entry") and div.identifier:match("^ref%-") then
+                local text = pandoc.utils.stringify(div)
+                if contains_chinese(text) and text:match("^Anon%f[%W]") then
+                    anon_refs[div.identifier:sub(5)] = true
+                end
+            end
+        end
+    })
+    return nil
+end
+
+local function replace_anon_inlines(inlines)
+    for i, item in ipairs(inlines) do
+        if item.t == "Str" and item.text:find("Anon", 1, true) then
+            inlines[i] = pandoc.Str((item.text:gsub("Anon%f[%W]", "佚名")))
+        end
+    end
+end
+
+local function cites_anon_ref(el)
+    if el.t == "Link" then
+        local id = tostring(el.target):match("^#ref%-(.+)$")
+        return id ~= nil and anon_refs[id] == true
+    elseif el.t == "Cite" then
+        for _, citation in ipairs(el.citations) do
+            if anon_refs[citation.id] then
+                return true
+            end
+        end
+    end
+    return false
+end
+
 -- Function to check if Emph contains "et al." or "et al.,"
 function is_et_al_emph(emph)
     if emph.t ~= "Emph" or #emph.content < 3 then
@@ -95,6 +139,9 @@ function process_citation(el)
     end
 
     el.content = new_inlines
+    if cites_anon_ref(el) then
+        replace_anon_inlines(el.content)
+    end
     return el
 end
 
@@ -194,9 +241,13 @@ end
 
 function process_div(el)
     if el.classes:includes("csl-entry") then
+        local is_anon = el.identifier:match("^ref%-") and anon_refs[el.identifier:sub(5)] == true
         for _, block in ipairs(el.content) do
             if block.t == "Para" then
                 process_bibliography(block)
+                if is_anon then
+                    replace_anon_inlines(block.content)
+                end
             end
         end
     end
@@ -204,6 +255,7 @@ function process_div(el)
 end
 
 return {
+    { Pandoc = collect_anon_refs },
     {
         Cite = process_citation,
         Link = process_citation,
