@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -34,7 +34,7 @@ jobs:
           tinytex: true
 
       - name: Cache Quarto freeze
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: _freeze
           key: quarto-freeze-${{ hashFiles('**/*.qmd') }}
