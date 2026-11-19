@@ -34,6 +34,7 @@ filters:
   - text-align
   - custom-fonts
   - sort-citations
+  - localize-sec-crossref
 execute:
   cache: true
   freeze: auto

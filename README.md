@@ -83,6 +83,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - [latex-body-quotes](_extensions/latex-body-quotes/): Replace Chinese corner quotes with guillemets in LaTeX body text.
 - [latex-header-quotes](_extensions/latex-header-quotes/): Keep LaTeX/PDF headers readable while rendering body quotes correctly.
 - [localize-cnbib](_extensions/localize-cnbib.lua): Localize Chinese bibliographies, change `et al.` to `等` and other English localization strings to Chinese.
+- [localize-sec-crossref](_extensions/localize-sec-crossref/): Write section cross-references (`@sec-*`) as `第N章` for level-1 headings and `第N节` for lower levels, with the whole reference as one link. The spaces Quarto puts inside the reference are removed; `auto-correct` adds its own spacing between Chinese and digits in HTML and EPUB.
 - [no-first-paragraph](_extensions/no-first-paragraph/): Remove the `First Paragraph` style by applying `Body Text` to body paragraphs in DOCX. Footnotes, block quotes and blocks with their own `custom-style` keep their styles.
 - [remove-doi-hyperlinks](_extensions/remove-doi-hyperlinks.lua): Remove [DOI hyperlinks](https://github.com/jgm/pandoc/issues/10393) formatted by `citeproc` in the bibliography.[^doi]
 - [remove-spaces](_extensions/remove-spaces/): Remove spaces before or after Chinese characters in DOCX.
