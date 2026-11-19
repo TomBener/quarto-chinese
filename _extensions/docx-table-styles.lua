@@ -5,7 +5,9 @@
 --- and real data tables -> `Table` (three-line style).
 --- Unlabeled figures (normal image path without `#fig-*`) are not affected.
 --- Only table `custom-style` is changed.
---- Cannot use as a Quarto format filter since it needs to run after crossref labeling.
+--- Must run at Quarto's `post-render` phase or later: crossref and format
+--- rendering create the labeled wrapper tables inspected by this filter.
+--- A default Quarto format filter runs at `pre-quarto`, which is too early.
 
 --- Copyright: © 2026–Present Tom Ben
 --- License: MIT License

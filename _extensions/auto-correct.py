@@ -41,7 +41,8 @@ def load_config():
         }
     }
     config_str = json.dumps(config)
-    autocorrect.load_config(config_str)
+    # load_config 运行时存在，但包的 __init__.pyi 存根漏声明
+    autocorrect.load_config(config_str)  # pyright: ignore[reportAttributeAccessIssue]
 
 
 def correct_text(elem, doc):
