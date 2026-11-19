@@ -72,8 +72,10 @@ function Header(header)
     local unicode_block = to_unicode_block(header.content)
 
     local latex_doc = pandoc.Pandoc({ macro_block }, pandoc.Meta {})
+    -- Trim ASCII whitespace only: under a UTF-8 locale on macOS, %s also matches
+    -- byte 0xA0, which cut the last byte off a final 张 (E5 BC A0).
     local latex_body = pandoc.write(latex_doc, 'latex')
-        :gsub('%s+$', '')
+        :gsub('[ \t\r\n]+$', '')
         :gsub('\n', ' ')
     local bookmark_text = pandoc.utils.stringify(unicode_block)
         :gsub('\n', ' ')
