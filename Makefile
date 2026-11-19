@@ -50,12 +50,16 @@ AUTOCORRECT := --filter _extensions/auto-correct.py
 
 DOCX_TEMPLATE := _styles/pandoc-docx/reference.docx
 
-# Generate DOCX reference template if it doesn't exist
+# Generate the DOCX reference template, and rebuild it when the files it is
+# made from change (e.g. after the pandoc-docx submodule is updated)
+# `[Content_Types].xml` is left out: make reads its brackets as a pattern
+DOCX_TEMPLATE_SRC := $(shell find _styles/pandoc-docx/reference -type f ! -name '.DS_Store' ! -name '[[]*' 2>/dev/null)
+
+$(DOCX_TEMPLATE): $(DOCX_TEMPLATE_SRC)
+	@cd _styles/pandoc-docx && ./pandoc-docx.sh zip
+
 .PHONY: docx-template
-docx-template:
-	@if [ ! -f $(DOCX_TEMPLATE) ]; then \
-		cd _styles/pandoc-docx && ./pandoc-docx.sh zip; \
-	fi
+docx-template: $(DOCX_TEMPLATE)
 
 # Render DOCX
 docx: dependencies docx-template

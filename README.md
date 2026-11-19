@@ -83,7 +83,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - [latex-body-quotes](_extensions/latex-body-quotes/): Replace Chinese corner quotes with guillemets in LaTeX body text.
 - [latex-header-quotes](_extensions/latex-header-quotes/): Keep LaTeX/PDF headers readable while rendering body quotes correctly.
 - [localize-cnbib](_extensions/localize-cnbib.lua): Localize Chinese bibliographies, change `et al.` to `等` and other English localization strings to Chinese.
-- [no-first-paragraph](_extensions/no-first-paragraph/): Remove the `First Paragraph` style by applying `Body Text` to all paragraphs in DOCX.
+- [no-first-paragraph](_extensions/no-first-paragraph/): Remove the `First Paragraph` style by applying `Body Text` to body paragraphs in DOCX. Footnotes, block quotes and blocks with their own `custom-style` keep their styles.
 - [remove-doi-hyperlinks](_extensions/remove-doi-hyperlinks.lua): Remove [DOI hyperlinks](https://github.com/jgm/pandoc/issues/10393) formatted by `citeproc` in the bibliography.[^doi]
 - [remove-spaces](_extensions/remove-spaces/): Remove spaces before or after Chinese characters in DOCX.
 - [sort-bib](_extensions/sort-bib.py): Sort bibliographies by grouping Chinese entries (sorted by Pinyin) and non-Chinese entries (alphabetical).
