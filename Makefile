@@ -73,28 +73,25 @@ html: dependencies
 epub: dependencies
 	$(QUARTO) $@ $(FILTERS) $(AUTOCORRECT)
 
-# Render PDF via LaTeX
+# Render PDF via LaTeX: $(1) is the output file, $(2) adds options
+render_pdf = $(QUARTO) pdf $(FILTERS) --output $(1) $(2)
+
 pdf: dependencies
-	$(QUARTO) $@ $(FILTERS) $(if $(findstring pdf,$@),--output $(PDF_OUTPUT) $(PDF_OPTION))
+	$(call render_pdf,index.pdf)
 
 # Render PDF via Typst
 typst: dependencies
 	$(QUARTO) $@ $(FILTERS)
 
-# Initial PDF settings
-PDF_OUTPUT := index.pdf
-
-# Special handling for print PDF
+# Render PDF for print
 .PHONY: print
-print: PDF_OPTION := -V print
-print: PDF_OUTPUT := print.pdf
-print: pdf
+print: dependencies
+	$(call render_pdf,print.pdf,-V print)
 
-# Special handling for watermark PDF
+# Render PDF with watermark
 .PHONY: watermark
-watermark: PDF_OPTION := -V watermark=true
-watermark: PDF_OUTPUT := watermark.pdf
-watermark: pdf
+watermark: dependencies
+	$(call render_pdf,watermark.pdf,-V watermark=true)
 
 # Render Reveal.js slides
 slides: dependencies

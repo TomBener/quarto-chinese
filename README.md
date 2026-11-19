@@ -45,7 +45,7 @@ If you have already cloned the repository without submodules, run `git submodule
 > Currently [Lua filters](https://github.com/quarto-dev/quarto-cli/issues/7888) cannot be run after `citeproc` in Quarto.
 > As a workaround, some extensions are run on the command line in the Makefile. This can be improved in the future.
 
-This project uses a [Makefile](Makefile) to manage the build process. Here are the available commands:
+This project uses a [Makefile](Makefile) to manage the build process. Run the commands inside the pixi environment, for example `pixi run make html`, or open a shell with `pixi shell` first. Here are the available commands:
 
 - `make` or `make all`: Render DOCX, HTML, EPUB, PDF (LaTeX), PDF (Typst) and Reveal.js slides at once.
 - `make docx`: Render DOCX.

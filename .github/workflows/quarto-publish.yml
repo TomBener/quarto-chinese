@@ -30,14 +30,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          version: "pre-release"
+          version: "release"
           tinytex: true
 
       - name: Cache Quarto freeze
         uses: actions/cache@v6
         with:
           path: _freeze
-          key: quarto-freeze-${{ hashFiles('**/*.qmd') }}
+          key: quarto-freeze-${{ hashFiles('_contents/**', '*.qmd') }}
           restore-keys: quarto-freeze-
 
       - name: Render outputs

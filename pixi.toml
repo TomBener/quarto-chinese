@@ -7,8 +7,8 @@ platforms = ["osx-arm64", "linux-64"]
 env = { R_PROFILE_USER = "", R_LIBS_USER = "" }
 
 [dependencies]
-python = ">=3.10,<3.14"
-r-base = ">=4.3,<4.5"
+python = ">=3.10,<3.15"
+r-base = ">=4.3,<4.6"
 r-knitr = "*"
 r-rmarkdown = "*"
 r-ggplot2 = "*"
