@@ -27,6 +27,16 @@ for _, p in ipairs(TRAILING_PUNCT) do
   EXACT_PUNCT[p] = true
 end
 
+-- Chinese punctuation: a line break after it is dropped, not turned into a space
+local CHINESE_PUNCT = {
+  ["，"] = true,
+  ["；"] = true,
+  ["。"] = true,
+  ["？"] = true,
+  ["！"] = true,
+  ["……"] = true
+}
+
 local function is_break(el)
   return el and (el.t == "SoftBreak" or el.t == "LineBreak")
 end
@@ -139,7 +149,13 @@ function Inlines(inlines)
         set_break_to_spacing(inlines, cite_idx + 1)
       elseif is_punct_str(after_cite) and is_break(inlines[cite_idx + 2]) then
         -- Handle patterns like: [@key].<newline>Next sentence
-        set_break_to_spacing(inlines, cite_idx + 2)
+        -- After Chinese punctuation ([@key]。<newline>下一句) drop the break,
+        -- so no space appears after 。
+        if CHINESE_PUNCT[after_cite.text] then
+          inlines:remove(cite_idx + 2)
+        else
+          set_break_to_spacing(inlines, cite_idx + 2)
+        end
       end
     end
     i = i + 1
