@@ -107,10 +107,14 @@ def sort_key(entry_elem):
 def prepare(doc):
     doc.chinese_entries = []
     doc.non_chinese_entries = []
+    doc.refs_div = None
 
 
 def action(elem, doc):
     if isinstance(elem, pf.Div) and "references" in elem.classes:
+        # Keep the first references Div; it may sit inside another Div
+        if doc.refs_div is None:
+            doc.refs_div = elem
         for e in elem.content:
             if isinstance(e, pf.Div) and "csl-entry" in e.classes:
                 entry_text = pf.stringify(e)
@@ -128,14 +132,12 @@ def finalize(doc):
     doc.non_chinese_entries.sort(key=sort_key)
 
     # 用排序后的条目替换 Div 中的内容
-    for elem in doc.content:
-        if isinstance(elem, pf.Div) and "references" in elem.classes:
-            # Determine order based on configuration
-            if CHINESE_FIRST:
-                elem.content = doc.chinese_entries + doc.non_chinese_entries
-            else:
-                elem.content = doc.non_chinese_entries + doc.chinese_entries
-            break
+    if doc.refs_div is not None:
+        # Determine order based on configuration
+        if CHINESE_FIRST:
+            doc.refs_div.content = doc.chinese_entries + doc.non_chinese_entries
+        else:
+            doc.refs_div.content = doc.non_chinese_entries + doc.chinese_entries
 
 
 def main(doc=None):

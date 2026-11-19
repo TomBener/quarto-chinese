@@ -1,7 +1,5 @@
 --- Modified from https://github.com/bcdavasconcelos/citetools/blob/main/_extensions/citetools/citation-backlinks.lua
 
---- Todo: even with link-citations and link-fields turned off, citation-backlinks still adds a single backlink to each reference in the final bibliography div.
-
 --- citation-backlinks.lua – adds citation backlinks to the bibliography
 -- https://github.com/tarleb/citation-backlinks
 --- Copyright: © 2022–2024 John MacFarlane and Albert Krewinkel and Bernardo Vasconcelos
@@ -62,21 +60,41 @@ function append_inline(blocks, inlines)
   return blocks
 end
 
+-- LaTeX backlinks show page numbers. Several citations on one page would print
+-- the same page more than once, so each page is compared in LaTeX with the page
+-- of the previous citation and printed only when it differs. Citations come in
+-- document order, so equal pages are always next to each other.
+-- `\getpagerefnumber` comes from refcount, which hyperref loads.
+local function latex_page_backlinks(cite_ids)
+  local function page_link(id)
+    return "\\hyperref[" .. id .. "]{\\pageref{" .. id .. "}}"
+  end
+  local parts = { page_link(cite_ids[1]) }
+  for k = 2, #cite_ids do
+    parts[#parts + 1] = "\\edef\\cblprev{\\getpagerefnumber{" .. cite_ids[k - 1] .. "}}"
+      .. "\\edef\\cblcur{\\getpagerefnumber{" .. cite_ids[k] .. "}}"
+      .. "\\ifx\\cblprev\\cblcur\\else, " .. page_link(cite_ids[k]) .. "\\fi"
+  end
+  return pandoc.RawInline("latex", table.concat(parts))
+end
+
 function Div(el)
   local citation_id = el.identifier:match("ref%-(.+)")
-  local tex_return_link = pandoc.RawInline("latex", "\\Acrobatmenu{GoBack}{$\\hookleftarrow$}")
+
+  if citation_id and FORMAT == "latex" then
+    local cite_ids = cites[citation_id] or {}
+    if #cite_ids > 0 then
+      append_inline(el.content, pandoc.Inlines {
+        pandoc.Space(), pandoc.Str("["), latex_page_backlinks(cite_ids), pandoc.Str("]")
+      })
+    end
+    return el
+  end
 
   if citation_id then
     local backlinks = pandoc.Inlines { pandoc.Space(), pandoc.Str("[") }
-    if FORMAT == "latex" then
-      table.insert(backlinks, tex_return_link)
-    end
-
     for i, cite_id in ipairs(cites[citation_id] or {}) do
       local marker = pandoc.Str(i)
-      if FORMAT == "latex" then
-        marker = pandoc.RawInline("latex", "\\pageref{" .. cite_id .. "}")
-      end
       if #backlinks > 2 then
         table.insert(backlinks, pandoc.Str(","))
         table.insert(backlinks, pandoc.Space())

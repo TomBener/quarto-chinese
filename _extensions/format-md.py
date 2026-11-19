@@ -5,86 +5,118 @@ What it does:
 - Reads: `_contents/[0-9]*.md` and `_contents/*.qmd`
 - Writes: processed `.qmd` files into `contents/` (original files are untouched)
 
-Transforms:
+Transforms (fenced code blocks and inline code are left untouched):
 1) Merge adjacent citations into one cluster
-   - Before: `[@a]; [@b]`
-   - After:  `[@a; @b]`
-2) Randomize numeric footnote identifiers to avoid collisions across files
+   - Before: `[@a]; [@b]; [@c]`
+   - After:  `[@a; @b; @c]`
+2) Make numeric footnote identifiers unique across files
    - Before: `text[^1] ...` and `[^1]: note`
-   - After:  `text[^aB3x9] ...` and `[^aB3x9]: note` (example id)
-3) Uniquify numeric link-reference identifiers across files
+   - After:  `text[^chapter-1] ...` and `[^chapter-1]: note`
+3) Make numeric link-reference identifiers unique across files
    - Before: `... [label][1] ...` and `[1]: https://example.org`
    - After:  `... [label][chapter-1] ...` and `[chapter-1]: https://example.org`
 """
 
 from pathlib import Path
-import random
 import re
-import string
 
 SOURCE_DIR = Path("_contents")
 OUTPUT_DIR = Path("contents")
-RANDOM_ID_LEN = 5
-RANDOM_ID_CHARS = string.ascii_letters + string.digits
+
+FENCE_OPEN_RE = re.compile(r"^ {0,3}(`{3,}|~{3,})")
+# Inline code cannot span a blank line
+INLINE_CODE_RE = re.compile(r"(?<!`)(`+)(?!`)((?:(?!\n[ \t]*\n).)+?)(?<!`)\1(?!`)", re.S)
+ADJACENT_CITATIONS_RE = re.compile(r"(\[@[^\]]+\])\s*;\s*(\[@[^\]]+\])")
+
+
+def split_fenced_code(text):
+    """Split text into (is_code, chunk) pairs; fenced code blocks are code."""
+    chunks = []
+    prose = []
+    lines = text.splitlines(keepends=True)
+    i = 0
+    while i < len(lines):
+        fence = FENCE_OPEN_RE.match(lines[i])
+        if not fence:
+            prose.append(lines[i])
+            i += 1
+            continue
+        if prose:
+            chunks.append((False, "".join(prose)))
+            prose = []
+        marker = fence.group(1)
+        close_re = re.compile(rf"^ {{0,3}}{re.escape(marker[0])}{{{len(marker)},}}[ \t]*$")
+        code = [lines[i]]
+        i += 1
+        while i < len(lines):
+            code.append(lines[i])
+            i += 1
+            if close_re.match(code[-1].rstrip("\r\n")):
+                break
+        chunks.append((True, "".join(code)))
+    if prose:
+        chunks.append((False, "".join(prose)))
+    return chunks
+
+
+def transform_prose(text, transform):
+    """Apply `transform` to the text outside fenced code blocks and inline code."""
+    parts = []
+    for is_code, chunk in split_fenced_code(text):
+        if is_code:
+            parts.append(chunk)
+            continue
+        pos = 0
+        for match in INLINE_CODE_RE.finditer(chunk):
+            parts.append(transform(chunk[pos:match.start()]))
+            parts.append(match.group(0))
+            pos = match.end()
+        parts.append(transform(chunk[pos:]))
+    return "".join(parts)
+
+
+def prose_only(text):
+    """Return the text outside fenced code blocks."""
+    return "".join(chunk for is_code, chunk in split_fenced_code(text) if not is_code)
 
 
 def merge_adjacent_citations(text):
     """Merge adjacent citation blocks into a single cluster."""
-    # Join patterns like `[@a]; [@b]` into `[@a; @b]`.
-    text = re.sub(
-        r"(\[@[^\]]+\])\s*;\s*(\[@[^\]]+\])",
-        lambda m: m.group(1)[:-1] + "; " + m.group(2)[1:],
-        text,
-    )
-    # Also handle cases where citation labels carry optional link wrappers.
-    return re.sub(r"\][\(\[].*?;\s*\[", "; ", text)
+    # Repeat until nothing changes, so three or more clusters merge into one.
+    while True:
+        merged = ADJACENT_CITATIONS_RE.sub(
+            lambda m: m.group(1)[:-1] + "; " + m.group(2)[1:], text)
+        if merged == text:
+            return merged
+        text = merged
 
 
-def randomize_numeric_footnotes(text):
-    """Randomize numeric footnote IDs (e.g. [^1]) to avoid collisions."""
-    ids_in_refs = set(re.findall(r"\[\^(\d+)\]", text))
-    ids_in_defs = set(re.findall(r"(?m)^[ \t]{0,3}\[\^(\d+)\]:", text))
-    # Include both references and definitions so partial footnotes are still normalized.
-    old_ids = ids_in_refs | ids_in_defs
-    if not old_ids:
-        return text
-
-    new_ids = {}
-    for old_id in old_ids:
-        new_id = "".join(random.choices(RANDOM_ID_CHARS, k=RANDOM_ID_LEN))
-        while new_id in new_ids.values():
-            new_id = "".join(random.choices(RANDOM_ID_CHARS, k=RANDOM_ID_LEN))
-        new_ids[old_id] = new_id
-
-    for old_id, new_id in new_ids.items():
-        text = re.sub(rf"\[\^{old_id}\]", f"[^{new_id}]", text)
-        text = re.sub(rf"(?m)^([ \t]{{0,3}})\[\^{old_id}\]:", rf"\1[^{new_id}]:", text)
-
-    return text
+def uniquify_numeric_footnotes(text, prefix):
+    """Prefix numeric footnote IDs (e.g. [^1] -> [^chapter-1]) to avoid collisions."""
+    return re.sub(r"\[\^(\d+)\]", rf"[^{prefix}-\1]", text)
 
 
-def uniquify_numeric_link_references(text, prefix):
+def uniquify_numeric_link_references(text, prefix, ids):
     """Make numeric link-reference labels unique (e.g. [1] -> [chapter-1])."""
-    old_ids = set(re.findall(r"(?m)^[ \t]{0,3}\[(\d+)\]:", text))
-    if not old_ids:
-        return text
-
-    for old_id in old_ids:
-        new_id = f"{prefix}-{old_id}"
+    for old_id in ids:
         # `(?<!\^)` keeps footnotes like `[^1]` untouched.
-        text = re.sub(rf"(?<!\^)\[{old_id}\](?!:)", f"[{new_id}]", text)
-        text = re.sub(rf"(?m)^([ \t]{{0,3}})\[{old_id}\]:", rf"\1[{new_id}]:", text)
-
+        text = re.sub(rf"(?<!\^)\[{old_id}\]", f"[{prefix}-{old_id}]", text)
     return text
 
 
 def process_file(source_file, output_file):
     text = source_file.read_text(encoding="utf-8")
-    # Keep transform order stable: citations -> footnotes -> link references.
-    text = merge_adjacent_citations(text)
-    text = randomize_numeric_footnotes(text)
-    text = uniquify_numeric_link_references(text, output_file.stem)
-    output_file.write_text(text, encoding="utf-8")
+    prefix = output_file.stem
+    # Only labels that have a `[n]: url` definition in this file are renamed.
+    link_ids = set(re.findall(r"(?m)^[ \t]{0,3}\[(\d+)\]:", prose_only(text)))
+
+    def transform(chunk):
+        # Keep transform order stable: citations -> footnotes -> link references.
+        chunk = merge_adjacent_citations(chunk)
+        chunk = uniquify_numeric_footnotes(chunk, prefix)
+        return uniquify_numeric_link_references(chunk, prefix, link_ids)
+
+    output_file.write_text(transform_prose(text, transform), encoding="utf-8")
 
 
 def main():

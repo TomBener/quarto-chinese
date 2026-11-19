@@ -56,7 +56,7 @@ This project uses a [Makefile](Makefile) to manage the build process. Here are t
 - `make slides`: Render Reveal.js slides.
 - `make print`: Render PDF for print.
 - `make watermark`: Render PDF with watermark.
-- `make citebib`: Extract all cited references into `citebib.json` (filtered CSL JSON).
+- `make citebib`: Extract all cited references from `_references/bibliography.json` into `_references/citebib.json` (filtered CSL JSON).
 - `make normalize-itemkeys`: Rewrite Zotero item-key citations in `_contents/` to citation keys.
 - `make citedoc`: Copy cited reference files to a specified directory.
 - `make clean`: Remove auxiliary and output files.

@@ -1,8 +1,8 @@
 """
-Sort citation clusters so that non-Chinese references keep the order the author
-provided while Chinese references are grouped at the end (ordered by Pinyin,
-then year, then title). Citation prefixes/suffixes such as “see” or “p. 23” are
-kept with their original references.
+Sort citation clusters so that non-Chinese references come first and Chinese
+references are grouped at the end. Each group is ordered by author, then year,
+then title (Chinese names and titles by Pinyin). Citation prefixes/suffixes such
+as “see” or “p. 23” are kept with their original references.
 
 Run this filter before citeproc and make sure the CSL style does not define a
 <sort> block for in-text citations so the custom ordering is preserved.
@@ -174,7 +174,8 @@ def author_key(entry: dict, chinese: bool) -> str:
             name) else normalize(name)
         for name in names
     )
-    return "".join(converted)
+    # "\0" sorts before any letter, so "Li" + "Wang" stays before "Lin"
+    return "\0".join(converted)
 
 
 def title_key(entry: dict, chinese: bool) -> str:

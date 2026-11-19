@@ -26,6 +26,106 @@ from pathlib import Path
 
 ITEMKEY_TOKEN_PATTERN = re.compile(r'(?<![A-Za-z0-9])@([A-Z0-9]{8})\b')
 
+FENCE_OPEN_PATTERN = re.compile(r'^( {0,3})(`{3,}|~{3,})(.*)$')
+BACKTICK_RUN_PATTERN = re.compile(r'`+')
+
+
+def strip_line_ending(line):
+    """Return a line without trailing newline characters."""
+    return line.rstrip('\n').rstrip('\r')
+
+
+def parse_fence_open(line):
+    """Return fence marker details when a line opens a fenced code block."""
+    match = FENCE_OPEN_PATTERN.match(strip_line_ending(line))
+    if not match:
+        return None
+
+    marker = match.group(2)
+    info = match.group(3)
+    fence_char = marker[0]
+
+    if fence_char == '`' and '`' in info:
+        return None
+
+    return fence_char, len(marker)
+
+
+def is_fence_close(line, fence_char, fence_length):
+    """Return whether a line closes the current fenced code block."""
+    body = strip_line_ending(line)
+    match = re.match(rf'^( {{0,3}})({re.escape(fence_char)}+)[ \t]*$', body)
+    return bool(match and len(match.group(2)) >= fence_length)
+
+
+def iter_markdown_segments(text):
+    """Yield (is_code, segment) pairs, preserving the original text exactly."""
+    prose_lines = []
+    lines = text.splitlines(keepends=True)
+    i = 0
+
+    while i < len(lines):
+        fence = parse_fence_open(lines[i])
+        if not fence:
+            prose_lines.append(lines[i])
+            i += 1
+            continue
+
+        if prose_lines:
+            yield False, ''.join(prose_lines)
+            prose_lines = []
+
+        fence_char, fence_length = fence
+        code_lines = [lines[i]]
+        i += 1
+
+        while i < len(lines):
+            code_lines.append(lines[i])
+            if is_fence_close(lines[i], fence_char, fence_length):
+                i += 1
+                break
+            i += 1
+
+        yield True, ''.join(code_lines)
+
+    if prose_lines:
+        yield False, ''.join(prose_lines)
+
+
+def replace_item_keys_outside_code_spans(text, repl):
+    """Replace item keys in prose while preserving Markdown code spans."""
+    parts = []
+    pos = 0
+
+    while pos < len(text):
+        open_match = BACKTICK_RUN_PATTERN.search(text, pos)
+        if not open_match:
+            parts.append(ITEMKEY_TOKEN_PATTERN.sub(repl, text[pos:]))
+            break
+
+        delimiter = open_match.group(0)
+        search_pos = open_match.end()
+        close_match = None
+
+        while True:
+            candidate = BACKTICK_RUN_PATTERN.search(text, search_pos)
+            if not candidate:
+                break
+            if candidate.group(0) == delimiter:
+                close_match = candidate
+                break
+            search_pos = candidate.end()
+
+        if not close_match:
+            parts.append(ITEMKEY_TOKEN_PATTERN.sub(repl, text[pos:]))
+            break
+
+        parts.append(ITEMKEY_TOKEN_PATTERN.sub(repl, text[pos:open_match.start()]))
+        parts.append(text[open_match.start():close_match.end()])
+        pos = close_match.end()
+
+    return ''.join(parts)
+
 
 def extract_citation_keys(markdown_file):
     """Extract citation keys from a markdown file."""
@@ -41,10 +141,17 @@ def extract_citation_keys(markdown_file):
     keys1 = re.findall(pattern1, content)
     keys2 = re.findall(pattern2, content)
 
-    # Combine keys and filter out figure and table references
+    # Combine keys and filter out cross-references to figures, tables, sections and equations
     all_keys = set(keys1 + keys2)
-    return {key for key in all_keys if not (
-        key.startswith('fig-') or key.startswith('tbl-'))}
+    return {key for key in all_keys
+            if not key.startswith(('fig-', 'tbl-', 'sec-', 'eq-'))}
+
+
+def entry_keys(entry):
+    """Keys a source file may cite an entry by: the citation key (`id`) and the
+    Zotero item key. Source files cite by item key ([@XJ5WFXMB]), which the
+    itemkey-to-citekey filter maps to the citation key only at render time."""
+    return {k for k in (entry.get('id'), entry.get('zotero-item-key')) if k}
 
 
 def parse_bibliography_entries(json_file):
@@ -66,12 +173,15 @@ def parse_json_file(json_file):
     citations = {}
 
     for entry in entries:
-        if 'id' in entry:
-            key = entry['id']
-            if 'file' in entry and entry['file']:
-                # CSL JSON stores file path directly in 'file' field
-                file_path = entry['file'].strip()
-                if file_path:
+        if 'file' in entry and entry['file']:
+            # CSL JSON stores the attachment path(s) in 'file': `~`-prefixed, and
+            # several attachments are joined by ';' (prefer the first existing file)
+            paths = [os.path.expanduser(p.strip())
+                     for p in entry['file'].split(';') if p.strip()]
+            if paths:
+                file_path = next((p for p in paths if os.path.isfile(p)), paths[0]) \
+                    if len(paths) > 1 else paths[0]
+                for key in entry_keys(entry):
                     citations[key] = file_path
 
     return citations
@@ -85,11 +195,10 @@ def extract_full_json_entries(json_file, citation_keys, remove_fields=None):
     entries = parse_bibliography_entries(json_file)
 
     # Filter entries by citation keys
-    filtered_entries = []
     entry_dict = {}
 
     for entry in entries:
-        if 'id' in entry and entry['id'] in citation_keys:
+        if 'id' in entry and entry_keys(entry) & citation_keys:
             # Create a copy to avoid modifying the original
             filtered_entry = entry.copy()
 
@@ -120,7 +229,7 @@ def copy_cited_files(args):
     citations = parse_json_file(args.bib)
 
     # Find all Markdown files in content directory
-    markdown_files = list(Path(args.content_dir).glob('[0-9]*.md'))
+    markdown_files = list(iter_source_files(args.content_dir))
 
     # Extract all citation keys from Markdown files
     all_keys = set()
@@ -191,7 +300,11 @@ def load_item_key_map(json_file):
 
 
 def replace_item_keys(text, item_key_map):
-    """Replace `@ITEMKEY` citations with their Pandoc citation keys."""
+    """Replace `@ITEMKEY` citations with their Pandoc citation keys.
+
+    Code spans and fenced code blocks are left untouched, so literal
+    `@ITEMKEY` examples in documentation survive normalization.
+    """
     replaced = 0
 
     def repl(match):
@@ -203,7 +316,14 @@ def replace_item_keys(text, item_key_map):
             return f"@{citation_key}"
         return match.group(0)
 
-    return ITEMKEY_TOKEN_PATTERN.sub(repl, text), replaced
+    parts = []
+    for is_code, segment in iter_markdown_segments(text):
+        if is_code:
+            parts.append(segment)
+        else:
+            parts.append(replace_item_keys_outside_code_spans(segment, repl))
+
+    return ''.join(parts), replaced
 
 
 def iter_source_files(content_dir):
@@ -240,7 +360,7 @@ def normalize_itemkeys(args):
 def extract_citations(args):
     """Extract citations from Markdown files and save them to a CSL JSON file."""
     # Find all Markdown files in content directory
-    markdown_files = list(Path(args.content_dir).glob('[0-9]*.md'))
+    markdown_files = list(iter_source_files(args.content_dir))
 
     # Extract all citation keys from Markdown files
     all_keys = set()
@@ -275,7 +395,7 @@ def has_chinese_characters(text):
 def extract_chinese_citations(args):
     """Extract citations with Chinese titles from Markdown files and save them to a CSL JSON file."""
     # Find all Markdown files in content directory
-    markdown_files = list(Path(args.content_dir).glob('[0-9]*.md'))
+    markdown_files = list(iter_source_files(args.content_dir))
 
     # Extract all citation keys from Markdown files
     all_keys = set()
@@ -289,7 +409,7 @@ def extract_chinese_citations(args):
     chinese_entries = {}
 
     for entry in entries:
-        if 'id' in entry and entry['id'] in all_keys:
+        if 'id' in entry and entry_keys(entry) & all_keys:
             # Check if title contains Chinese characters
             if 'title' in entry and has_chinese_characters(entry['title']):
                 # Create a copy to avoid modifying the original
@@ -332,8 +452,7 @@ def main():
         description='Citation tools for extracting and copying cited references')
 
     # Common arguments
-    default_bib = os.path.expanduser(
-        "~/Library/CloudStorage/Dropbox/bibliography/bibliography.json")
+    default_bib = str(project_root / "_references" / "bibliography.json")
     default_content_dir = str(project_root / "_contents")
     default_output_bib = str(project_root / "_references" / "citebib.json")
 
