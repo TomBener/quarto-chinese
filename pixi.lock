@@ -158,10 +158,10 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/sysroot_linux-64-2.28-h4ee821c_9.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026e-h5d301ff_0.conda
       - pypi: https://files.pythonhosted.org/packages/31/7d/164b7ffc8624fe9efb4221bf9af485d5c1e41b9ae118045d2b6dc5457d8b/click-8.5.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/50/0e/087ffaa8dcaa42b451900bd0889193467d12b4698c7c44264d193f41802e/panflute-3.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/68/6a/0d1e4cf1e14b70fec5a2df0e409462df693d71c0e3a1f776e1d9c2cd145d/autocorrect_py-2.14.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/88/f9/16491d7ed2a919954993e48aa941b200f38040928474c9e85ea9e64222c3/pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/b9/7b/4cabc76fcc21c3c7d5c671d8783984d30ac9d3bb387c4ba784fca3cdfa3a/pypinyin-0.55.0-py2.py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/bf/dd/49f5d0aa985c14218da8759ec4a93390b683c92fd9081d5b96383d48db6e/panflute-2.3.1-py3-none-any.whl
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/_r-mutex-1.0.1-anacondar_1.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.10.23-hbd8a1cb_0.conda
@@ -316,9 +316,9 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-hf451053_7.conda
       - pypi: https://files.pythonhosted.org/packages/31/7d/164b7ffc8624fe9efb4221bf9af485d5c1e41b9ae118045d2b6dc5457d8b/click-8.5.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/3b/a6/a7d7c4eb2eaa2a47e222abf617aaa4e1c9f6e3b7b36405ab9d92439bc042/autocorrect_py-2.14.0-cp37-abi3-macosx_11_0_arm64.whl
+      - pypi: https://files.pythonhosted.org/packages/50/0e/087ffaa8dcaa42b451900bd0889193467d12b4698c7c44264d193f41802e/panflute-3.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b9/7b/4cabc76fcc21c3c7d5c671d8783984d30ac9d3bb387c4ba784fca3cdfa3a/pypinyin-0.55.0-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/bd/9c/4d95bb87eb2063d20db7b60faa3840c1b18025517ae857371c4dd55a6b3a/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl
-      - pypi: https://files.pythonhosted.org/packages/bf/dd/49f5d0aa985c14218da8759ec4a93390b683c92fd9081d5b96383d48db6e/panflute-2.3.1-py3-none-any.whl
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
   build_number: 20
@@ -4215,6 +4215,22 @@ packages:
   name: autocorrect-py
   version: 2.14.0
   sha256: da433ed2b6b7fede2f72c6fa5bb9021ddd6dbc207b7f77a33ee2df816b82eab9
+- pypi: https://files.pythonhosted.org/packages/50/0e/087ffaa8dcaa42b451900bd0889193467d12b4698c7c44264d193f41802e/panflute-3.0.0-py3-none-any.whl
+  name: panflute
+  version: 3.0.0
+  sha256: b95d3c49ca79555b3fd3743e94ecd67967ddd8a0aeff3e48b45071081036816a
+  requires_dist:
+  - click>=6,<9
+  - pyyaml>=3,<7
+  - yamlloader>=1,<2 ; extra == 'extras'
+  - pytest ; extra == 'dev'
+  - pytest-cov ; extra == 'dev'
+  - ruff ; extra == 'dev'
+  - mypy ; extra == 'dev'
+  - types-pyyaml ; extra == 'dev'
+  - sphinx>=7 ; extra == 'docs'
+  - myst-parser>=3 ; extra == 'docs'
+  requires_python: '>=3.10'
 - pypi: https://files.pythonhosted.org/packages/68/6a/0d1e4cf1e14b70fec5a2df0e409462df693d71c0e3a1f776e1d9c2cd145d/autocorrect_py-2.14.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
   name: autocorrect-py
   version: 2.14.0
@@ -4238,23 +4254,3 @@ packages:
   version: 6.0.3
   sha256: 34d5fcd24b8445fadc33f9cf348c1047101756fd760b4dacb5c3e99755703310
   requires_python: '>=3.8'
-- pypi: https://files.pythonhosted.org/packages/bf/dd/49f5d0aa985c14218da8759ec4a93390b683c92fd9081d5b96383d48db6e/panflute-2.3.1-py3-none-any.whl
-  name: panflute
-  version: 2.3.1
-  sha256: e44afd875b7b17ffebbbe58282849df06d9f1b20a45a2f933cd51bdcf4e89130
-  requires_dist:
-  - click>=6,<9
-  - pyyaml>=3,<7
-  - configparser ; extra == 'dev'
-  - coverage ; extra == 'dev'
-  - flake8 ; extra == 'dev'
-  - pandocfilters ; extra == 'dev'
-  - pytest-cov ; extra == 'dev'
-  - pytest ; extra == 'dev'
-  - requests ; extra == 'dev'
-  - yamlloader>=1,<2 ; extra == 'extras'
-  - docutils ; extra == 'pypi'
-  - pygments ; extra == 'pypi'
-  - twine ; extra == 'pypi'
-  - wheel ; extra == 'pypi'
-  requires_python: '>=3.7'

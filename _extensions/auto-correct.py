@@ -6,13 +6,6 @@
 import autocorrect_py as autocorrect
 import json
 import panflute as pf
-from panflute import elements as pf_elements
-
-# Allow typst and comment raw blocks until upstream panflute adds support.
-ADDITIONAL_RAW_FORMATS = {'typst', 'comment'}
-if hasattr(pf_elements, 'RAW_FORMATS'):
-    pf_elements.RAW_FORMATS = set(pf_elements.RAW_FORMATS)
-    pf_elements.RAW_FORMATS.update(ADDITIONAL_RAW_FORMATS)
 
 
 def load_config():

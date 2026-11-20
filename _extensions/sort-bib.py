@@ -12,16 +12,7 @@ CHINESE_FIRST = False
 import re
 
 import panflute as pf
-from panflute import elements as pf_elements
 from pypinyin import pinyin, Style
-
-
-# Patch until panflute release adds `typst` and `comment` raw formats.
-# https://github.com/sergiocorreia/panflute/blob/f99f82d62b245abb7f29e2d2d3bb560099d12cb8/panflute/elements.py#L1249
-ADDITIONAL_RAW_FORMATS = {'typst', 'comment'}
-if hasattr(pf_elements, 'RAW_FORMATS'):
-    pf_elements.RAW_FORMATS = set(pf_elements.RAW_FORMATS)
-    pf_elements.RAW_FORMATS.update(ADDITIONAL_RAW_FORMATS)
 
 
 def contains_chinese(text):
